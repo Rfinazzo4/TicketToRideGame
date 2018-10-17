@@ -5,22 +5,11 @@
  */
 package tickettoride;
 
-/**
- *
- * @author Ryanfinazzo
- */
-public class TicketToRide {
+public class Board {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here frfrfrrvrvr btbtbtbtb
-        //  
-        //make comment
-        //ryan
-        
-        // 2nd push 
-    } 
+    
     
 }
