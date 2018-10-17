@@ -13,7 +13,7 @@ public class Board {
    
     // constructor for board:
     public Board() {
-        // initialize Array for the board
+        // initialize Array for the board 
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 board[i][j] = ' ';
