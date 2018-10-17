@@ -10,13 +10,15 @@ import java.util.ArrayList;
 
 public class Player {
     // Making individual attributes 
-    private String name;
+    private String name; 
     private int score;
     private String color;
+    
     //ArrayList for the decks 
-    ArrayList<String> traincards;
-    ArrayList<String> dotc;
-    ArrayList<String> destcards;
+    private String[] playerlist; //should i make this array or arraylist
+    private ArrayList<String> traincards;
+    private ArrayList<String> dotc;
+    private ArrayList<String> destcards;
     
 //      private String[] traincards;
 //      private int[] dotc;
@@ -24,16 +26,19 @@ public class Player {
     
     
     //define and initilizae the attributes created
-    public void Player(String name,int score, String color){
+    public void Player(String name,int score, String color,String[] playerlist){
         this.name = name;
+        
         this.score = score;
         this.color = color;
+        this.playerlist = playerlist;
+        
         ArrayList<String> traincards = new ArrayList<String>();
         ArrayList<String> dotc = new ArrayList<String>();
         ArrayList<String> destcards = new ArrayList<String>();
     
-  
     }
+    
     
     //DrawTrain Cards() 
     
@@ -59,16 +64,21 @@ public class Player {
         
         //Getter for Name
         public String GetName(){
-            return name;
+            return this.name;
         }
+        
+        
         //Getter for Score
         public int GetScore(){
-            return score;
+            return this.score;
         }
+        
+        
         //Getter for Color
         public String GetColor(){
-            return color; 
+            return this.color; 
         }
+        
         
     }
     
