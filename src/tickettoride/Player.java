@@ -54,7 +54,9 @@ public class Player {
         
         
     //Claim Route(trainCard,DestCard)
-        public void ClaimRoute(      ){
+        public void ClaimRoute(String traincards, String destcards){
+            
+            
         }
         
         
