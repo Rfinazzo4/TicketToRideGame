@@ -14,7 +14,7 @@ public class Game {
     private ArrayList<String> DestDeck;
     private ArrayList<Player> Playerlist;
     private Board board;
-    private int playerindex;
+    private int playerindex=0;
     private int nextplayer;
     
     Game(){
@@ -51,7 +51,7 @@ public class Game {
         System.out.println("You have chosen to end the game");
         System.out.println("-------------------------------");
         //note: playerindex does not accurately calculate the winner, will need to be edited
-        System.out.println("The Winner is: "+ Playerlist.at(playerindex).getName());
+        System.out.println("The Winner is: "+ Playerlist.get(playerindex).getName());
         
     } 
     
