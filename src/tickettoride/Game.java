@@ -6,16 +6,20 @@
 package tickettoride;
 
 import java.util.ArrayList;
+import java.util.Random;
+
 
 public class Game {
     //Create List of Train Deck Cards 
     private ArrayList<String> TrainDeck;
     //Create List of Destination Deck Cards 
-    private ArrayList<String> DestDeck;
+    private ArrayList<Stringr> DestDeck;
     private ArrayList<Player> Playerlist;
     private Board board;
     private int playerindex=0;
     private int nextplayer;
+   
+
     
     Game(){
         //Describe the game at the start, 
@@ -23,6 +27,8 @@ public class Game {
         System.out.println("-----------------------");
         //Add details below
         System.out.println("Describe the game here");
+        
+        DestDeck.
         
         //Call set up for initialing attributes
         setUp();
@@ -52,8 +58,35 @@ public class Game {
         System.out.println("-------------------------------");
         //note: playerindex does not accurately calculate the winner, will need to be edited
         System.out.println("The Winner is: "+ Playerlist.get(playerindex).getName());
-        
     } 
+    
+    public void shuffleDestDeck(ArrayList<String> DestDeck){
+        //assuming there is 100 dest cards (need to check) 
+        Random rand = new Random();
+        String Cardtemp;
+        int inttemp; 
+        for (int i =0;i<DestDeck.size(); i++){
+            inttemp = rand.nextInt(99);
+            Cardtemp = DestDeck.get(inttemp);
+            DestDeck.set(inttemp, DestDeck.get(i));
+            DestDeck.set(i,Cardtemp); 
+            
+        }
+        
+    }
+    
+    public void shuffleTrainDeck(ArrayList<String> TrainDeck){
+        Random rand = new Random();
+        String Cardtemp;
+        int inttemp; 
+        for (int i =0;i<DestDeck.size(); i++){
+            inttemp = rand.nextInt(99);
+            Cardtemp = TrainDeck.get(inttemp);
+            TrainDeck.set(inttemp, TrainDeck.get(i));
+            TrainDeck.set(i,Cardtemp); 
+        }
+        
+    }
     
     public static void main(String[] args) {
        Game game = new Game();
