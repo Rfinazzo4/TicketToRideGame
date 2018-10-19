@@ -5,11 +5,8 @@
  */
 package tickettoride;
 
-/**
- *
- * @author Ryanfinazzo
- */
-public class TicketToRide {
+
+public class Board {
 
     /**
      * @param args the command line arguments
