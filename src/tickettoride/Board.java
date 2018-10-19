@@ -9,35 +9,20 @@ package tickettoride;
 public class Board {
     
     // initialize board array
-    private char[][] board;
+    private String[][] board;
    
     // constructor for board:
     public Board() {
-        // initialize Array for the board 
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                board[i][j] = ' ';
-            }
-        }
         
+        // first route linking SF and NY
+        board[0][0] = "San Francisco";
+        board[0][1] = "==================================";
+        board[0][2] = "New York";
         
-        // function to draw board
-        
+        // second route linking LA and Colorado
+        board[1][0] = "Los Angeles";
+        board[1][1] = "===============";
+        board[1][2] = "Colorado"; 
         
     }
-    
-    // function to draw board
-     public static void displayBoard() {
-            System.out.println("hello");
-        }
-     
-     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // Display board
-        Board b = new Board();
-    } 
-    
-}
+}     
