@@ -10,9 +10,12 @@ public class Board {
     
     // initialize board array
     public String[][] board;
+    private Display d;
      
     // constructor for board:
     public Board() {
+        //initalized our Display variable
+        d=new Display();
         
         // creating the border with the array
         board[0][0] = "--------------------------------------------------------";
@@ -38,6 +41,22 @@ public class Board {
         
     }
     
-   
+    public void DisplayB(){
+        d.displayBoard(board);
+    }
+    
+    
+    public void UpdateBaord(){
+        
+        //In here is where we would update the Baord, this will be dependent on
+        //the players move which will be sent form game
+        //Best we can do for now untill we start designing the gameplay more
+        
+        //Here we just showed we are editing the Board with some hard coded changes
+        
+        board[2][1] = "San Francisco - Edited";
+        board[2][2] = "==================================";
+        board[2][3] = "New York - Edited";
+    }
 }    
 
