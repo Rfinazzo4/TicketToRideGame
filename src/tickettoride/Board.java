@@ -9,20 +9,34 @@ package tickettoride;
 public class Board {
     
     // initialize board array
-    private String[][] board;
-   
+    public String[][] board;
+     
     // constructor for board:
     public Board() {
         
+        // creating the border with the array
+        board[0][0] = "--------------------------------------------------------";
+        board[1][0] = "|";
+        board[2][0] = "|";
+        board[3][0] = "|";
+        board[4][0] = "|";
+        board[5][0] = "--------------------------------------------------------";
+        board[1][4] = "|";
+        board[2][4] = "|";
+        board[3][4] = "|";
+        board[4][4] = "|";
+        
         // first route linking SF and NY
-        board[0][0] = "San Francisco";
-        board[0][1] = "==================================";
-        board[0][2] = "New York";
+        board[2][1] = "San Francisco";
+        board[2][2] = "==================================";
+        board[2][3] = "New York";
         
         // second route linking LA and Colorado
-        board[1][0] = "Los Angeles";
-        board[1][1] = "===============";
-        board[1][2] = "Colorado"; 
+        board[4][1] = "Los Angeles";
+        board[4][2] = "===============";
+        board[4][3] = "Colorado"; 
         
     }
-}     
+    
+   
+}    
