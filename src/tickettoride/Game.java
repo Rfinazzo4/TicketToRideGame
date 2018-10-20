@@ -13,36 +13,36 @@ public class Game {
     //Create List of Train Deck Cards 
     private ArrayList<String> TrainDeck;
     //Create List of Destination Deck Cards 
-    private ArrayList<Stringr> DestDeck;
+    private ArrayList<String> DestDeck;
     private ArrayList<Player> Playerlist;
     private Board board;
     private int playerindex=0;
     private int nextplayer;
+    Display d;
    
 
     
     Game(){
+        //initalize Display Variabke
+        d= new Display();
+        
+        
         //Describe the game at the start, 
-        System.out.println("Inside Game Constructor");
-        System.out.println("-----------------------");
-        //Add details below
-        System.out.println("Describe the game here");
+        d.displayStart();
         
-        DestDeck.
-        
-        //Call set up for initialing attributes
+//        //Call set up for initialing attributes
         setUp();
-        System.out.println("leaving game constructor");
+        
         
     }
     
     private void setUp(){
-        //initialize the Decks
+        //initialize the Decks, this will be changed in the future to the trainDeck Class
         TrainDeck = new ArrayList<String>();
         DestDeck = new ArrayList<String>();
         
         //initialize the Players
-        //put in a getPlayers() method
+        
         Player p = new Player("Inderpreet");
         Playerlist.add(p);
         p = new Player("Ayoub");
@@ -50,14 +50,18 @@ public class Game {
     
         //initialize the Board
         board = new Board();
+        board.DisplayB();
+        
     }
     
     public void endGame(){
-        //End game, calulate winner and end program
-        System.out.println("You have chosen to end the game");
-        System.out.println("-------------------------------");
-        //note: playerindex does not accurately calculate the winner, will need to be edited
-        System.out.println("The Winner is: "+ Playerlist.get(playerindex).getName());
+        //End game, calulate winner and call Display endgame
+        //here is where the caluation woudl occur
+        
+        //compare scores
+        
+        //sending an arbitrary player
+        d.endGame(Playerlist.get(playerindex));
     } 
     
     public void shuffleDestDeck(ArrayList<String> DestDeck){
@@ -79,7 +83,7 @@ public class Game {
         Random rand = new Random();
         String Cardtemp;
         int inttemp; 
-        for (int i =0;i<DestDeck.size(); i++){
+        for (int i =0;i<TrainDeck.size(); i++){
             inttemp = rand.nextInt(99);
             Cardtemp = TrainDeck.get(inttemp);
             TrainDeck.set(inttemp, TrainDeck.get(i));
@@ -88,8 +92,14 @@ public class Game {
         
     }
     
+    public  ArrayList<Player> getPlayers(){
+        return Playerlist;
+    }
+    
     public static void main(String[] args) {
        Game game = new Game();
+       
+       
         
     } 
 }
