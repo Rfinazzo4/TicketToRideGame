@@ -14,7 +14,7 @@ public class Display {
     }
  
     public void displayBoard() {
-        Board b = new Board();
-        System.out.println(b);
+        //Board b = new Board();
+        //System.out.println(b);
     }
 }
