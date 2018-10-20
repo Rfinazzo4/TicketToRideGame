@@ -42,12 +42,7 @@ public class Player {
     
     
     
-         //DrawTrain Cards() 
-//        public void DrawTrainCard(){
-//            
-//            
-//            System.out.println("TrainCard has been drawn");
-//        }
+
         //add cards to the deck
         public void AddToTrainDeck(String Traincard){
             
@@ -58,11 +53,7 @@ public class Player {
        
         
     
-        // Draw destination card to hand 
-//        public void DrawDestCards(){
-//            
-//            System.out.println("Dest Card has been drawn");  
-//        }
+
         //add the card to the deck 
         public void AddToDestDeck(String DestDeck){
             
