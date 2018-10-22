@@ -5,6 +5,7 @@
  */
 package tickettoride;
 
+
 import java.util.ArrayList;
 
 
@@ -13,11 +14,11 @@ public class Player {
     private String name; 
     private int score;
     private String color;
+    private int traincars;
     
     //ArrayList for the decks 
-    private String[] playerlist; //should i make this array or arraylist
+    
     private ArrayList<String> traincards;
-    private ArrayList<String> dotc;
     private ArrayList<String> destcards;
     
 //      private String[] traincards;
@@ -26,36 +27,43 @@ public class Player {
     
     
     //define and initilizae the attributes created
-    public void Player(String name,int score, String color,String[] playerlist){
+     Player(String name){
+
         this.name = name;
-        
-        this.score = score;
+        this.score = 0; //players score starts with 0
         this.color = color;
-        this.playerlist = playerlist;
-        
-        ArrayList<String> traincards = new ArrayList<String>();
-        ArrayList<String> dotc = new ArrayList<String>();
-        ArrayList<String> destcards = new ArrayList<String>();
+        this.traincars = 45; // Player starts with 45 train cars 
+    
+        traincards = new ArrayList<String>();
+        destcards = new ArrayList<String>();
     
     }
     
     
-    //DrawTrain Cards() 
     
-        public void drawtrainard(Player draw){
+
+        //add cards to the deck
+        public void AddToTrainDeck(String Traincard){
             
+            traincards.add(Traincard);
+            //
+        
         }
        
         
-    // DrawDestCards
-        
-        public void DrawDestCards(Player drawdest){
+    
+
+        //add the card to the deck 
+        public void AddToDestDeck(String DestDeck){
+            
+            destcards.add(DestDeck);
         }
         
         
     //Claim Route(trainCard,DestCard)
         public void ClaimRoute(String traincards, String destcards){
             
+            System.out.println("Route has been claimed"); 
             
         }
         
@@ -81,12 +89,27 @@ public class Player {
             return this.color; 
         }
         
+        //Getter for number of TrainCars
+        public int GetTrainCars(){
+            return this.traincars;
+        }
+        
+        
+        //Getter for TrainCards deck
+        public ArrayList<String> GetTrainCards(){
+            return this.traincards;
+        }
+        
+        
+        // Getter for DestinationCards Deck
+        public ArrayList<String> GetDestCards(){
+            return this.destcards;
+        }
+        
+        
+        //
         
     }
     
     
-    
-    
-    
-
 
