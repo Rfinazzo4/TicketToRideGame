@@ -29,30 +29,31 @@ public class DestCard {
     }
 
     
-    
+    //Setter for isUsed 
     public void setIsUsed(boolean isUsed) {
         this.isUsed = isUsed;
     }
     
+  
 
-    
+    //Getter for D1
 
     public String getD1() {
         return d1;
     }
-
+    // Getter for D1
     public String getD2() {
         return d2;
     }
-
+    // Getter for routecolor
     public String getRoutecolor() {
         return routecolor;
     }
-
+    // Getter for Length
     public int getLength() {
         return length;
     }
-
+    //getter for points
     public int getPoints() {
         return points;
     }
