@@ -54,6 +54,7 @@ public class Game {
     public void endGame(){
         //End game, calulate winner and call Display endgame
         //here is where the caluation woudl occur
+
         
         //compare scores
         
@@ -82,7 +83,7 @@ public class Game {
         board.UpdateBoard("Abitrary string for now. ");
         return true;
     }
-    
+
     public void shuffleTrainDeck(ArrayList<String> TrainDeck){
         Random rand = new Random();
         String Cardtemp;
@@ -101,6 +102,7 @@ public class Game {
     }
     
     public static void main(String[] args) {
+
         Display d = new Display();
         Game game = new Game();
         game.setUp();
@@ -109,7 +111,7 @@ public class Game {
         }
         
         game.endGame();
-        
+
        
      
     } 

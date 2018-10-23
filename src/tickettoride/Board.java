@@ -16,6 +16,7 @@ public class Board {
     public Board() {
         //initalized our Display variable
         d=new Display();
+
         board =new String [5][5];
         // creating the border with the array
         
@@ -68,13 +69,15 @@ public class Board {
     
     
     public void UpdateBoard(String DestCard){//This will need to be changed to a destination card
+
         
         //In here is where we would update the Baord, this will be dependent on
         //the players move which will be sent form game
         //Best we can do for now untill we start designing the gameplay more
         
         //Here we just showed we are editing the Board with some hard coded changes
-        
+
+
         String s1 = "LA";
         String s2 = "CO";
         
