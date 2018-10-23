@@ -28,15 +28,14 @@ public class Player {
     
     //define and initilizae the attributes created
      Player(String name){
-         
- 
+
         this.name = name;
         this.score = 0; //players score starts with 0
         this.color = color;
         this.traincars = 45; // Player starts with 45 train cars 
     
-        ArrayList<String> traincards = new ArrayList<String>();
-        ArrayList<String> destcards = new ArrayList<String>();
+        traincards = new ArrayList<String>();
+        destcards = new ArrayList<String>();
     
     }
     

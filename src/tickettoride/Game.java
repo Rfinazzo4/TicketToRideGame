@@ -25,28 +25,25 @@ public class Game {
     Game(){
         //initalize Display Variabke
         d= new Display();
-        
-        
+        TrainDeck = new ArrayList<>();
+        DestDeck = new ArrayList<>();
+        Playerlist = new ArrayList<>();
         //Describe the game at the start, 
         d.displayStart();
         
-//        //Call set up for initialing attributes
-        setUp();
         
         
     }
     
-    private void setUp(){
+    public void setUp(){
         //initialize the Decks, this will be changed in the future to the trainDeck Class
-        TrainDeck = new ArrayList<String>();
-        DestDeck = new ArrayList<String>();
         
         //initialize the Players
-        
-        Player p = new Player("Inderpreet");
-        Playerlist.add(p);
-        p = new Player("Ayoub");
-        Playerlist.add(p);
+     
+        Player p1 = new Player("Inderpreet");
+        Playerlist.add(p1);
+        Player p2 = new Player("Ayoub");
+        Playerlist.add(p2);
     
         //initialize the Board
         board = new Board();
@@ -57,6 +54,7 @@ public class Game {
     public void endGame(){
         //End game, calulate winner and call Display endgame
         //here is where the caluation woudl occur
+
         
         //compare scores
         
@@ -79,6 +77,13 @@ public class Game {
         
     }
     
+    public boolean makeMove(){ //definition will need to be changed
+        //check if valid move 
+        //return false if not
+        board.UpdateBoard("Abitrary string for now. ");
+        return true;
+    }
+
     public void shuffleTrainDeck(ArrayList<String> TrainDeck){
         Random rand = new Random();
         String Cardtemp;
@@ -97,9 +102,17 @@ public class Game {
     }
     
     public static void main(String[] args) {
-       Game game = new Game();
-       
-       
+
+        Display d = new Display();
+        Game game = new Game();
+        game.setUp();
+        if(game.makeMove()){
+            
+        }
         
+        game.endGame();
+
+       
+     
     } 
 }
