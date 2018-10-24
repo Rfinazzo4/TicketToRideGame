@@ -20,12 +20,16 @@ public class Display {
         
     public void displayStart(){
 
-        System.out.println("Inside the mehtod that wil describe the game");
+        System.out.println("Welcome to the Ticket 2 Ride Game ");
 
-        System.out.println("-----------------------");
+        System.out.println("⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖");
         //Add details below
-        System.out.println("We will be describing the game here");
+        System.out.println("⧱The Main Objective of the game is to score the highest amount of points");
+        System.out.println("You can earn points either ");
         System.out.println("");
+        System.out.println("⟡Claiming a route between two adjacent cities");
+        System.out.println("⟡Completing a cotinous path of two cities listed on destination card");
+        System.out.println("⟡Complete the longest continous path");
 
     }
    
@@ -53,6 +57,8 @@ public class Display {
     public Player readPlayer() {
         reader = new Scanner(System.in);
         System.out.println("--------------------------------------");
+        System.out.println("Let's get started with the game!");
+        System.out.println("");
         System.out.print("Player "+ ++count +" Please enter you name : ");
         String name = reader.nextLine();
         Player P = new Player(name);
