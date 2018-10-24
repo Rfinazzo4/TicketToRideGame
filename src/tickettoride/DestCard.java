@@ -5,10 +5,6 @@
  */
 package tickettoride;
 
-/**
- *
- * @author ayoubalani
- */
 public class DestCard {
     private String d1;
     private String d2;
@@ -33,8 +29,6 @@ public class DestCard {
     public void setIsUsed(boolean isUsed) {
         this.isUsed = isUsed;
     }
-    
-  
 
     //Getter for D1
 
@@ -61,10 +55,6 @@ public class DestCard {
     public boolean isIsUsed() {
         return isUsed;
     }
-    
-    
-    
-    
-    
-    
+   
 }
+
