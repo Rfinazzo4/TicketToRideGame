@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package tickettoride;
+
 public class DestCard {
     private String d1;
     private String d2;
@@ -54,10 +55,6 @@ public class DestCard {
     public boolean isIsUsed() {
         return isUsed;
     }
-    
-    
-    
-    
-    
-    
+   
 }
+

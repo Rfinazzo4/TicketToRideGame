@@ -19,20 +19,24 @@ public class Display {
     }
         
     public void displayStart(){
-        
-        System.out.println("Inside the methood that wil describe the game");
+
+        System.out.println("Inside the mehtod that wil describe the game");
+
         System.out.println("-----------------------");
         //Add details below
         System.out.println("We will be describing the game here");
         System.out.println("");
+
     }
    
     public void displayBoard(Space[][] board) {
        for (int i=0;i<5;i++){
+
            for(int j=0;j<5;j++){
                System.out.print(board[i][j].getMark());
            }
            System.out.println("");
+
        }
     }
     

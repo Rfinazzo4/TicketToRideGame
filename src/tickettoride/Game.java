@@ -19,6 +19,7 @@ public class Game {
     private int playerindex;
     Display d;
 
+
     public Game(){
         
         //initalize Display Variable
@@ -46,6 +47,7 @@ public class Game {
             P = d.readPlayer();
             Playerlist.add(i,P);
         }
+
         //initialize the Board
         board = new Board();
         board.DisplayB();
@@ -55,6 +57,7 @@ public class Game {
     public void endGame(){
         //End game, calulate winner and call Display endgame
         //here is where the caluation woudl occur
+
         
         //compare scores
         
@@ -86,7 +89,16 @@ public class Game {
         return true;
     }
     
-    public void shuffleTrainDeck(ArrayList<TrainCard> TrainDeck){
+
+    public boolean makeMove(){ //definition will need to be changed
+        //check if valid move 
+        //return false if not
+        board.UpdateBoard("Abitrary string for now. ");
+        return true;
+    }
+
+    public void shuffleTrainDeck(ArrayList<String> TrainDeck){
+
         Random rand = new Random();
         TrainCard Cardtemp;
         int inttemp; 
@@ -104,11 +116,13 @@ public class Game {
     }
     
     public static void main(String[] args) {
+
         Display d = new Display();
         Game game = new Game();
         
         game.endGame();
         
+
        
      
     } 
