@@ -11,49 +11,53 @@ import java.util.Random;
 
 public class Game {
     //Create List of Train Deck Cards 
-    private ArrayList<String> TrainDeck;
+    private ArrayList<TrainCard> TrainDeck;
     //Create List of Destination Deck Cards 
-    private ArrayList<String> DestDeck;
+    private ArrayList<DestCard> DestDeck;
     private ArrayList<Player> Playerlist;
     private Board board;
-    private int playerindex=0;
-    private int nextplayer;
+    private int playerindex;
     Display d;
-   
 
-    
-    Game(){
-        //initalize Display Variabke
+
+    public Game(){
+        
+        //initalize Display Variable
         d= new Display();
+        //Set index to zero
+        playerindex=0;
+        
+        //Initialize the Decks and Player list
         TrainDeck = new ArrayList<>();
         DestDeck = new ArrayList<>();
         Playerlist = new ArrayList<>();
         //Describe the game at the start, 
         d.displayStart();
         
-        
-        
-    }
-    
-    public void setUp(){
-        //initialize the Decks, this will be changed in the future to the trainDeck Class
-        
+        ///////////////////////////////////////
+        //Setup
         //initialize the Players
-     
-        Player p1 = new Player("Inderpreet");
-        Playerlist.add(p1);
-        Player p2 = new Player("Ayoub");
-        Playerlist.add(p2);
-    
+        Player P;
+        for (int i=0; i<5;i++){
+            if(i>1){
+                if(!d.morePlayers()){
+                    break;
+                }
+            }
+            P = d.readPlayer();
+            Playerlist.add(i,P);
+        }
+
         //initialize the Board
         board = new Board();
         board.DisplayB();
-        
+         
     }
     
     public void endGame(){
         //End game, calulate winner and call Display endgame
         //here is where the caluation woudl occur
+
         
         //compare scores
         
@@ -61,10 +65,10 @@ public class Game {
         d.endGame(Playerlist.get(playerindex));
     } 
     
-    public void shuffleDestDeck(ArrayList<String> DestDeck){
+    public void shuffleDestDeck(ArrayList<DestCard> DestDeck){
         //assuming there is 100 dest cards (need to check) 
         Random rand = new Random();
-        String Cardtemp;
+        DestCard Cardtemp;
         int inttemp; 
         for (int i =0;i<DestDeck.size(); i++){
             inttemp = rand.nextInt(99);
@@ -73,19 +77,30 @@ public class Game {
             DestDeck.set(i,Cardtemp); 
             
         }
-        
     }
     
+    public boolean makeMove(){ //definition will need to be changed
+        //check if valid move 
+        //return false if not
+        
+        
+        
+       //board.UpdateBoard();
+        return true;
+    }
+    
+
     public boolean makeMove(){ //definition will need to be changed
         //check if valid move 
         //return false if not
         board.UpdateBoard("Abitrary string for now. ");
         return true;
     }
-    
+
     public void shuffleTrainDeck(ArrayList<String> TrainDeck){
+
         Random rand = new Random();
-        String Cardtemp;
+        TrainCard Cardtemp;
         int inttemp; 
         for (int i =0;i<TrainDeck.size(); i++){
             inttemp = rand.nextInt(99);
@@ -101,15 +116,13 @@ public class Game {
     }
     
     public static void main(String[] args) {
+
         Display d = new Display();
         Game game = new Game();
-        game.setUp();
-        if(game.makeMove()){
-            
-        }
         
         game.endGame();
         
+
        
      
     } 
