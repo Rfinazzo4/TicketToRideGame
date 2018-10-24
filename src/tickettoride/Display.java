@@ -11,10 +11,10 @@ import java.util.Scanner;
 
 public class Display {
     Scanner reader;
-    int count;
+    int count; //Player index 
+   // String input; //
 
     Display(){
-        reader = new Scanner(System.in);  // Reading from System.in
         count=0; //set count to zero
     }
         
@@ -51,6 +51,7 @@ public class Display {
     }
 
     public Player readPlayer() {
+        reader = new Scanner(System.in);
         System.out.println("--------------------------------------");
         System.out.print("Player "+ ++count +" Please enter you name : ");
         String name = reader.nextLine();
@@ -59,15 +60,68 @@ public class Display {
     }
 
     boolean morePlayers() {
+        reader = new Scanner(System.in);
         System.out.println("Another PLayer? Yes or other key for no");
         String input = reader.nextLine();
-        if (input.equals("Yes") || input.equals("Yes")){
+        if (input.equals("Yes") || input.equals("yes")){
             return true;
         }
         else{
             return false;
         }
         
+    }
+
+    DestCard displayPlayerDestcards(Player p) {
+        reader = new Scanner(System.in);
+        System.out.println("Player " + p.GetName());
+        System.out.println("Here are the Desination cards you have been delt");
+        System.out.println("---------------------------------------------");
+        for (int i =0;i<3;i++){
+            System.out.print((i+1)+". ");
+            System.out.println(p.GetDestCards().get(i).toString());
+        }
+       
+        System.out.println("Do you wish to keep all 3, you may return one. Yes or any other key for no");
+        String input = reader.nextLine();
+        if (input.equals("Yes") || input.equals("yes")){
+            return null;
+        }
+        //////////////       
+        System.out.println("Which card would you like to return? (1, 2, 3)");
+        int temp = reader.nextInt();
+        DestCard tempdc;
+        switch(temp){
+            case 1:
+                System.out.println("Done.");
+                tempdc = p.GetDestCards().get(0);
+                p.GetDestCards().remove(0);
+                for (int i =0;i<2;i++){
+                    System.out.print((i+1)+". ");
+                    System.out.println(p.GetDestCards().get(i).toString());
+                }
+                return tempdc;
+            case 2:
+                System.out.println("Done.");
+                tempdc = p.GetDestCards().get(1);
+                p.GetDestCards().remove(1);
+                for (int i =0;i<2;i++){
+                    System.out.print((i+1)+". ");
+                    System.out.println(p.GetDestCards().get(i).toString());
+                }
+                return tempdc;
+            case 3:
+                System.out.println("Done.");
+                tempdc = p.GetDestCards().get(2);
+                p.GetDestCards().remove(2);
+                for (int i =0;i<2;i++){
+                    System.out.print((i+1)+". ");
+                    System.out.println(p.GetDestCards().get(i).toString());
+                }
+                return tempdc;
+            default:
+                return null;
+        }  
     }
     
 }

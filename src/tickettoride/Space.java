@@ -10,7 +10,7 @@ package tickettoride;
  * @author Ryanfinazzo
  */
 public class Space {
-    private String mark;
+    private String mark; //poss
     private boolean isRoute;
     private boolean isDest;
     Space(String mark, boolean route, boolean dest){

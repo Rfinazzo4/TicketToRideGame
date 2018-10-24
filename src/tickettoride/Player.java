@@ -18,8 +18,8 @@ public class Player {
     
     //ArrayList for the decks 
     
-    private ArrayList<String> traincards;
-    private ArrayList<String> destcards;
+    private ArrayList<TrainCard> traincards;
+    private ArrayList<DestCard> destcards;
     
 //      private String[] traincards;
 //      private int[] dotc;
@@ -34,8 +34,8 @@ public class Player {
         this.color = color;
         this.traincars = 45; // Player starts with 45 train cars 
     
-        traincards = new ArrayList<String>();
-        destcards = new ArrayList<String>();
+        traincards = new ArrayList<>();
+        destcards = new ArrayList<>();
     
     }
     
@@ -43,9 +43,9 @@ public class Player {
     
 
         //add cards to the deck
-        public void AddToTrainDeck(String Traincard){
+        public void AddToTrainDeck(TrainCard card){
             
-            traincards.add(Traincard);
+            traincards.add(card);
             //
         
         }
@@ -54,9 +54,9 @@ public class Player {
     
 
         //add the card to the deck 
-        public void AddToDestDeck(String DestDeck){
+        public void AddToDestDeck(DestCard card){
             
-            destcards.add(DestDeck);
+            destcards.add(card);
         }
         
         
@@ -96,13 +96,13 @@ public class Player {
         
         
         //Getter for TrainCards deck
-        public ArrayList<String> GetTrainCards(){
+        public ArrayList<TrainCard> GetTrainCards(){
             return this.traincards;
         }
         
         
         // Getter for DestinationCards Deck
-        public ArrayList<String> GetDestCards(){
+        public ArrayList<DestCard> GetDestCards(){
             return this.destcards;
         }
         
