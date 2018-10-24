@@ -11,17 +11,17 @@ package tickettoride;
  */
 public class TrainCard {
     private String color;
-    private boolean isFaceDown;
+    private boolean isFaceUp;
     private boolean isUsed;
     
     TrainCard(String color){
         this.color=color;
-        isFaceDown = true; //might need to change
+        isFaceUp = false; 
         isUsed = false;
     }
 
-    public void setIsFaceDown(boolean isFaceDown) {
-        this.isFaceDown = isFaceDown;
+    public void setIsFaceUp(boolean isFaceUp) {
+        this.isFaceUp = isFaceUp;
     }
 
     public void setIsUsed(boolean isUsed) {
@@ -32,12 +32,16 @@ public class TrainCard {
         return color;
     }
 
-    public boolean isIsFaceDown() {
-        return isFaceDown;
+    public boolean isIsFaceUp() {
+        return isFaceUp;
     }
 
     public boolean isIsUsed() {
         return isUsed;
     }
    
+    @Override
+    public String toString(){
+        return this.color;
+    }
 }
