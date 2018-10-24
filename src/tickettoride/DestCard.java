@@ -10,18 +10,15 @@ public class DestCard {
     private String d2;
     private String routecolor;
     private int length;
-    private String color;
-    private int points;
     private boolean isUsed;
     
     
-    DestCard(String d1, String d2, int length, int points, String color){
+    DestCard(String d1, String d2, int length, String color){
         
         this.d1= d1;
         this.d2= d2;
         this.length=length;
-        this.points=points;
-        this.color= color;
+        this.routecolor= color;
     }
 
     
@@ -47,14 +44,14 @@ public class DestCard {
     public int getLength() {
         return length;
     }
-    //getter for points
-    public int getPoints() {
-        return points;
-    }
+   
 
     public boolean isIsUsed() {
         return isUsed;
     }
-   
+   @Override
+   public String toString(){
+       return (this.d1 + " "+this.d2);
+   }
 }
 
