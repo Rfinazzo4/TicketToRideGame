@@ -20,9 +20,7 @@ import tickettoride.Game;
  */
 public class testGame {
     private Game a;
-    public testGame() {
-        a = new Game();
-    }
+    
     
     @BeforeClass
     public static void setUpClass() {
@@ -33,8 +31,8 @@ public class testGame {
     }
     
     @Before
-    public void setUp() {
-        
+    public void setUp() {  
+        a = new Game();
     }
     
     @After
