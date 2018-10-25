@@ -19,9 +19,9 @@ public class Display {
     }
         
     public void displayStart(){
-
+        System.out.println("");
+        System.out.println("⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖");
         System.out.println("Welcome to the Ticket 2 Ride Game ");
-
         System.out.println("⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖");
         //Add details below
         System.out.println("⧱The Main Objective of the game is to score the highest amount of points");
@@ -30,8 +30,41 @@ public class Display {
         System.out.println("⟡Claiming a route between two adjacent cities");
         System.out.println("⟡Completing a cotinous path of two cities listed on destination card");
         System.out.println("⟡Complete the longest continous path");
+        System.out.println("");
+        System.out.println("------------------");
 
     }
+    //ASKS THE USER IF THEY WOULD LIKE TO QUICKLY REVIEW THE RULES
+      void readRules() {
+        reader = new Scanner(System.in);
+        System.out.println("Would you like to quickly review the rules ? ");
+        String input = reader.nextLine();
+        if (input.equals("Yes") || input.equals("yes") || input.equals("y")){
+            System.out.println("--------------------");
+             System.out.println("The rules are" );
+          
+            System.out.println("⟡You can only claim a route with the matching train color" );
+            System.out.println("⟡Any returned DestCard or TrainCard will go to the bottom of the deck");
+            System.out.println("⟡You must keep your destination card a secret till the end of the game");
+            System.out.println("⟡Locomotive card is a wildcard, which could be any color");
+            System.out.println("⟡If the locomotive card is a face up, you may only draw one card");
+            System.out.println("⟡If your train cars deck, recycle the discarded and shuffle into a new deck");
+            System.out.println("⟡Any card used to claim a route is discarded after");
+            System.out.println("⟡You may only claim open routes");
+            System.out.println("⟡You cannot claim two routes to the same city");
+            System.out.println("---------------------");
+            System.out.println("Now that you have quickly reviewed some of the game's rules, you are ready to play!");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Lets get started with the game!");
+
+        
+        }
+        else{
+        }
+        
+    }
+    
    
     public void displayBoard(Space[][] board) {
        for (int i=0;i<5;i++){
@@ -57,7 +90,6 @@ public class Display {
     public Player readPlayer() {
         reader = new Scanner(System.in);
         System.out.println("--------------------------------------");
-        System.out.println("Let's get started with the game!");
         System.out.println("");
         System.out.print("Player "+ ++count +" Please enter you name : ");
         String name = reader.nextLine();
