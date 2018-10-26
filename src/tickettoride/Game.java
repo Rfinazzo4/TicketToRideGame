@@ -46,6 +46,9 @@ public class Game {
         //Describe the game at the start, 
         d.displayStart();
         
+        //Ask if user wants to 
+        d.readRules();
+        
         
         //Setup
         ///////////////
@@ -210,7 +213,6 @@ public class Game {
         
         //Set top five Train Cards in deck to 'FaceUp' 
         for(int i = 0;i<5;i++){
-            System.out.println(TDtopIndex-i);
             TrainDeck.get(TDtopIndex-i).setIsFaceUp(true);
         }
         
