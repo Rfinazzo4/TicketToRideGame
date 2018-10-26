@@ -162,4 +162,61 @@ public class Display {
         }  
     }
     
+    
+    public int displayMoveOption(){
+        Scanner keyboard = new Scanner(System.in);
+
+   
+        int option;
+        
+      
+        
+        System.out.println("It's your turn, what move will you make ?");
+        
+        // Options for the player turn 
+   
+        //option 1
+        
+        System.out.println("1. Draw Train Cards");
+        
+        //option2 
+        System.out.println("2. Draw Destination Cards");
+        
+        //option3
+        System.out.println("3. Claim a Route");
+        
+ 
+   while(true){
+            System.out.println("What move will you make? Please pick (1, 2, 3)");
+            option = keyboard.nextInt();
+            
+            if ((option < 1) || (option > 3)){
+                System.out.println("Please Enter a valid input");
+        }
+        else{
+            return option;
+            }
+        }
+    }
 }
+        
+
+
+    
+
+
+        
+        
+        
+        
+         
+     
+                
+
+        
+        
+        
+        
+        
+        
+        
