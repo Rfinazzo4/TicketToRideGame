@@ -45,6 +45,8 @@ public class Game {
         
         //Describe the game at the start, 
         d.displayStart();
+        d.readRules();
+        
         
         
         //Setup
