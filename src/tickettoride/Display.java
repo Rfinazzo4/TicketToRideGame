@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class Display {
     Scanner reader;
     int count; //Player index 
+    //create color array or list; 
    // String input; //
 
     Display(){
@@ -34,6 +35,7 @@ public class Display {
         System.out.println("------------------");
 
     }
+    
     //ASKS THE USER IF THEY WOULD LIKE TO QUICKLY REVIEW THE RULES
       void readRules() {
         reader = new Scanner(System.in);
@@ -57,8 +59,6 @@ public class Display {
             System.out.println("");
             System.out.println("");
             System.out.println("Lets get started with the game!");
-
-        
         }
         else{
         }
@@ -93,7 +93,9 @@ public class Display {
         System.out.println("");
         System.out.print("Player "+ ++count +" Please enter you name : ");
         String name = reader.nextLine();
-        Player P = new Player(name);
+        System.out.println("Pleas enter a color ");
+        String color = reader.nextLine();
+        Player P = new Player(name, color);
         return P;
     }
 
@@ -110,7 +112,7 @@ public class Display {
         
     }
 
-    DestCard displayPlayerDestcards(Player p) {
+    public DestCard displayDestcardReturn(Player p) {
         reader = new Scanner(System.in);
         System.out.println("Player " + p.GetName());
         System.out.println("Here are the Desination cards you have been delt");
@@ -161,5 +163,27 @@ public class Display {
                 return null;
         }  
     }
+    
+    public void displayPlayerDestcards(Player p) {
+        reader = new Scanner(System.in);
+        System.out.println("Player " + p.GetName());
+        System.out.println("Here are the Desination cards you have been delt");
+        System.out.println("---------------------------------------------");
+        for (int i =0;i<3;i++){
+            System.out.print((i+1)+". ");
+            System.out.println(p.GetDestCards().get(i).toString());
+        }
+    }
+
+    
+    public int displayMoveOptions(){
+        return 0;
+    }
+
+    DestCard displayClaimRoute() {
+        System.out.println("This move has not bee designed yet");
+        return null;
+    }
+
     
 }
