@@ -44,8 +44,10 @@ public class Game {
         Playerlist = new ArrayList<>();
         
         //Describe the game at the start, 
+        
         d.displayStart();
         d.readRules();
+ 
         
         
         
