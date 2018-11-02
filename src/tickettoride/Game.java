@@ -10,11 +10,18 @@ import java.util.Random;
 
 
 public class Game {
+
+    void createPlayer(String utemp, String ctemp) {
+        Player p = new Player(utemp,ctemp);
+        Playerlist.add(p);
+        
+    }
         //Lists
     private ArrayList<TrainCard> TrainDeck;
     private ArrayList<DestCard> DestDeck;
     private ArrayList<Player> Playerlist;
-        //Board
+    /*
+    //Board
     private Board board;            
         //Counts and indexs
     private int playerindex;        //Index of the current Player  (Is this needed??) 
@@ -23,7 +30,7 @@ public class Game {
         //Other misc variables
     private Display d; 
     private Random rand;
-    
+    public Space[][] space;
     private boolean play; //Determines whther the game is over (1=Continue playing
     //, 0 = game over)
 
@@ -31,11 +38,11 @@ public class Game {
     // Game Constructor
     /////////////////
     // Initalizes variables/lists, sets up the game 
-    // Collaborates with Display(View) to interact with User
-    
+    // Controller
+ 
     public Game(){
         
-        d= new Display();   //initalize Display Variable
+        //Initalize Variables
         playerindex=0;      //Set index to zero
         play=true;          //Set play to true; 
         //Create random object for creating random integers
@@ -270,7 +277,7 @@ public class Game {
 
     public boolean makeMove(Player P){ //definition will need to be changed
         int move=d.displayMoveOptions();
-        
+      
         
         // if move equals 1 draw train Card
         if (move == 1){
@@ -339,16 +346,6 @@ public class Game {
     public  ArrayList<Player> getPlayers(){
         return Playerlist;
     }
-    
-    public static void main(String[] args) {
+*/
 
-        Display d = new Display();
-        Game game = new Game();
-        
-        game.endGame();
-        
-
-       
-     
-    } 
 }
