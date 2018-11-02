@@ -10,11 +10,18 @@ import java.util.Random;
 
 
 public class Game {
+
+    void createPlayer(String utemp, String ctemp) {
+        Player p = new Player(utemp,ctemp);
+        Playerlist.add(p);
+        
+    }
         //Lists
     private ArrayList<TrainCard> TrainDeck;
     private ArrayList<DestCard> DestDeck;
     private ArrayList<Player> Playerlist;
-        //Board
+    /*
+    //Board
     private Board board;            
         //Counts and indexs
     private int playerindex;        //Index of the current Player  (Is this needed??) 
@@ -23,18 +30,21 @@ public class Game {
         //Other misc variables
     private Display d; 
     private Random rand;
+    public Space[][] space;
+    private boolean play; //Determines whther the game is over (1=Continue playing
+    //, 0 = game over)
 
     
     // Game Constructor
     /////////////////
     // Initalizes variables/lists, sets up the game 
-    // Collaborates with Display(View) to interact with User
-    
+    // Controller
+ 
     public Game(){
         
-        d= new Display();   //initalize Display Variable
+        //Initalize Variables
         playerindex=0;      //Set index to zero
-        
+        play=true;          //Set play to true; 
         //Create random object for creating random integers
         rand= new Random();
         
@@ -147,10 +157,11 @@ public class Game {
         
         //Check if user returns a card
         for(Player p: Playerlist){
-            DestCard temp= d.displayPlayerDestcards(p);
+            DestCard temp= d.displayDestcardReturn(p);
             if(temp!=null){ //If they do add card back into deck
                 DestDeck.add(temp);
                 DDtopIndex++;
+                p.DecrementDestDeck(); //decrement the player Destdeck index
             }
         }
     
@@ -204,7 +215,6 @@ public class Game {
         
         //Deal 4 Train Cards to each Player
         for (int i =0; i<4;i++){
-            int randint;
             for(Player p :Playerlist){
                 
                 p.AddToTrainDeck(TrainDeck.get(TDtopIndex));
@@ -217,12 +227,24 @@ public class Game {
             TrainDeck.get(TDtopIndex-i).setIsFaceUp(true);
         }
         
-        
-        
         //initialize the Board
         board = new Board();
         board.DisplayB();
+        
+        
+        //GAME SETUP IS DONE
+        //START PLAYING GAME
+        playGame();
          
+    }
+    
+    public void playGame(){
+        while (play){
+            for(Player P : Playerlist){
+                makeMove(P);
+            }
+            
+        }
     }
     
     public void endGame(){
@@ -253,11 +275,58 @@ public class Game {
  
     
 
-    public boolean makeMove(){ //definition will need to be changed
-        //check if valid move 
-        //return false if not
+    public boolean makeMove(Player P){ //definition will need to be changed
+        int move=d.displayMoveOptions();
+      
         
-        //board.UpdateBoard("Abitrary string for now. ");
+        // if move equals 1 draw train Card
+        if (move == 1){
+            //Deal 2 Train Cards to Player P
+            for (int i =0; i<2;i++){
+                P.AddToTrainDeck(TrainDeck.get(TDtopIndex));
+                TrainDeck.remove(TDtopIndex--);
+            }
+            return true;
+        }
+        
+        //if move equals 2 draw Dest Card
+        else if(move==2){
+            //Deal 3 Destination Cards to each Player
+            for (int i =0; i<3;i++){
+                int randint;
+                randint=rand.nextInt(DDtopIndex--);
+                P.AddToDestDeck(DestDeck.get(randint));
+                DestDeck.remove(randint);
+                }
+        
+            //Check if user returns a card
+            DestCard temp= d.displayDestcardReturn(P);
+            if(temp!=null){ //If they do add card back into deck
+                DestDeck.add(temp);
+                DDtopIndex++;
+                P.DecrementDestDeck(); //decrement the player Destdeck index
+            }
+            //Display Current Deck
+            
+            //HOW DOES THIS PLAY INTO THE SCENE???
+            d.displayPlayerDestcards(P); 
+            return true;
+        }
+        
+        //if move equals 3 Claim Route
+        else {
+            //check if player can Claim route
+            d.displayPlayerDestcards(P);
+            DestCard D = d.displayClaimRoute();
+            
+            //At this point we will check 3 things
+            //1. if the Destcard they chose, matches up with a destination
+            //2. Do they have the proper trainCards for the move
+            //3. Do they have enough train cars to place
+            
+        }
+        //check if valid move
+        //return false if not
         return true;
     }
 
@@ -277,16 +346,6 @@ public class Game {
     public  ArrayList<Player> getPlayers(){
         return Playerlist;
     }
-    
-    public static void main(String[] args) {
+*/
 
-        Display d = new Display();
-        Game game = new Game();
-        
-        game.endGame();
-        
-
-       
-     
-    } 
 }
