@@ -45,10 +45,10 @@ public class Game {
         
         //Describe the game at the start, 
         
-        d.displayStart();
-        
-        //Ask if user wants to 
-        d.readRules();
+//        d.displayStart();
+//        
+//        //Ask if user wants to 
+//        d.readRules();
         
         
         //Setup
@@ -99,7 +99,7 @@ public class Game {
         DestDeck.add(tempdc);
         tempdc= new DestCard("Miami", "Charleston", 4, "Blue"); //16 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Chareston", "Washington DC", 4, "Yellow"); //17 Card
+        tempdc= new DestCard("Charleston", "Washington DC", 4, "Yellow"); //17 Card
         DestDeck.add(tempdc);
         tempdc= new DestCard("Toronto", "Chicago", 4, "Black"); //18 Card
         DestDeck.add(tempdc);
@@ -277,16 +277,16 @@ public class Game {
     public  ArrayList<Player> getPlayers(){
         return Playerlist;
     }
-    
-    public static void main(String[] args) {
-
-        Display d = new Display();
-        Game game = new Game();
-        
-        game.endGame();
-        
-
-       
-     
-    } 
+//    
+//    public static void main(String[] args) {
+//
+//        Display d = new Display();
+//        Game game = new Game();
+//        
+//        game.endGame();
+//        
+//
+//       
+//     
+//    } 
 }
