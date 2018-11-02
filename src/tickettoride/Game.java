@@ -18,8 +18,8 @@ public class Game {
     private Board board;            
         //Counts and indexs
     private int playerindex;        //Index of the current Player  (Is this needed??) 
-    private int DDAmount;           //Destination Deck Amount
-    private int TDAmount;           //TrainCard Deck Amount
+    private int DDtopIndex;           //Destination Deck, index of top card
+    private int TDtopIndex;           //TrainCard Deck, index of top card
         //Other misc variables
     private Display d; 
     private Random rand;
@@ -44,7 +44,11 @@ public class Game {
         Playerlist = new ArrayList<>();
         
         //Describe the game at the start, 
+        
         d.displayStart();
+        
+        //Ask if user wants to 
+        d.readRules();
         
         
         //Setup
@@ -125,8 +129,8 @@ public class Game {
         DestDeck.add(tempdc);
         //Finished Creating Dest Deck
         
-        //Set Destination deck amount to 30
-        DDAmount=30;
+        //Set Destination deck top index to 29
+        DDtopIndex=29;
         //Shuffle Destination Deck
         shuffleDestDeck();
         
@@ -134,7 +138,7 @@ public class Game {
         for (int i =0; i<3;i++){
             int randint;
             for(Player p :Playerlist){
-                randint=rand.nextInt(--DDAmount);
+                randint=rand.nextInt(DDtopIndex--);
                 
                 p.AddToDestDeck(DestDeck.get(randint));
                 DestDeck.remove(randint);
@@ -146,7 +150,7 @@ public class Game {
             DestCard temp= d.displayPlayerDestcards(p);
             if(temp!=null){ //If they do add card back into deck
                 DestDeck.add(temp);
-                DDAmount++;
+                DDtopIndex++;
             }
         }
     
@@ -193,8 +197,8 @@ public class Game {
                     
         }
         
-        //Set TrainCard deck amount to 90 
-        TDAmount=90;
+        //Set TrainCard deck top index to 89
+        TDtopIndex=89;
         //Shuffle Destination Deck
         shuffleTrainDeck();
         
@@ -202,14 +206,15 @@ public class Game {
         for (int i =0; i<4;i++){
             int randint;
             for(Player p :Playerlist){
-                p.AddToTrainDeck(TrainDeck.get(--TDAmount));
-                TrainDeck.remove(TDAmount);
+                
+                p.AddToTrainDeck(TrainDeck.get(TDtopIndex));
+                TrainDeck.remove(TDtopIndex--);
             }
         }
         
         //Set top five Train Cards in deck to 'FaceUp' 
         for(int i = 0;i<5;i++){
-            TrainDeck.get(TDAmount-i).setIsFaceUp(true);
+            TrainDeck.get(TDtopIndex-i).setIsFaceUp(true);
         }
         
         
@@ -237,7 +242,7 @@ public class Game {
         DestCard Cardtemp;
         int inttemp; 
         for (int i =0;i<DestDeck.size(); i++){
-            inttemp = rand.nextInt(DDAmount-1);
+            inttemp = rand.nextInt(DDtopIndex);
             Cardtemp = DestDeck.get(inttemp);
             DestDeck.set(inttemp, DestDeck.get(i));
             DestDeck.set(i,Cardtemp); 
@@ -261,7 +266,7 @@ public class Game {
         TrainCard Cardtemp;
         int inttemp; 
         for (int i =0;i<TrainDeck.size(); i++){
-            inttemp = rand.nextInt(89);
+            inttemp = rand.nextInt(TDtopIndex);
             Cardtemp = TrainDeck.get(inttemp);
             TrainDeck.set(inttemp, TrainDeck.get(i));
             TrainDeck.set(i,Cardtemp); 

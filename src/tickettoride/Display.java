@@ -19,15 +19,52 @@ public class Display {
     }
         
     public void displayStart(){
-
-        System.out.println("Inside the mehtod that wil describe the game");
-
-        System.out.println("-----------------------");
-        //Add details below
-        System.out.println("We will be describing the game here");
         System.out.println("");
+        System.out.println("⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖");
+        System.out.println("Welcome to the Ticket 2 Ride Game ");
+        System.out.println("⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖");
+        //Add details below
+        System.out.println("⧱ The Main Objective of the game is to score the highest amount of points");
+        System.out.println(" Here is they way you can earn points");
+        System.out.println("");
+        System.out.println("⟡ Claiming a route between two adjacent cities, points are decided by");
+        System.out.println("  the length of the route");
+        System.out.println("⟡ Complete the longest continous path");
+        System.out.println("");
+        System.out.println("------------------");
 
     }
+    //ASKS THE USER IF THEY WOULD LIKE TO QUICKLY REVIEW THE RULES
+      void readRules() {
+        reader = new Scanner(System.in);
+        System.out.println("Would you like to quickly review the rules ? Yes or any other key for no");
+        String input = reader.nextLine();
+        if (input.equals("Yes") || input.equals("yes") || input.equals("y")){
+            System.out.println("--------------------");
+             System.out.println("The rules are" );
+          
+            System.out.println("⟡You can only claim a route with the matching train color" );
+            System.out.println("⟡Any returned DestCard or TrainCard will go to the bottom of the deck");
+            System.out.println("⟡You must keep your destination card a secret till the end of the game");
+            System.out.println("⟡Locomotive card is a wildcard, which could be any color");
+            System.out.println("⟡If the locomotive card is a face up, you may only draw one card");
+            System.out.println("⟡If your train cars deck, recycle the discarded and shuffle into a new deck");
+            System.out.println("⟡Any card used to claim a route is discarded after");
+            System.out.println("⟡You may only claim open routes");
+            System.out.println("⟡You cannot claim two routes to the same city");
+            System.out.println("---------------------");
+            System.out.println("Now that you have quickly reviewed some of the game's rules, you are ready to play!");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Lets get started with the game!");
+
+        
+        }
+        else{
+        }
+        
+    }
+    
    
     public void displayBoard(Space[][] board) {
        for (int i=0;i<5;i++){
@@ -53,6 +90,7 @@ public class Display {
     public Player readPlayer() {
         reader = new Scanner(System.in);
         System.out.println("--------------------------------------");
+        System.out.println("");
         System.out.print("Player "+ ++count +" Please enter you name : ");
         String name = reader.nextLine();
         Player P = new Player(name);
@@ -61,7 +99,7 @@ public class Display {
 
     boolean morePlayers() {
         reader = new Scanner(System.in);
-        System.out.println("Another PLayer? Yes or other key for no");
+        System.out.println("Another PLayer? Yes or any other key for no");
         String input = reader.nextLine();
         if (input.equals("Yes") || input.equals("yes")){
             return true;
@@ -124,4 +162,46 @@ public class Display {
         }  
     }
     
+    
+    public int displayMoveOption(){
+        Scanner keyboard = new Scanner(System.in);
+
+   
+        int option;
+        
+      
+        
+        System.out.println("It's your turn, what move will you make ?");
+        
+        // Options for the player turn 
+   
+        //option 1
+        
+        System.out.println("1. Draw Train Cards");
+        
+        //option2 
+        System.out.println("2. Draw Destination Cards");
+        
+        //option3
+        System.out.println("3. Claim a Route");
+        
+ 
+   while(true){
+            System.out.println("What move will you make? Please pick (1, 2, 3)");
+            option = keyboard.nextInt();
+            
+            if ((option < 1) || (option > 3)){
+                System.out.println("Please Enter a valid input");
+        }
+        else{
+            return option;
+            }
+        }
+    }
 }
+        
+
+
+    
+
+
