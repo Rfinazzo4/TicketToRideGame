@@ -7,20 +7,19 @@ package tickettoride;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+import java.util.Collections;
 
 public class Game {
-
-    void createPlayer(String utemp, String ctemp) {
-        Player p = new Player(utemp,ctemp);
-        Playerlist.add(p);
-        
-    }
+    
         //Lists
     private ArrayList<TrainCard> TrainDeck;
     private ArrayList<DestCard> DestDeck;
     private ArrayList<Player> Playerlist;
-    /*
+    private String DestOne;
+    private String DestTwo;
+    
+    
+    
     //Board
     private Board board;            
         //Counts and indexs
@@ -30,7 +29,6 @@ public class Game {
         //Other misc variables
     private Display d; 
     private Random rand;
-    public Space[][] space;
     private boolean play; //Determines whther the game is over (1=Continue playing
     //, 0 = game over)
 
@@ -48,6 +46,7 @@ public class Game {
         //Create random object for creating random integers
         rand= new Random();
         
+        d=new Display();
         //Create the Decks and Player list
         TrainDeck = new ArrayList<>();
         DestDeck = new ArrayList<>();
@@ -55,26 +54,21 @@ public class Game {
         
         //Describe the game at the start, 
         
-        d.displayStart();
+        //d.displayStart();
         
         //Ask if user wants to 
-        d.readRules();
+        //d.readRules();
         
         
         //Setup
         ///////////////
         
         //Initialize the Players
-        Player P;
-        for (int i=0; i<5;i++){
-            if(i>1){
-                if(!d.morePlayers()){
-                    break;
-                }
-            }
-            P = d.readPlayer();
-            Playerlist.add(i,P);
-        }
+        Player P=new Player("Player 1", "Red");
+        Playerlist.add(P);
+        P=new Player("Player 2", "Blue");
+        Playerlist.add(P);
+        
 
         //Create Dest cards 
         DestCard tempdc = new DestCard("Vancouver","Winnipeg",9,"Grey"); //1 Card
@@ -142,29 +136,19 @@ public class Game {
         //Set Destination deck top index to 29
         DDtopIndex=29;
         //Shuffle Destination Deck
-        shuffleDestDeck();
+        Collections.shuffle(DestDeck);
         
         //Deal 3 Destination Cards to each Player
         for (int i =0; i<3;i++){
             int randint;
             for(Player p :Playerlist){
                 randint=rand.nextInt(DDtopIndex--);
-                
+        
                 p.AddToDestDeck(DestDeck.get(randint));
                 DestDeck.remove(randint);
             }
         }
         
-        //Check if user returns a card
-        for(Player p: Playerlist){
-            DestCard temp= d.displayDestcardReturn(p);
-            if(temp!=null){ //If they do add card back into deck
-                DestDeck.add(temp);
-                DDtopIndex++;
-                p.DecrementDestDeck(); //decrement the player Destdeck index
-            }
-        }
-    
         //Create Train cards 
         for (int i=0; i<6;i++){
             TrainCard traintemp;
@@ -227,24 +211,20 @@ public class Game {
             TrainDeck.get(TDtopIndex-i).setIsFaceUp(true);
         }
         
-        //initialize the Board
-        board = new Board();
-        board.DisplayB();
-        
-        
         //GAME SETUP IS DONE
         //START PLAYING GAME
         playGame();
          
     }
     
+    //Adding a player to the Playerlist
+     void addPlayer(Player p) {
+        Playerlist.add(p);
+    }
+    
+    
     public void playGame(){
-        while (play){
-            for(Player P : Playerlist){
-                makeMove(P);
-            }
-            
-        }
+        
     }
     
     public void endGame(){
@@ -253,10 +233,7 @@ public class Game {
 
         
         //compare scores
-        
-        //sending an arbitrary player
-        //player at index of winner player 
-        d.endGame(Playerlist.get(playerindex));
+       
     } 
     
     public void shuffleDestDeck(){
@@ -272,9 +249,18 @@ public class Game {
         }
     }
     
- 
+    //Setting the potential Destination to button clicked
+    public void setDestOne(String dest){
+        this.DestOne=dest;
+        System.out.println("Dest1: "+dest);
+    }
     
-
+    //Setting the potential Destination to button clicked
+    public void setDestTwo(String dest){
+        this.DestOne=dest;
+        System.out.println("Dest2: "+dest);
+    }
+    
     public boolean makeMove(Player P){ //definition will need to be changed
         int move=d.displayMoveOptions();
       
@@ -309,15 +295,15 @@ public class Game {
             //Display Current Deck
             
             //HOW DOES THIS PLAY INTO THE SCENE???
-            d.displayPlayerDestcards(P); 
             return true;
         }
         
         //if move equals 3 Claim Route
         else {
             //check if player can Claim route
-            d.displayPlayerDestcards(P);
-            DestCard D = d.displayClaimRoute();
+            
+        //d.displayPlayerDestcards(P);
+            //DestCard D = d.displayClaimRoute();
             
             //At this point we will check 3 things
             //1. if the Destcard they chose, matches up with a destination
@@ -346,6 +332,18 @@ public class Game {
     public  ArrayList<Player> getPlayers(){
         return Playerlist;
     }
-*/
+
+    void drawDestCard(Player P) {
+        int randint;
+        randint=rand.nextInt(DDtopIndex--);
+        P.AddToDestDeck(DestDeck.get(randint));
+        DestDeck.remove(randint);
+    }
+
+    void drawTrainCard(Player P) {
+        P.AddToTrainDeck(TrainDeck.get(TDtopIndex));
+        TrainDeck.remove(TDtopIndex--);
+    }
+
 
 }

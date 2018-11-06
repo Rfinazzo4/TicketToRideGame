@@ -29,7 +29,7 @@ public class Player {
     
     
     //define and initilizae the attributes created
-     Player(String name, String color){
+    Player(String name, String color){
 
         this.name = name;
         this.score = 0; //players score starts with 0
@@ -112,7 +112,53 @@ public class Player {
             return this.destcards;
         }
         
+    @Override
+        public String toString(){
+            return (name + color);
+        }
+
+    String formatTrainCards() {
+        int blueCount = 0;
+        int redCount = 0;
+        int greenCount = 0;
+        int yellowCount = 0;
+        int blackCount = 0;
+        int locoCount = 0;
+        for (TrainCard t :traincards){
+            if (t.getColor()=="Blue"){
+                blueCount++;
+            }
+            else if (t.getColor()=="Red"){
+                redCount++;
+            }
+            else if (t.getColor()=="Green"){
+                greenCount++;
+            }
+            else if (t.getColor()=="Yellow"){
+                yellowCount++;
+            }
+            else if (t.getColor()=="Black"){
+                blackCount++;
+            }
+            else if (t.getColor()=="Loco"){
+                locoCount++;
+            }
+        }
+        
+        return ("⟡ Blue("+blueCount+")\n⟡ Red("+redCount+")\n⟡ Green("+greenCount+
+                ")\n⟡ Yellow("+yellowCount+")\n⟡ Black("+blackCount+")\n⟡ Locomotive("+locoCount+")");
     }
+
+    String formatDestCards() {
+        String temp="";
+        for(DestCard D:destcards){
+            temp +="⟡ ";
+            temp += D.getD1()+ "  <->  ";
+            temp +=D.getD2() +"\n";    
+        }
+        return temp;
+    }
+}
     
     
 

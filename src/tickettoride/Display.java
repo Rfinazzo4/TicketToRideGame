@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package tickettoride;
+import java.awt.Font;
 import java.util.Scanner;
 import java.util.Scanner;
 import javafx.application.Application;
@@ -33,20 +34,26 @@ import tickettoride.Display;
 import tickettoride.Game;
 import tickettoride.Player;
 import tickettoride.Space;
+import java.util.ArrayList;
+import javafx.geometry.Insets;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.VBox;
 
 
 
 public class Display extends Application{
     Scanner reader;
-    int count; //Amount of players in the game
+    int count; //Player Index
+    int destCount;  // Which destination is being pressed for the buttons
+                    // 0 meaning first destination, 1 being the second destination 
     Game game;
+    
     //create color array or list; ????
     
     public static void main(String[] args) {launch(args);} 
       
-    public void displaynothing(){
-         //set count to zero
-    }
     public String displayStart(){
         
         return (" ⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖ "+"\n"+
@@ -77,23 +84,6 @@ public class Display extends Application{
       
     }
     
-    //ASKS THE USER IF THEY WOULD LIKE TO QUICKLY REVIEW THE RULES
-      void readRules() {
-        
-    }
-    
-   
-    public void displayBoard(Space[][] board) {
-       for (int i=0;i<5;i++){
-
-           for(int j=0;j<5;j++){
-               System.out.print(board[i][j].getMark());
-           }
-           System.out.println("");
-
-       }
-    }
-    
     public void endGame(Player winner){
         System.out.println("The game is over! Thank you all for playing. ");
         System.out.println("-------------------------------");
@@ -102,18 +92,6 @@ public class Display extends Application{
         System.out.println("The Winner is: "+ winner.GetName());
         reader.close();
     
-    }
-
-    public Player readPlayer() {
-        reader = new Scanner(System.in);
-        System.out.println("--------------------------------------");
-        System.out.println("");
-        System.out.print("Player "+ ++count +" Please enter you name : ");
-        String name = reader.nextLine();
-        System.out.println("Pleas enter a color ");
-        String color = reader.nextLine();
-        Player P = new Player(name, color);
-        return P;
     }
 
     boolean morePlayers() {
@@ -202,10 +180,12 @@ public class Display extends Application{
         return null;
     }
     
+    
     @Override
     public void start(Stage primaryStage) {
         
         game = new Game();
+        count = 0;
         
 //GRIDLINES   
 //<editor-fold defaultstate="collapsed" desc="comment">
@@ -423,32 +403,26 @@ STF.setText("STF");
 STF.setTranslateX(360);
 STF.setTranslateY(400);
 
-//'Continue' Create Player button from Scene 2
-Button createP = new Button();
-createP.setText("Continue.");
-createP.setTranslateX(590);
-createP.setTranslateY(450);
-
 //Create the Player option Buttons 
         Button p2 = new Button();
-        p2.setTranslateX(-130);
+        p2.setTranslateX(0);
         p2.setTranslateY(235);
         p2.setText("2 Players");
         
-        Button p3 = new Button();
-        p3.setTranslateX(-45);
-        p3.setTranslateY(235);
-        p3.setText("3 Players");
-        
-        Button p4 = new Button();
-        p4.setTranslateX(45);
-        p4.setTranslateY(235);
-        p4.setText("4 Players");
-        
-        Button p5 = new Button();
-        p5.setTranslateX(130);
-        p5.setTranslateY(235);
-        p5.setText("5 Players");
+//        Button p3 = new Button();
+//        p3.setTranslateX(-45);
+//        p3.setTranslateY(235);
+//        p3.setText("3 Players");
+//        
+//        Button p4 = new Button();
+//        p4.setTranslateX(45);
+//        p4.setTranslateY(235);
+//        p4.setText("4 Players");
+//        
+//        Button p5 = new Button();
+//        p5.setTranslateX(130);
+//        p5.setTranslateY(235);
+//        p5.setText("5 Players");
         
 //</editor-fold>
 
@@ -612,53 +586,50 @@ MONtoBOS.setStrokeWidth(3);
         selectedImage.setImage(newImage);
         
         //DEFINE SCENE 1
-        StackPane root = new StackPane();
-        Scene scene1 = new Scene(root, 5000,5000);
+        StackPane root1 = new StackPane();
+        Scene scene1 = new Scene(root1, 5000,5000);
         
         Label welcome = new Label(displayStart());
         
-        root.getChildren().addAll(welcome,p2,p3,p4,p5);
-        scene1.setRoot(root);
+        root1.getChildren().addAll(welcome,p2);
+        scene1.setRoot(root1);
         
-        //DEFINE SCENE 2
-        Pane info = new Pane();
-        Scene scene2 = new Scene(info, 5000,5000);
+        //Define SCENE 2
+        Pane root2 = new Pane();
+        Scene scene2 = new Scene(root2, 5000,5000);
         
-        Label userPrompt = new Label("Please Enter Username");
-        userPrompt.setTranslateX(450);
-        userPrompt.setTranslateY(350);
+        Pane cardInfo = new Pane();
+        cardInfo.setTranslateX(10);
+        cardInfo.setTranslateY(430);
+        cardInfo.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE,CornerRadii.EMPTY,Insets.EMPTY)));
+       
+        Label cardData = new Label("----"+game.getPlayers().get(count).GetName()
+                + "----\n Train Cards: \n"+game.getPlayers().get(count).formatTrainCards()+
+                "\n\nDestCards: \n"+game.getPlayers().get(count).formatDestCards());
+        cardInfo.getChildren().add(cardData);
         
-        Label colorPrompt = new Label("Which color would you like?");
-        colorPrompt.setTranslateX(650);
-        colorPrompt.setTranslateY(350);
-        
-        TextField pUser = new TextField();
-        pUser.setPrefWidth(150);
-        pUser.setTranslateX(450);
-        pUser.setTranslateY(370);
-        
-        ChoiceBox<String> pColor = new ChoiceBox<String>();
-        pColor.getItems().addAll("Red", "Blue","Green","Purple","Yellow");
-        pColor.setPrefWidth(150);
-        pColor.setTranslateX(650);
-        pColor.setTranslateY(370);
-        
-        
-        info.getChildren().addAll(userPrompt,colorPrompt,pUser,pColor,createP);
-        
-        //selectedImage,VANtoWIN,
-                //SEAtoLA, SLCtoPOR, PHEtoLR, DENtoPIT, OKCtoDUL, SEAtoVAN,
-               // SEAtoPOR, HELtoLA, MIAtoHOU,BOStoRAE, NYCtoCHI, SLCtoDAL,
-                //DALtoNAS, NAStoMIA, MIAtoCHA, CHAtoDC, TORtoCHI, CHItoSTL, STLtoKSC,
-                //DCtoMON, NYCtoLR, LRtoNWO, HOUtoELP, NAStoCHA, LAtoSTF, STFtoHEL,
-                //MONtoBOS, LA, SEA, VAN, WIN, SLC, POR,PHE, LR, DEN, PIT, OKC, DUL, HEL,MIA,HOU, BOS, RAE, NYC, CHI, 
-                //STM, DAL, NAS, CHA, DC,TOR,STL,KSC, NWO, ELP, STF, MON
-                
+        root2.getChildren().addAll(selectedImage,VANtoWIN,
+                SEAtoLA, SLCtoPOR, PHEtoLR, DENtoPIT, OKCtoDUL, SEAtoVAN,
+                SEAtoPOR, HELtoLA, MIAtoHOU,BOStoRAE, NYCtoCHI, SLCtoDAL,
+                DALtoNAS, NAStoMIA, MIAtoCHA, CHAtoDC, TORtoCHI, CHItoSTL, 
+                STLtoKSC, DCtoMON, NYCtoLR, LRtoNWO, HOUtoELP, NAStoCHA, 
+                LAtoSTF, STFtoHEL,MONtoBOS, LA, SEA, VAN, WIN, SLC, POR,PHE, 
+                LR, DEN, PIT, OKC, DUL, HEL,MIA,HOU, BOS, RAE, NYC, CHI, STM, 
+                DAL, NAS, CHA, DC, TOR,STL,KSC, NWO, ELP, STF, MON, cardInfo);  
                 //, c1, c2, 
                 //c3, c4, c5, c6, c7, c8, c9, c10, c11, r1, r2, r3, r4, r5, 
                 //r6, r7);
-        scene2.setRoot(info); 
-       
+                
+        //DEFINE SCENE Transition
+        Pane root3 = new Pane();
+        Scene transition = new Scene(root3,5000,5000);
+        
+        
+        Button ready = new Button("Ready");
+        ready.setTranslateY(0);
+        
+        root3.getChildren().add(ready);
+        
         
         primaryStage.setTitle("Ticker To Ride Game");
         primaryStage.setScene(scene1);
@@ -668,72 +639,374 @@ MONtoBOS.setStrokeWidth(3);
 //<editor-fold defaultstate="collapsed" desc="comment">
 
 //handler for 2 players
-p2.setOnAction(new EventHandler<ActionEvent>() {
+p2.setOnAction(e -> {
+    primaryStage.setScene(transition);
     
-    @Override
-    public void handle(ActionEvent event) {
-        count=2;
-        for(int i =0;i<count;i++){
-           primaryStage.setScene(scene2); //pops up grabs players info
-        }
-       // primaryStage.setScene(scene3);
-    }
 });
 
-//handler for 3 players
-p3.setOnAction(new EventHandler<ActionEvent>() {
+ready.setOnAction(e-> {
+            primaryStage.setScene(scene2);
+            String temp=MakeMove.MakeMove();
+            if (temp.equals("DrawTrain")){
+                game.drawTrainCard(game.getPlayers().get(count));
+                if (count==0){
+                    count++;
+                }
+                else{
+                    count=0;
+                }
+                refreshCardData(cardData);
+                primaryStage.setScene(transition);
+            }
+            else if(temp.equals("DrawDest")){
+                game.drawDestCard(game.getPlayers().get(count));
+                if (count==0){
+                    count++;
+                }
+                else{
+                    count=0;
+                }
+                refreshCardData(cardData);
+                primaryStage.setScene(transition);
+            }
+            else if(temp.equals("Claim")){
+                // prompt anothr pop up that says pick a route
+                // 
+            }
     
-    @Override
-    public void handle(ActionEvent event) {
-        count=3;
-        for(int i =0;i<count;i++){
-           primaryStage.setScene(scene2); //pops up grabs players info
-        }
-        //primaryStage.setScene(scene3);
-    }
-});
+        });
 
-//handler for 4 players
-p4.setOnAction(new EventHandler<ActionEvent>() {
-    
-    @Override
-    public void handle(ActionEvent event) {
-        count=4;
-        for(int i =0;i<count;i++){
-           primaryStage.setScene(scene2); //pops up grabs players info
+    LA.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(LA.getText());
+            destCount++;
         }
-        //primaryStage.setScene(scene3);
-    }
-});
-
-//handler for 5 players
-p5.setOnAction(new EventHandler<ActionEvent>() {
-    
-    @Override
-    public void handle(ActionEvent event) {
-        count=5;
-        for(int i =0;i<count;i++){
-           primaryStage.setScene(scene2); //pops up grabs players info
+        else if(destCount ==1){
+            game.setDestTwo(LA.getText());
+            destCount=0;
         }
-       // primaryStage.setScene(scene3);
-    }
-});
-
-//Handler for the Do nothing 'Continue' Button
-createP.setOnAction(new EventHandler<ActionEvent>() {
+                
+        
+    });
+    SEA.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(SEA.getText());
+            destCount++;
+        }
+        else if(destCount ==1){
+            game.setDestTwo(SEA.getText());
+            destCount=0;
+        }
+    });
     
-    @Override
-    public void handle(ActionEvent event) {
-        String utemp = pUser.getText();
-        String ctemp = pColor.getValue();
-        game.createPlayer(utemp,ctemp);
-    }
-});
+    POR.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(POR.getText());
+            destCount++;
+        }
+        else if(destCount ==1){
+            game.setDestTwo(POR.getText());
+            destCount=0;
+        }
+    });
+    
+    VAN.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(VAN.getText());
+            destCount++;
+        }
+        else if(destCount ==1){
+            game.setDestTwo(VAN.getText());
+            destCount=0;
+        }
+    });
+    
+    WIN.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(WIN.getText());
+            destCount++;
+        }
+        else if(destCount ==1){
+            game.setDestTwo(WIN.getText());
+            destCount=0;
+        }
+    });
+    
+    SLC.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(SLC.getText());
+            destCount++;
+        }
+        else if(destCount ==1){
+            game.setDestTwo(SLC.getText());
+            destCount=0;
+        }
+    });
+    
+    PHE.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(PHE.getText());
+            destCount++;
+        }
+        else if(destCount ==1){
+            game.setDestTwo(PHE.getText());
+            destCount=0;
+        }
+    });
+    
+    LR.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(LR.getText());
+            destCount++;
+        }
+        else if(destCount ==1){
+            game.setDestTwo(LR.getText());
+            destCount=0;
+        }
+    });
+    
+    DEN.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(DEN.getText());
+            destCount++;
+        }
+        else if(destCount ==1){
+            game.setDestTwo(DEN.getText());
+            destCount=0;
+        }
+    });
+    
+    PIT.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(PIT.getText());
+            destCount++;
+        }
+        else if(destCount ==1){
+            game.setDestTwo(PIT.getText());
+            destCount=0;
+        }
+    });
+    
+    OKC.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(OKC.getText());
+            destCount++;
+        }
+        else if(destCount ==1){
+            game.setDestTwo(OKC.getText());
+            destCount=0;
+        }
+    });
+    
+    DUL.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(DUL.getText());
+            destCount++;
+        }
+        else if(destCount ==1){
+            game.setDestTwo(DUL.getText());
+            destCount=0;
+        }
+    });
+    
+    HEL.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(HEL.getText());
+            destCount++;
+        }
+        else if(destCount ==1){
+            game.setDestTwo(HEL.getText());
+            destCount=0;
+        }
+    });
+    
+    MON.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(MON.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(MON.getText());
+            destCount=0;
+            }
+            
+    });
+ 
+     STF.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(STF.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(STF.getText());
+            destCount=0;
+            }
+            
+    });
+    
+     ELP.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(ELP.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(ELP.getText());
+            destCount=0;
+            }
+            
+    });
+    
+     NWO.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(NWO.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(NWO.getText());
+            destCount=0;
+            }
+            
+    });
+    
+     KSC.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(KSC.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(KSC.getText());
+            destCount=0;
+            }
+            
+    });
+    
+     STL.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(STL.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(STL.getText());
+            destCount=0;
+            }
+            
+    });
+    
+     TOR.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(TOR.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(TOR.getText());
+            destCount=0;
+            }
+            
+    });
+    
+     DC.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(DC.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(DC.getText());
+            destCount=0;
+            }
+            
+    });
+    
+     CHA.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(CHA.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(CHA.getText());
+            destCount=0;
+            }
+            
+    });
+    
+     NAS.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(NAS.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(NAS.getText());
+            destCount=0;
+            }
+            
+    });
+    
+     DAL.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(DAL.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(DAL.getText());
+            destCount=0;
+            }
+            
+    });
+    
+     STM.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(STM.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(STM.getText());
+            destCount=0;
+            }
+            
+    });
+    
+     HOU.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(HOU.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(HOU.getText());
+            destCount=0;
+            }
+            
+    });
+    
+     MIA.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(MIA.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(MIA.getText());
+            destCount=0;
+            }
+            
+    });
+    
+     LA.setOnAction(e-> {
+        if(destCount ==0){
+            game.setDestOne(LA.getText());
+            destCount++;
+           }
+        else if(destCount ==1){
+            game.setDestTwo(LA.getText());
+            destCount=0;
+            }
+            
+    });
 //</editor-fold>
       
-    }
-    
-    
-    
+}
 
+    private void refreshCardData(Label cardData) {
+        cardData.setText("----"+game.getPlayers().get(count).GetName()
+                + "----\n Train Cards: \n"+game.getPlayers().get(count).formatTrainCards()+
+                "\n\nDestCards: \n"+game.getPlayers().get(count).formatDestCards());
+        }
+    
 }
