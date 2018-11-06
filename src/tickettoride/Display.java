@@ -670,10 +670,8 @@ ready.setOnAction(e-> {
                 primaryStage.setScene(transition);
             }
             else if(temp.equals("Claim")){
-                // prompt anothr pop up that says pick a route
-                // 
+                //Do nothing, let them choose the locations
             }
-    
         });
 
     LA.setOnAction(e-> {
@@ -681,8 +679,17 @@ ready.setOnAction(e-> {
             game.setDestOne(LA.getText());
             destCount++;
         }
-        else if(destCount ==1){
+        else if(destCount == 1){
             game.setDestTwo(LA.getText());
+            if(game.getDestOne().equals("SEA")||game.getDestOne()=="HEL"||game.getDestOne()=="STF"){
+                System.out.println("valid");
+                refreshCardData(cardData);
+                primaryStage.setScene(transition);
+            }
+            else{
+                System.out.println("Invalid");
+                InvalidMove.popUp();
+            }
             destCount=0;
         }
                 
@@ -692,9 +699,19 @@ ready.setOnAction(e-> {
         if(destCount ==0){
             game.setDestOne(SEA.getText());
             destCount++;
+            System.out.println(destCount);
         }
         else if(destCount ==1){
             game.setDestTwo(SEA.getText());
+            if(game.getDestOne()=="LA" ||game.getDestOne()=="POR"||game.getDestOne()=="VAN"){
+                System.out.println("valid");
+                refreshCardData(cardData);
+                primaryStage.setScene(transition);
+            }
+            else{
+                System.out.println("Invalid");
+                InvalidMove.popUp();
+            }
             destCount=0;
         }
     });
@@ -704,8 +721,17 @@ ready.setOnAction(e-> {
             game.setDestOne(POR.getText());
             destCount++;
         }
-        else if(destCount ==1){
+        else if(destCount == 1){
             game.setDestTwo(POR.getText());
+            if(game.getDestOne()=="SEA" ||game.getDestOne()=="SLC"){
+                System.out.println("valid");
+                refreshCardData(cardData);
+                primaryStage.setScene(transition);
+            }
+            else{
+                System.out.println("Invalid");
+                InvalidMove.popUp();
+            }
             destCount=0;
         }
     });
@@ -717,6 +743,15 @@ ready.setOnAction(e-> {
         }
         else if(destCount ==1){
             game.setDestTwo(VAN.getText());
+            if(game.getDestOne()=="SEA" || game.getDestOne()=="WIN"){
+                System.out.println("valid");
+                refreshCardData(cardData);
+                primaryStage.setScene(transition);
+            }
+            else{
+                System.out.println("Invalid");
+                InvalidMove.popUp();
+            }
             destCount=0;
         }
     });

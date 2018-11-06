@@ -345,5 +345,13 @@ public class Game {
         TrainDeck.remove(TDtopIndex--);
     }
 
+    	//Getter for DestOne 
+    public String getDestOne(){
+        return this.DestOne;  
+    }
+    //getter for DestTwo
+    public String getDestTwo(){
+        return this.DestTwo;
+    }
 
 }
