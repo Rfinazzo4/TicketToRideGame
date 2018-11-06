@@ -53,5 +53,9 @@ public class DestCard {
    public String toString(){
        return (this.d1 + " "+this.d2);
    }
+
+    DestCard displayClaimRoute() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 
