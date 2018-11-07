@@ -257,7 +257,7 @@ public class Game {
     
     //Setting the potential Destination to button clicked
     public void setDestTwo(String dest){
-        this.DestOne=dest;
+        this.DestTwo=dest;
         System.out.println("Dest2: "+dest);
     }
     

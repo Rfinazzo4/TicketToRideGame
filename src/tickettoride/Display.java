@@ -625,8 +625,9 @@ MONtoBOS.setStrokeWidth(3);
         Scene transition = new Scene(root3,5000,5000);
         
         
-        Button ready = new Button("Ready");
-        ready.setTranslateY(0);
+        Button ready = new Button("Ready "+game.getPlayers().get(count).GetName());
+        ready.setTranslateX(580);
+        ready.setTranslateY(270);
         
         root3.getChildren().add(ready);
         
@@ -656,6 +657,7 @@ ready.setOnAction(e-> {
                     count=0;
                 }
                 refreshCardData(cardData);
+                refreshReadyButton(ready);
                 primaryStage.setScene(transition);
             }
             else if(temp.equals("DrawDest")){
@@ -667,6 +669,7 @@ ready.setOnAction(e-> {
                     count=0;
                 }
                 refreshCardData(cardData);
+                refreshReadyButton(ready);
                 primaryStage.setScene(transition);
             }
             else if(temp.equals("Claim")){
@@ -681,20 +684,22 @@ ready.setOnAction(e-> {
         }
         else if(destCount == 1){
             game.setDestTwo(LA.getText());
-            if(game.getDestOne().equals("SEA")||game.getDestOne()=="HEL"||game.getDestOne()=="STF"){
+            if(game.getDestOne().equals(SEA.getText())||
+                    game.getDestOne().equals(STF.getText())||
+                    game.getDestOne().equals(HEL.getText())){
                 System.out.println("valid");
+                destCount=0;
                 refreshCardData(cardData);
                 primaryStage.setScene(transition);
             }
             else{
                 System.out.println("Invalid");
                 InvalidMove.popUp();
+                destCount=0;
             }
-            destCount=0;
         }
-                
-        
     });
+    
     SEA.setOnAction(e-> {
         if(destCount ==0){
             game.setDestOne(SEA.getText());
@@ -703,16 +708,19 @@ ready.setOnAction(e-> {
         }
         else if(destCount ==1){
             game.setDestTwo(SEA.getText());
-            if(game.getDestOne()=="LA" ||game.getDestOne()=="POR"||game.getDestOne()=="VAN"){
+            if(game.getDestOne().equals(LA.getText())||
+                    game.getDestOne().equals(POR.getText())||
+                    game.getDestOne().equals(VAN.getText())){
                 System.out.println("valid");
+                destCount=0;
                 refreshCardData(cardData);
                 primaryStage.setScene(transition);
             }
             else{
                 System.out.println("Invalid");
                 InvalidMove.popUp();
+                destCount=0;
             }
-            destCount=0;
         }
     });
     
@@ -723,16 +731,19 @@ ready.setOnAction(e-> {
         }
         else if(destCount == 1){
             game.setDestTwo(POR.getText());
-            if(game.getDestOne()=="SEA" ||game.getDestOne()=="SLC"){
+            if(game.getDestOne().equals(SEA.getText())||
+                    game.getDestOne().equals(SLC.getText())||
+                    game.getDestOne().equals(CHI.getText())){
                 System.out.println("valid");
+                destCount=0;
                 refreshCardData(cardData);
                 primaryStage.setScene(transition);
             }
             else{
                 System.out.println("Invalid");
                 InvalidMove.popUp();
+                destCount=0;
             }
-            destCount=0;
         }
     });
     
@@ -743,16 +754,18 @@ ready.setOnAction(e-> {
         }
         else if(destCount ==1){
             game.setDestTwo(VAN.getText());
-            if(game.getDestOne()=="SEA" || game.getDestOne()=="WIN"){
+            if(game.getDestOne().equals(WIN.getText())||
+                    game.getDestOne().equals(SEA.getText())){
                 System.out.println("valid");
+                destCount=0;
                 refreshCardData(cardData);
                 primaryStage.setScene(transition);
             }
             else{
                 System.out.println("Invalid");
                 InvalidMove.popUp();
+                destCount=0;
             }
-            destCount=0;
         }
     });
     
@@ -764,6 +777,19 @@ ready.setOnAction(e-> {
         else if(destCount ==1){
             game.setDestTwo(WIN.getText());
             destCount=0;
+            if(game.getDestOne().equals(LA.getText())||
+                    game.getDestOne().equals(POR.getText())||
+                    game.getDestOne().equals(VAN.getText())){
+                System.out.println("valid");
+                destCount=0;
+                refreshCardData(cardData);
+                primaryStage.setScene(transition);
+            }
+            else{
+                System.out.println("Invalid");
+                InvalidMove.popUp();
+                destCount=0;
+            }
         }
     });
     
@@ -1043,5 +1069,9 @@ ready.setOnAction(e-> {
                 + "----\n Train Cards: \n"+game.getPlayers().get(count).formatTrainCards()+
                 "\n\nDestCards: \n"+game.getPlayers().get(count).formatDestCards());
         }
+    
+    private void refreshReadyButton(Button ready){
+        ready.setText("Ready "+game.getPlayers().get(count).GetName());
+    }
     
 }
