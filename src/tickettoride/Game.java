@@ -106,7 +106,7 @@ public class Game {
         DestDeck.add(tempdc);
         tempdc= new DestCard("MIA", "CHA", 4, "Blue"); //16 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("ChA", "DC", 4, "Yellow"); //17 Card
+        tempdc= new DestCard("CHA", "DC", 4, "Yellow"); //17 Card
         DestDeck.add(tempdc);
         tempdc= new DestCard("TOR", "CHI", 4, "Black"); //18 Card
         DestDeck.add(tempdc);
