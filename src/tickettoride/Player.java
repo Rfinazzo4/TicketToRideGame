@@ -70,14 +70,6 @@ public class Player {
             TDIndex--;
         }
         
-        //Claim Route(trainCard,DestCard)
-        public void ClaimRoute(String traincards, String destcards){
-            
-            System.out.println("Route has been claimed"); 
-            
-        }
-        
-        
         //Getter for Name
         public String GetName(){
             return this.name;
@@ -157,6 +149,26 @@ public class Player {
             temp +=D.getD2() +"\n";    
         }
         return temp;
+    }
+
+    public void removeDestCard(DestCard d) {
+        setScore(d);
+        destcards.remove(d);
+        DDIndex--;
+    }
+
+    private void setScore(DestCard d) {
+        score =+d.getLength();
+    }
+
+    public int getAmountTrainCardColor(String color) {
+        int count=0;
+        for (TrainCard t: traincards){
+            if(t.getColor().equals(color)){
+                count++;
+            }
+        }
+        return count;
     }
 }
     
