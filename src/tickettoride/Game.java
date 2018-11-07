@@ -7,20 +7,19 @@ package tickettoride;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+import java.util.Collections;
 
 public class Game {
-
-    void createPlayer(String utemp, String ctemp) {
-        Player p = new Player(utemp,ctemp);
-        Playerlist.add(p);
-        
-    }
+    
         //Lists
     private ArrayList<TrainCard> TrainDeck;
     private ArrayList<DestCard> DestDeck;
     private ArrayList<Player> Playerlist;
-    /*
+    private String DestOne;
+    private String DestTwo;
+    
+    
+    
     //Board
     private Board board;            
         //Counts and indexs
@@ -30,7 +29,6 @@ public class Game {
         //Other misc variables
     private Display d; 
     private Random rand;
-    public Space[][] space;
     private boolean play; //Determines whther the game is over (1=Continue playing
     //, 0 = game over)
 
@@ -48,6 +46,7 @@ public class Game {
         //Create random object for creating random integers
         rand= new Random();
         
+        d=new Display();
         //Create the Decks and Player list
         TrainDeck = new ArrayList<>();
         DestDeck = new ArrayList<>();
@@ -55,116 +54,104 @@ public class Game {
         
         //Describe the game at the start, 
         
-        d.displayStart();
+        //d.displayStart();
         
         //Ask if user wants to 
-        d.readRules();
+        //d.readRules();
         
         
         //Setup
         ///////////////
         
         //Initialize the Players
-        Player P;
-        for (int i=0; i<5;i++){
-            if(i>1){
-                if(!d.morePlayers()){
-                    break;
-                }
-            }
-            P = d.readPlayer();
-            Playerlist.add(i,P);
-        }
+        Player P=new Player("Player 1", "Red");
+        Playerlist.add(P);
+        P=new Player("Player 2", "Blue");
+        Playerlist.add(P);
+        
 
         //Create Dest cards 
-        DestCard tempdc = new DestCard("Vancouver","Winnipeg",9,"Grey"); //1 Card
+        DestCard tempdc = new DestCard("VAN","WIN",9,"Grey"); //1 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Seattle", "Los Angeles", 9, "Green"); //2 Card 
+        tempdc= new DestCard("SEA", "LA", 9, "Green"); //2 Card 
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Salt Lake City", "Portland", 6, "Blue"); //3 Card
+        for(Player p :Playerlist){
+            p.AddToDestDeck(tempdc);
+        }
+        tempdc= new DestCard("SLC", "POR", 6, "Blue"); //3 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Phoenix", "Little Rock", 8, "Yellow"); //4 Card
+        tempdc= new DestCard("PHE", "LR", 8, "Yellow"); //4 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Denver", "Pittsburg", 11, "Black"); //5 Card
+        tempdc= new DestCard("DEN", "PIT", 11, "Black"); //5 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Ohklahoma City", "Duluth", 5, "Red"); //6 Card
+        tempdc= new DestCard("OKC", "DUL", 5, "Red"); //6 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Seattle", "Vancouver", 1, "Grey"); //7 Card
+        tempdc= new DestCard("SEA", "VAN", 1, "Grey"); //7 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Seattle", "Portland", 1, "Grey");//8 Card
+        tempdc= new DestCard("SEA", "POR", 1, "Grey");//8 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Helena", "Los Angeles", 8, "Blue"); //9 Card
+        tempdc= new DestCard("HEL", "LA", 8, "Blue"); //9 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Miami", "Houston", 8, "Yellow"); //10 Card
+        tempdc= new DestCard("MIA", "HOU", 8, "Yellow"); //10 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Boston", "Raleigh", 6, "Green"); //11 Card
+        tempdc= new DestCard("BOS", "RAE", 6, "Green"); //11 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("New York", "Chicago", 5, "Black"); //12 Card
+        tempdc= new DestCard("NYC", "CHI", 5, "Black"); //12 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Sault St Marie", "Dallas", 10, "Blue"); //13 Card
+        tempdc= new DestCard("STM", "DAL", 10, "Blue"); //13 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Dallas", "Nashville", 5, "Grey"); //14 Card
+        tempdc= new DestCard("DAL", "NAS", 5, "Grey"); //14 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Nashville", "Miami", 5, "Grey"); //15 Card
+        tempdc= new DestCard("NAS", "MIA", 5, "Grey"); //15 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Miami", "Charleston", 4, "Blue"); //16 Card
+        tempdc= new DestCard("MIA", "CHA", 4, "Blue"); //16 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Chareston", "Washington DC", 4, "Yellow"); //17 Card
+        tempdc= new DestCard("CHA", "DC", 4, "Yellow"); //17 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Toronto", "Chicago", 4, "Black"); //18 Card
+        tempdc= new DestCard("TOR", "CHI", 4, "Black"); //18 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Chicago", "St Louis", 2, "Red"); //19 Card
+        tempdc= new DestCard("CHI", "STL", 2, "Red"); //19 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("St Louis", "Kansis City", 2, "Grey"); //20 Card
+        tempdc= new DestCard("STL", "KSC", 2, "Grey"); //20 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Washington DC", "Montreal", 5, "Green"); //21 Card
+        tempdc= new DestCard("DC", "MON", 5, "Green"); //21 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("New York", "Little Rock", 9, "Red"); //22 Card
+        tempdc= new DestCard("NYC", "LR", 9, "Red"); //22 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Little Rock", "New Orleans", 3, "Green"); //23 Card
+        tempdc= new DestCard("LR", "NWO", 3, "Green"); //23 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("New Orleans", "Houston", 2, "Grey"); //24 Card
+        tempdc= new DestCard("NWO", "HOU", 2, "Grey"); //24 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Houston", "El Paso", 6, "Yellow"); //25 Card
+        tempdc= new DestCard("HOU", "ELP", 6, "Yellow"); //25 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Nashville", "Charleston", 3, "Black"); //26 Card
+        tempdc= new DestCard("NAS", "CHA", 3, "Black"); //26 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Los Angeles", "Santa Fe", 6, "Black"); //27 Card
+        tempdc= new DestCard("LA", "STF", 6, "Black"); //27 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Sante Fe", "Helena", 6, "Green"); //28 Card
+        tempdc= new DestCard("STF", "HEL", 6, "Green"); //28 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("El Paso", "Dallas", 4, "Grey"); //29 Card
+        tempdc= new DestCard("ELP", "DAL", 4, "Grey"); //29 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("Montreal", "Boston", 2, "Yellow"); //30 Card
+        tempdc= new DestCard("MON", "BOS", 2, "Yellow"); //30 Card
         DestDeck.add(tempdc);
         //Finished Creating Dest Deck
         
         //Set Destination deck top index to 29
         DDtopIndex=29;
         //Shuffle Destination Deck
-        shuffleDestDeck();
+        Collections.shuffle(DestDeck);
         
         //Deal 3 Destination Cards to each Player
         for (int i =0; i<3;i++){
             int randint;
             for(Player p :Playerlist){
                 randint=rand.nextInt(DDtopIndex--);
-                
+        
                 p.AddToDestDeck(DestDeck.get(randint));
                 DestDeck.remove(randint);
             }
         }
         
-        //Check if user returns a card
-        for(Player p: Playerlist){
-            DestCard temp= d.displayDestcardReturn(p);
-            if(temp!=null){ //If they do add card back into deck
-                DestDeck.add(temp);
-                DDtopIndex++;
-                p.DecrementDestDeck(); //decrement the player Destdeck index
-            }
-        }
-    
         //Create Train cards 
         for (int i=0; i<6;i++){
             TrainCard traintemp;
@@ -227,24 +214,20 @@ public class Game {
             TrainDeck.get(TDtopIndex-i).setIsFaceUp(true);
         }
         
-        //initialize the Board
-        board = new Board();
-        board.DisplayB();
-        
-        
         //GAME SETUP IS DONE
         //START PLAYING GAME
         playGame();
          
     }
     
+    //Adding a player to the Playerlist
+     void addPlayer(Player p) {
+        Playerlist.add(p);
+    }
+    
+    
     public void playGame(){
-        while (play){
-            for(Player P : Playerlist){
-                makeMove(P);
-            }
-            
-        }
+        
     }
     
     public void endGame(){
@@ -253,10 +236,7 @@ public class Game {
 
         
         //compare scores
-        
-        //sending an arbitrary player
-        //player at index of winner player 
-        d.endGame(Playerlist.get(playerindex));
+       
     } 
     
     public void shuffleDestDeck(){
@@ -272,62 +252,16 @@ public class Game {
         }
     }
     
- 
+    //Setting the potential Destination to button clicked
+    public void setDestOne(String dest){
+        this.DestOne=dest;
+        System.out.println("Dest1: "+dest);
+    }
     
-
-    public boolean makeMove(Player P){ //definition will need to be changed
-        int move=d.displayMoveOptions();
-      
-        
-        // if move equals 1 draw train Card
-        if (move == 1){
-            //Deal 2 Train Cards to Player P
-            for (int i =0; i<2;i++){
-                P.AddToTrainDeck(TrainDeck.get(TDtopIndex));
-                TrainDeck.remove(TDtopIndex--);
-            }
-            return true;
-        }
-        
-        //if move equals 2 draw Dest Card
-        else if(move==2){
-            //Deal 3 Destination Cards to each Player
-            for (int i =0; i<3;i++){
-                int randint;
-                randint=rand.nextInt(DDtopIndex--);
-                P.AddToDestDeck(DestDeck.get(randint));
-                DestDeck.remove(randint);
-                }
-        
-            //Check if user returns a card
-            DestCard temp= d.displayDestcardReturn(P);
-            if(temp!=null){ //If they do add card back into deck
-                DestDeck.add(temp);
-                DDtopIndex++;
-                P.DecrementDestDeck(); //decrement the player Destdeck index
-            }
-            //Display Current Deck
-            
-            //HOW DOES THIS PLAY INTO THE SCENE???
-            d.displayPlayerDestcards(P); 
-            return true;
-        }
-        
-        //if move equals 3 Claim Route
-        else {
-            //check if player can Claim route
-            d.displayPlayerDestcards(P);
-            DestCard D = d.displayClaimRoute();
-            
-            //At this point we will check 3 things
-            //1. if the Destcard they chose, matches up with a destination
-            //2. Do they have the proper trainCards for the move
-            //3. Do they have enough train cars to place
-            
-        }
-        //check if valid move
-        //return false if not
-        return true;
+    //Setting the potential Destination to button clicked
+    public void setDestTwo(String dest){
+        this.DestTwo=dest;
+        System.out.println("Dest2: "+dest);
     }
 
     public void shuffleTrainDeck(){
@@ -346,6 +280,26 @@ public class Game {
     public  ArrayList<Player> getPlayers(){
         return Playerlist;
     }
-*/
+
+    void drawDestCard(Player P) {
+        int randint;
+        randint=rand.nextInt(DDtopIndex--);
+        P.AddToDestDeck(DestDeck.get(randint));
+        DestDeck.remove(randint);
+    }
+
+    void drawTrainCard(Player P) {
+        P.AddToTrainDeck(TrainDeck.get(TDtopIndex));
+        TrainDeck.remove(TDtopIndex--);
+    }
+
+    	//Getter for DestOne 
+    public String getDestOne(){
+        return this.DestOne;  
+    }
+    //getter for DestTwo
+    public String getDestTwo(){
+        return this.DestTwo;
+    }
 
 }

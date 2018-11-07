@@ -42,13 +42,13 @@ public class testGame {
     @Test
     public void testMoveValid(){
         
-        assertTrue(a.makeMove());
+     
     }
     
     @Test
     public void testMoveinValid(){
        
-        assertFalse(a.makeMove());
+        
     }
     
     @Test
