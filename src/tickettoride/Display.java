@@ -38,6 +38,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 
 
 
@@ -599,7 +600,7 @@ Line r7 =new Line(0,700,1200,700);
         
         root2.getChildren().addAll(selectedImage,VANtoWIN,
                 SEAtoLA, SLCtoPOR, PHEtoLR, DENtoPIT, OKCtoDUL, SEAtoVAN,
-                SEAtoPOR, HELtoLA, MIAtoHOU,BOStoRAE, NYCtoCHI, SLCtoDAL,
+                SEAtoPOR, HELtoLA, MIAtoHOU,BOStoRAE, NYCtoCHI, STMtoDAL,
                 DALtoNAS, NAStoMIA, MIAtoCHA, CHAtoDC, TORtoCHI, CHItoSTL, 
                 STLtoKSC, DCtoMON, NYCtoLR, LRtoNWO, HOUtoELP, NAStoCHA, 
                 LAtoSTF, STFtoHEL,MONtoBOS, LA, SEA, VAN, WIN, SLC, POR,PHE, 
@@ -618,7 +619,7 @@ Line r7 =new Line(0,700,1200,700);
         ready.setTranslateX(580);
         ready.setTranslateY(270);
         
-        root3.getChildren().addAll(selectedImage,ready);
+        root3.getChildren().add(ready);
         
         
         primaryStage.setTitle("Ticker To Ride Game");
