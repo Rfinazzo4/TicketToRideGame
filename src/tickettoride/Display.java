@@ -8,9 +8,7 @@ import java.awt.Font;
 import java.util.Scanner;
 import java.util.Scanner;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -35,13 +33,11 @@ import tickettoride.Game;
 import tickettoride.Player;
 import tickettoride.Space;
 import java.util.ArrayList;
-import static javafx.application.Application.launch;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
 
 
 
@@ -108,80 +104,6 @@ public class Display extends Application{
         }
         
     }
-
-    public DestCard displayDestcardReturn(Player p) {
-        reader = new Scanner(System.in);
-        System.out.println("Player " + p.GetName());
-        System.out.println("Here are the Desination cards you have been delt");
-        System.out.println("---------------------------------------------");
-        for (int i =0;i<3;i++){
-            System.out.print((i+1)+". ");
-            System.out.println(p.GetDestCards().get(i).toString());
-        }
-       
-        System.out.println("Do you wish to keep all 3, you may return one. Yes or any other key for no");
-        String input = reader.nextLine();
-        if (input.equals("Yes") || input.equals("yes")){
-            return null;
-        }
-        //////////////       
-        System.out.println("Which card would you like to return? (1, 2, 3)");
-        int temp = reader.nextInt();
-        DestCard tempdc;
-        switch(temp){
-            case 1:
-                System.out.println("Done.");
-                tempdc = p.GetDestCards().get(0);
-                p.GetDestCards().remove(0);
-                for (int i =0;i<2;i++){
-                    System.out.print((i+1)+". ");
-                    System.out.println(p.GetDestCards().get(i).toString());
-                }
-                return tempdc;
-            case 2:
-                System.out.println("Done.");
-                tempdc = p.GetDestCards().get(1);
-                p.GetDestCards().remove(1);
-                for (int i =0;i<2;i++){
-                    System.out.print((i+1)+". ");
-                    System.out.println(p.GetDestCards().get(i).toString());
-                }
-                return tempdc;
-            case 3:
-                System.out.println("Done.");
-                tempdc = p.GetDestCards().get(2);
-                p.GetDestCards().remove(2);
-                for (int i =0;i<2;i++){
-                    System.out.print((i+1)+". ");
-                    System.out.println(p.GetDestCards().get(i).toString());
-                }
-                return tempdc;
-            default:
-                return null;
-        }  
-    }
-    
-    public void displayPlayerDestcards(Player p) {
-        reader = new Scanner(System.in);
-        System.out.println("Player " + p.GetName());
-        System.out.println("Here are the Desination cards you have been delt");
-        System.out.println("---------------------------------------------");
-        for (int i =0;i<3;i++){
-            System.out.print((i+1)+". ");
-            System.out.println(p.GetDestCards().get(i).toString());
-        }
-    }
-
-    
-    public int displayMoveOptions(){
-        return 0;
-    }
-
-    DestCard displayClaimRoute() {
-        System.out.println("This move has not bee designed yet");
-        return null;
-    }
-    
     
     @Override
     public void start(Stage primaryStage) {
@@ -217,7 +139,7 @@ Line r7 =new Line(0,700,1200,700);
      
 //BUTTONS
 //<editor-fold defaultstate="collapsed" desc="comment">
-//Los Angeles
+        //Los Angeles
         
         Button LA = new Button(); 
         // set text of button
@@ -489,23 +411,9 @@ Line r7 =new Line(0,700,1200,700);
         p2.setTranslateY(235);
         p2.setText("2 Players");
         
-//        Button p3 = new Button();
-//        p3.setTranslateX(-45);
-//        p3.setTranslateY(235);
-//        p3.setText("3 Players");
-//        
-//        Button p4 = new Button();
-//        p4.setTranslateX(45);
-//        p4.setTranslateY(235);
-//        p4.setText("4 Players");
-//        
-//        Button p5 = new Button();
-//        p5.setTranslateX(130);
-//        p5.setTranslateY(235);
-//        p5.setText("5 Players");
-        
 //</editor-fold>
 
+//ROUTE LINES
 //ROUTE LINES
 //<editor-fold defaultstate="collapsed" desc="comment">
 
@@ -691,12 +599,12 @@ Line r7 =new Line(0,700,1200,700);
         
         root2.getChildren().addAll(selectedImage,VANtoWIN,
                 SEAtoLA, SLCtoPOR, PHEtoLR, DENtoPIT, OKCtoDUL, SEAtoVAN,
-                SEAtoPOR, HELtoLA, MIAtoHOU,BOStoRAE, NYCtoCHI, STMtoDAL,
+                SEAtoPOR, HELtoLA, MIAtoHOU,BOStoRAE, NYCtoCHI, SLCtoDAL,
                 DALtoNAS, NAStoMIA, MIAtoCHA, CHAtoDC, TORtoCHI, CHItoSTL, 
                 STLtoKSC, DCtoMON, NYCtoLR, LRtoNWO, HOUtoELP, NAStoCHA, 
                 LAtoSTF, STFtoHEL,MONtoBOS, LA, SEA, VAN, WIN, SLC, POR,PHE, 
                 LR, DEN, PIT, OKC, DUL, HEL,MIA,HOU, BOS, RAE, NYC, CHI, STM, 
-                DAL, NAS, CHA, DC, TOR,STL,KSC, NWO, ELP, STF, MON,cardInfo);  
+                DAL, NAS, CHA, DC, TOR,STL,KSC, NWO, ELP, STF, MON, cardInfo);  
                 //, c1, c2, 
                 //c3, c4, c5, c6, c7, c8, c9, c10, c11, r1, r2, r3, r4, r5, 
                 //r6, r7);
@@ -710,7 +618,7 @@ Line r7 =new Line(0,700,1200,700);
         ready.setTranslateX(580);
         ready.setTranslateY(270);
         
-        root3.getChildren().add(ready);
+        root3.getChildren().addAll(selectedImage,ready);
         
         
         primaryStage.setTitle("Ticker To Ride Game");
@@ -737,8 +645,7 @@ ready.setOnAction(e-> {
                 else{
                     count=0;
                 }
-                refreshCardData(cardData);
-                refreshReadyButton(ready);
+                refresh(cardData,ready);
                 primaryStage.setScene(transition);
             }
             else if(temp.equals("DrawDest")){
@@ -749,8 +656,7 @@ ready.setOnAction(e-> {
                 else{
                     count=0;
                 }
-                refreshCardData(cardData);
-                refreshReadyButton(ready);
+                refresh(cardData,ready);
                 primaryStage.setScene(transition);
             }
             else if(temp.equals("Claim")){
@@ -759,19 +665,50 @@ ready.setOnAction(e-> {
         });
 
     LA.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(LA.getText());
-            destCount++;
+        if(destCount ==0){ //check if this is the frist destination they click
+            System.out.println("here again");
+            game.setDestOne(LA.getText()); //set the destone in game to the buttons text
+            destCount++; //increment the destination coutner for the 2nd destination 
         }
-        else if(destCount == 1){
-            game.setDestTwo(LA.getText());
-            if(game.getDestOne().equals(SEA.getText())||
+        else if(destCount == 1){ //check if this is the second desitnation they click
+            System.out.println("here3");
+            game.setDestTwo(LA.getText()); //set the second destination to the button text
+            if(game.getDestOne().equals(SEA.getText())|| //check all nieghboring destinations
                     game.getDestOne().equals(STF.getText())||
                     game.getDestOne().equals(HEL.getText())){
-                System.out.println("valid");
+                
+                for(DestCard d : game.getPlayers().get(count).GetDestCards()){ 
+                    
+                    if(d.toString().equals(game.getDestOne() +" "+game.getDestTwo()) //<- test the first tcombination of destinations
+                            ||d.toString().equals(game.getDestTwo() +" "+game.getDestOne())){ //<- test the second combination
+                        
+                        if(d.getLength() < // testing the length of the route 
+                                            //with the amount of Train cards the player has
+                                (game.getPlayers().get(count). //<-this returns a certain Player
+                                        getAmountTrainCardColor(d.getRoutecolor()))){ 
+                                        // ^this returns the amount of train cars
+                                        // of a specific color
+                        }
+                        
+                        System.out.println("here5");
+                        game.getPlayers().get(count).removeDestCard(d);
+                        System.out.println("valid");
+                        
+                        if (count==0){
+                            count++;
+                        }
+                        else{
+                            count=0;
+                        }
+                        destCount=0;
+                        refresh(cardData,ready);
+                        primaryStage.setScene(transition);
+                        return;
+                    }
+                }
+                System.out.println("Invalid");
+                InvalidMove.popUp();
                 destCount=0;
-                refreshCardData(cardData);
-                primaryStage.setScene(transition);
             }
             else{
                 System.out.println("Invalid");
@@ -782,10 +719,11 @@ ready.setOnAction(e-> {
     });
     
     SEA.setOnAction(e-> {
+        System.out.println("Here");
         if(destCount ==0){
             game.setDestOne(SEA.getText());
+            System.out.println("here2");
             destCount++;
-            System.out.println(destCount);
         }
         else if(destCount ==1){
             game.setDestTwo(SEA.getText());
@@ -849,7 +787,7 @@ ready.setOnAction(e-> {
             }
         }
     });
-    
+    //Still needs to be edited check third location 
     WIN.setOnAction(e-> {
         if(destCount ==0){
             game.setDestOne(WIN.getText());
@@ -858,9 +796,8 @@ ready.setOnAction(e-> {
         else if(destCount ==1){
             game.setDestTwo(WIN.getText());
             destCount=0;
-            if(game.getDestOne().equals(LA.getText())||
-                    game.getDestOne().equals(POR.getText())||
-                    game.getDestOne().equals(VAN.getText())){
+            if(game.getDestOne().equals(VAN.getText())||
+                    game.getDestOne().equals(DUL.getText())){
                 System.out.println("valid");
                 destCount=0;
                 refreshCardData(cardData);
@@ -882,6 +819,18 @@ ready.setOnAction(e-> {
         else if(destCount ==1){
             game.setDestTwo(SLC.getText());
             destCount=0;
+            if(game.getDestOne().equals(POR.getText())||
+                    game.getDestOne().equals(DEN.getText())){
+                System.out.println("valid");
+                destCount=0;
+                refreshCardData(cardData);
+                primaryStage.setScene(transition);
+            }
+            else{
+                System.out.println("Invalid");
+                InvalidMove.popUp();
+                destCount=0;
+            }
         }
     });
     
@@ -1129,21 +1078,13 @@ ready.setOnAction(e-> {
             }
             
     });
-    
-     LA.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(LA.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(LA.getText());
-            destCount=0;
-            }
-            
-    });
 //</editor-fold>
       
 }
+    private void refresh(Label cardData,Button ready){
+        refreshReadyButton(ready);
+        refreshCardData(cardData);
+    }
 
     private void refreshCardData(Label cardData) {
         cardData.setText("----"+game.getPlayers().get(count).GetName()
