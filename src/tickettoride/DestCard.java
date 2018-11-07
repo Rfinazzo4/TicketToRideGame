@@ -51,7 +51,8 @@ public class DestCard {
     }
    @Override
    public String toString(){
-       return (this.d1 + " "+this.d2);
+       return (this.d1 +" "+this.d2);
    }
+
 }
 

@@ -32,7 +32,7 @@ public class Board {
     }
     
     public void DisplayB(){
-        d.displayBoard(board);
+       
     }
     
     
