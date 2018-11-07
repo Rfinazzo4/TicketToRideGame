@@ -618,7 +618,7 @@ ready.setOnAction(e-> {
                             ||d.toString().equals(game.getDestTwo() +" "+game.getDestOne())){ //<- test the second combination
                         
                         if(d.getLength() < // testing the length of the route 
-                                            //with the amount of Train cards the player has
+                                            //with the amount of Train cards the player has 
                                 (game.getPlayers().get(count). //<-this returns a certain Player
                                         getAmountTrainCardColor(d.getRoutecolor()))){ 
                                         // ^this returns the amount of train cars
