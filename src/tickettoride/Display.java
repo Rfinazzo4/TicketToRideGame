@@ -4,46 +4,28 @@
  * and open the template in the editor.
  */
 package tickettoride;
-import java.awt.Font;
-import java.util.Scanner;
-import java.util.Scanner;
-import javafx.application.Application;
 
+import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Arc;
-import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.Rectangle;
-import tickettoride.DestCard;
-import tickettoride.Display;
-import tickettoride.Game;
-import tickettoride.Player;
-import tickettoride.Space;
-import java.util.ArrayList;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 
 
 
 public class Display extends Application{
-    Scanner reader;
     int count; //Player Index
     int destCount;  // Which destination is being pressed for the buttons
                     // 0 meaning first destination, 1 being the second destination 
@@ -84,26 +66,7 @@ public class Display extends Application{
     }
     
     public void endGame(Player winner){
-        System.out.println("The game is over! Thank you all for playing. ");
-        System.out.println("-------------------------------");
-        //Winenr will be sent, for the purposes of the Skeleton we simply 
-        //sent an arbitrary Player
-        System.out.println("The Winner is: "+ winner.GetName());
-        reader.close();
-    
-    }
-
-    boolean morePlayers() {
-        reader = new Scanner(System.in);
-        System.out.println("Another PLayer? Yes or any other key for no");
-        String input = reader.nextLine();
-        if (input.equals("Yes") || input.equals("yes")){
-            return true;
-        }
-        else{
-            return false;
-        }
-        
+     
     }
     
     @Override
@@ -146,7 +109,7 @@ Line r7 =new Line(0,700,1200,700);
         // set text of button
         LA.setText("LA");
         // X and Y of button on the layout
-        LA.setTranslateX(80);
+        LA.setTranslateX(180);
         LA.setTranslateY(400);
         // makes the button a circle and sets size
         LA.setShape(new Circle(2));
@@ -415,7 +378,6 @@ Line r7 =new Line(0,700,1200,700);
 //</editor-fold>
 
 //ROUTE LINES
-//ROUTE LINES
 //<editor-fold defaultstate="collapsed" desc="comment">
 
 // each route will have a color as well
@@ -425,9 +387,9 @@ Line r7 =new Line(0,700,1200,700);
         VANtoWIN.setStroke(Color.GREY);
         VANtoWIN.setStrokeWidth(3);
        
-        // Seattle ---> LA & Green
+        // Seattle ---> LA & White
         Line SEAtoLA = new Line(99, 85, 95, 400);
-        SEAtoLA.setStroke(Color.GREEN);
+        SEAtoLA.setStroke(Color.WHITE);
         SEAtoLA.setStrokeWidth(3);
        
        
@@ -437,9 +399,9 @@ Line r7 =new Line(0,700,1200,700);
         SLCtoPOR.setStrokeWidth(3);
        
        
-        // Pheonix ---> Little Rock & Yellow
+        // Pheonix ---> Little Rock & Purple
         Line PHEtoLR = new Line(255, 450, 672, 450);
-        PHEtoLR.setStroke(Color.YELLOW);
+        PHEtoLR.setStroke(Color.PURPLE);
         PHEtoLR.setStrokeWidth(3);
        
         // Denver ---> Pittsburg & Black
@@ -467,14 +429,14 @@ Line r7 =new Line(0,700,1200,700);
         HELtoLA.setStroke(Color.BLUE);
         HELtoLA.setStrokeWidth(3);
        
-        // Miami ---> Houston & Yellow
+        // Miami ---> Houston & Purple
         Line MIAtoHOU = new Line(990, 660, 650, 580);
-        MIAtoHOU.setStroke(Color.YELLOW);
+        MIAtoHOU.setStroke(Color.PURPLE);
         MIAtoHOU.setStrokeWidth(3);
        
-        // Boston ---> Raleigh & Green
+        // Boston ---> Raleigh & White
         Line BOStoRAE = new Line(1120, 215, 1005, 385);
-        BOStoRAE.setStroke(Color.GREEN);
+        BOStoRAE.setStroke(Color.WHITE);
         BOStoRAE.setStrokeWidth(3);
        
        
@@ -503,9 +465,9 @@ Line r7 =new Line(0,700,1200,700);
         MIAtoCHA.setStroke(Color.BLUE);
         MIAtoCHA.setStrokeWidth(3);
        
-        // Charleston ---> Washington DC & Yellow
+        // Charleston ---> Washington DC & Purple
         Line CHAtoDC = new Line(965, 460, 1005, 335);
-        CHAtoDC.setStroke(Color.YELLOW);
+        CHAtoDC.setStroke(Color.PURPLE);
         CHAtoDC.setStrokeWidth(3);
        
         // Toronto ---> Chicago & Black
@@ -523,24 +485,24 @@ Line r7 =new Line(0,700,1200,700);
         STLtoKSC.setStroke(Color.GREY);
         STLtoKSC.setStrokeWidth(3);
        
-        // Washington DC ---> Montreal & Green
+        // Washington DC ---> Montreal & White
         Line DCtoMON = new Line(1010, 310, 1035, 135);
-        DCtoMON.setStroke(Color.GREEN);
+        DCtoMON.setStroke(Color.WHITE);
         DCtoMON.setStrokeWidth(3);
        
-        // New York ---> Little Rock & Green
+        // New York ---> Little Rock & White
         Line NYCtoLR = new Line(1052, 245, 695, 443);
-        NYCtoLR.setStroke(Color.GREEN);
+        NYCtoLR.setStroke(Color.WHITE);
         NYCtoLR.setStrokeWidth(3);
        
-        // Little Rock ---> New Orleans & Green
+        // Little Rock ---> New Orleans & White
         Line LRtoNWO = new Line(682, 465, 740, 552);
-        LRtoNWO.setStroke(Color.GREEN);
+        LRtoNWO.setStroke(Color.WHITE);
         LRtoNWO.setStrokeWidth(3);
        
-        // Houston ---> El Paso & Yellow
+        // Houston ---> El Paso & Purple
         Line HOUtoELP = new Line(618, 575, 368, 510);
-        HOUtoELP.setStroke(Color.YELLOW);
+        HOUtoELP.setStroke(Color.PURPLE);
         HOUtoELP.setStrokeWidth(3);
        
         // Nashville ---> Charleston & Black
@@ -558,14 +520,13 @@ Line r7 =new Line(0,700,1200,700);
         STFtoHEL.setStroke(Color.GREY);
         STFtoHEL.setStrokeWidth(3);
        
-        // Montreal ---> Boston & Yellow
+        // Montreal ---> Boston & Purple
         Line MONtoBOS = new Line(1050, 135, 1105, 195);
-        MONtoBOS.setStroke(Color.YELLOW);
+        MONtoBOS.setStroke(Color.PURPLE);
         MONtoBOS.setStrokeWidth(3);
 
 //</editor-fold>
 
-        
         //Creating Image View for the Map
         ImageView selectedImage = new ImageView();
         //Load map image
@@ -574,6 +535,7 @@ Line r7 =new Line(0,700,1200,700);
         selectedImage.setFitHeight(720);
         selectedImage.setFitWidth(1200);
         selectedImage.setImage(newImage);
+        selectedImage.setTranslateX(100);
         
         //DEFINE SCENE 1
         StackPane root1 = new StackPane();
@@ -598,6 +560,16 @@ Line r7 =new Line(0,700,1200,700);
                 "\n\nDestCards: \n"+game.getPlayers().get(count).formatDestCards());
         cardInfo.getChildren().add(cardData);
         
+        Pane faceUpCards = new Pane();
+        faceUpCards.setTranslateX(1090);
+        faceUpCards.setTranslateY(300);
+        faceUpCards.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE,CornerRadii.EMPTY,Insets.EMPTY)));
+       
+        
+        Label faceUpText = new Label("===============\n"
+                + "Face Up Train Cards\n"+"===============\n"+game.formatFaceUpTrainCards());
+        faceUpCards.getChildren().add(faceUpText);
+        
         root2.getChildren().addAll(selectedImage,VANtoWIN,
                 SEAtoLA, SLCtoPOR, PHEtoLR, DENtoPIT, OKCtoDUL, SEAtoVAN,
                 SEAtoPOR, HELtoLA, MIAtoHOU,BOStoRAE, NYCtoCHI, STMtoDAL,
@@ -605,7 +577,7 @@ Line r7 =new Line(0,700,1200,700);
                 STLtoKSC, DCtoMON, NYCtoLR, LRtoNWO, HOUtoELP, NAStoCHA, 
                 LAtoSTF, STFtoHEL,MONtoBOS, LA, SEA, VAN, WIN, SLC, POR,PHE, 
                 LR, DEN, PIT, OKC, DUL, HEL,MIA,HOU, BOS, RAE, NYC, CHI, STM, 
-                DAL, NAS, CHA, DC, TOR,STL,KSC, NWO, ELP, STF, MON, cardInfo);  
+                DAL, NAS, CHA, DC, TOR,STL,KSC, NWO, ELP, STF, MON, cardInfo,faceUpCards);  
                 //, c1, c2, 
                 //c3, c4, c5, c6, c7, c8, c9, c10, c11, r1, r2, r3, r4, r5, 
                 //r6, r7);
@@ -622,7 +594,7 @@ Line r7 =new Line(0,700,1200,700);
         root3.getChildren().add(ready);
         
         
-        primaryStage.setTitle("Ticker To Ride Game");
+        primaryStage.setTitle("Ticket To Ride Game");
         primaryStage.setScene(scene1);
         primaryStage.show();
         
@@ -639,14 +611,40 @@ ready.setOnAction(e-> {
             primaryStage.setScene(scene2);
             String temp=MakeMove.MakeMove();
             if (temp.equals("DrawTrain")){
-                game.drawTrainCard(game.getPlayers().get(count));
+                temp = MakeMove.TrainCard();
+                if(temp.equals("one")){
+                    game.drawTrainCard(game.getPlayers().get(count),2);
+                }
+                else if (temp.equals("two")){
+                    temp=MakeMove.OneFaceUp();
+                    if(!game.drawOneFaceUpTrainCard(game.getPlayers().get(count),temp)){
+                        InvalidMove.NoSuchTrainCard(temp);
+                        primaryStage.setScene(transition);
+                        return;
+                    }
+                    else{
+                        game.drawTrainCard(game.getPlayers().get(count),1);
+                        
+                    }
+                    
+                    
+                }
+                else if(temp.equals("three")){
+                    temp=MakeMove.OneFaceUp();
+                    String temp1 =MakeMove.OneFaceUp(); 
+                    if(!game.drawTwoFaceUpTrainCard(game.getPlayers().get(count),temp,temp1)){
+                        InvalidMove.NoSuchTrainCard(temp);
+                        primaryStage.setScene(transition);
+                        return;
+                    }               
+                }
                 if (count==0){
                     count++;
                 }
                 else{
                     count=0;
                 }
-                refresh(cardData,ready);
+                refresh(cardData,faceUpText,ready);
                 primaryStage.setScene(transition);
             }
             else if(temp.equals("DrawDest")){
@@ -657,7 +655,7 @@ ready.setOnAction(e-> {
                 else{
                     count=0;
                 }
-                refresh(cardData,ready);
+                refresh(cardData,faceUpText,ready);
                 primaryStage.setScene(transition);
             }
             else if(temp.equals("Claim")){
@@ -665,56 +663,195 @@ ready.setOnAction(e-> {
             }
         });
 
-    LA.setOnAction(e-> {
-        if(destCount ==0){ //check if this is the frist destination they click
-            System.out.println("here again");
+    LA.setOnAction((ActionEvent e)-> {
+        //check if this is the first destination they click
+        if(destCount ==0){ 
             game.setDestOne(LA.getText()); //set the destone in game to the buttons text
             destCount++; //increment the destination coutner for the 2nd destination 
         }
-        else if(destCount == 1){ //check if this is the second desitnation they click
-            System.out.println("here3");
+        
+        //check if this is the second desitnation they click
+        else if(destCount == 1){
             game.setDestTwo(LA.getText()); //set the second destination to the button text
-            if(game.getDestOne().equals(SEA.getText())|| //check all nieghboring destinations
+            
+            //1st Condition: If the destination is not a route
+            if(!(game.getDestOne().equals(SEA.getText())|| //check all nieghboring destinations
                     game.getDestOne().equals(STF.getText())||
-                    game.getDestOne().equals(HEL.getText())){
+                    game.getDestOne().equals(HEL.getText()))){
                 
-                for(DestCard d : game.getPlayers().get(count).GetDestCards()){ 
-                    
-                    if(d.toString().equals(game.getDestOne() +" "+game.getDestTwo()) //<- test the first tcombination of destinations
-                            ||d.toString().equals(game.getDestTwo() +" "+game.getDestOne())){ //<- test the second combination
-                        
-                        if(d.getLength() < // testing the length of the route 
-                                            //with the amount of Train cards the player has
-                                (game.getPlayers().get(count). //<-this returns a certain Player
-                                        getAmountTrainCardColor(d.getRoutecolor()))){ 
-                                        // ^this returns the amount of train cars
-                                        // of a specific color
+                System.out.println("Invalid");
+                InvalidMove.Route();
+                destCount=0;
+                primaryStage.setScene(transition);
+                return;
+            }
+            else{   //passed 1st condition
+                //loop though the players destination card deck
+                
+                //set counter to determine if alerts should execute
+                int loopcounter =0;
+                int size = game.getPlayers().get(count).GetDestCards().size();
+                for(DestCard d : game.getPlayers().get(count).GetDestCards()){
+                    loopcounter++;
+                    //2nd CONDITION: Test if none of their dest cards match with the route they picked
+                    if(!(d.toString().equals(game.getDestOne() +" "+game.getDestTwo()) //<- test the first combination of destinations
+                            ||d.toString().equals(game.getDestTwo() +" "+game.getDestOne()))){//<- test the second combination
+                        if (loopcounter ==size){
+                            System.out.println("Invalid");
+                            InvalidMove.DestCard();
+                            destCount=0;
+                            primaryStage.setScene(transition);
+                            return;  
                         }
+                    }
+                    else{ //passed 2nd condition
                         
-                        System.out.println("here5");
-                        game.getPlayers().get(count).removeDestCard(d);
-                        System.out.println("valid");
-                        
-                        if (count==0){
-                            count++;
+                        //3rd CONDITION: Testing the length of the route with the amount of Train cards the player has
+                        if(!(d.getLength() < (game.getPlayers().get(count). //!(length < TrainCard(color)+TrainCard(Locomotive))|| color=grey
+                                getAmountTrainCardColor(d.getRoutecolor())
+                                +(game.getPlayers().get(count). 
+                                getAmountTrainCardColor("Locomotive"))) 
+                                ||d.getRoutecolor().equals("Grey"))){
+                            
+                            System.out.println("Invalid");
+                            InvalidMove.TrainCards();
+                            destCount=0;
+                            primaryStage.setScene(transition);
+                            return;
                         }
-                        else{
-                            count=0;
+                        else{   //passed 3rd condition
+                            
+                            //Grey SUB-CONDITIONS: Making sure they player has enough train cards for the length of the grey route
+                            if(d.getRoutecolor().equals("GREY")){
+                                if(d.getLength()>(game.getPlayers().get(count).GetTrainCards().size())){ //route length > all of players train cards
+                                    System.out.println("Invalid");
+                                    InvalidMove.TrainCards();
+                                    destCount=0;
+                                    primaryStage.setScene(transition);
+                                    return;   
+                                }
+                            }
+                            //4th CONDITION: Test if the player does not have enough Train cars
+                            else if(!(d.getLength()< game.getPlayers().get(count).GetTrainCars())){//compare the length of the route with the amount of train cars
+                                
+                                System.out.println("Invalid");
+                                InvalidMove.TrainCars();
+                                destCount=0;
+                                primaryStage.setScene(transition);
+                                return;
+                            }
+                            else{
+                                
+                                String [] tempStr= new String[d.getLength()]; //create string array to hold the multiple train cards
+                                
+                                if(d.getRoutecolor().equals("Grey")){ 
+                                    // This logic is so they can choose which 
+                                    //colors train cards for the grey routes
+                                    
+                                    //loop through the length of the route
+                                    for (int i=0;i<d.getLength();i++){
+                                        tempStr[i] = MakeMove.chooseTrainCards(i); //store each color in array
+                                        
+                                        if(!game.getPlayers().get(count).hasTrainCard(tempStr[i])){ //player does not have the proper train card
+                                            System.out.println("Invalid");
+                                            for (int j =1;j<tempStr.length;j++){ //add the train cards back into deck
+                                                game.getPlayers().get(count).AddToTrainDeck(new TrainCard(tempStr[j]));
+                                            }
+                                            InvalidMove.TrainCars();
+                                            destCount=0;
+                                            primaryStage.setScene(transition);
+                                            return;
+                                        }
+                                        else{ //remove the card from their deck 
+                                            game.getPlayers().get(count).removeTrainCard(game.getPlayers().get(count).getTrainCard(tempStr[i]));
+                                        }
+                                    }
+                                }
+                                //If they have Locomotive, then ask if the user would like use them
+                                else if(game.getPlayers().get(count).hasTrainCard("Locomotive")){
+                                    
+                                    if (MakeMove.hasLocomotive()){
+                                        //loop through the length of the route
+                                        for (int i=0;i<d.getLength();i++){
+                                            tempStr[i] = MakeMove.chooseTwoOptionTrainCards(i,"Locomotive",d.getRoutecolor()); //store each color in array
+
+                                            if(!game.getPlayers().get(count).hasTrainCard(tempStr[i])){ //player does not have the proper train card
+                                                System.out.println("Invalid");
+                                                for (int j =1;j<tempStr.length;j++){ //add the train cards back into deck
+                                                    game.getPlayers().get(count).AddToTrainDeck(new TrainCard(tempStr[j]));
+                                                    
+                                                }
+                                                InvalidMove.TrainCards();
+                                                System.out.println("Here6");
+                                                destCount=0;
+                                                primaryStage.setScene(transition);
+                                                System.out.println("Here7");
+                                                return;
+                                            }
+                                            else{ //remove the card from their deck 
+                                                game.getPlayers().get(count).removeTrainCard(game.getPlayers().get(count).getTrainCard(tempStr[i]));
+                                                
+                                            }
+                                        }
+                                    }
+                                    else{
+                                        //Here the train cards with the appropriate color will be taking out
+                                        //of their deck
+                                        for (int i=0;i<d.getLength();i++){
+                                            if(!(game.getPlayers().get(count).GetTrainCards().remove(game.getPlayers().get(count).getTrainCard(d.getRoutecolor())))){
+                                                for (int j=0;j<i;j++){
+                                                    game.getPlayers().get(count).AddToTrainDeck(new TrainCard(d.getRoutecolor()));
+                                                }
+                                                InvalidMove.TrainCards();
+                                                System.out.println("Here8");
+                                                destCount=0;
+                                                primaryStage.setScene(transition);
+                                                System.out.println("Here9");
+                                                return;
+                                            }
+                                            game.getPlayers().get(count).DecrementTrainCardDeck();
+                                        }
+                                    }
+                                }
+                                //
+                                else{
+                                        //Here the train cards with the appropriate color will be taking out
+                                        //of their deck
+                                        for (int i=0;i<d.getLength();i++){ //loop through the legnth of the route
+                                            if(!(game.getPlayers().get(count).GetTrainCards().remove(game.getPlayers().get(count).getTrainCard(d.getRoutecolor())))){
+                                                for (int j=0;j<i;j++){
+                                                    game.getPlayers().get(count).AddToTrainDeck(new TrainCard(d.getRoutecolor()));
+                                                }
+                                            }
+                                            game.getPlayers().get(count).DecrementTrainCardDeck();
+                                        }
+                                    }
+                                
+                                 //If and only if we get to this point, is the move officallyvalid
+                                System.out.println("here5");
+                                
+                                game.getPlayers().get(count).subTraincars(d.getLength()); //edit the players train cars
+                                
+                                game.getPlayers().get(count).removeDestCard(d); //remove the card 
+                                System.out.println("valid");
+
+                                if (count==0){ //increment or reset player counter
+                                    count++;
+                                }
+                                else{
+                                    count=0;
+                                }
+                                
+                                destCount=0; //reset the destination counter
+                               
+                                //refresh the game
+                                refresh(cardData,faceUpText,ready);
+                                primaryStage.setScene(transition);
+                                return;
+                            }
                         }
-                        destCount=0;
-                        refresh(cardData,ready);
-                        primaryStage.setScene(transition);
-                        return;
                     }
                 }
-                System.out.println("Invalid");
-                InvalidMove.popUp();
-                destCount=0;
-            }
-            else{
-                System.out.println("Invalid");
-                InvalidMove.popUp();
-                destCount=0;
             }
         }
     });
@@ -738,7 +875,7 @@ ready.setOnAction(e-> {
             }
             else{
                 System.out.println("Invalid");
-                InvalidMove.popUp();
+                
                 destCount=0;
             }
         }
@@ -761,7 +898,7 @@ ready.setOnAction(e-> {
             }
             else{
                 System.out.println("Invalid");
-                InvalidMove.popUp();
+                
                 destCount=0;
             }
         }
@@ -783,7 +920,7 @@ ready.setOnAction(e-> {
             }
             else{
                 System.out.println("Invalid");
-                InvalidMove.popUp();
+                
                 destCount=0;
             }
         }
@@ -806,7 +943,7 @@ ready.setOnAction(e-> {
             }
             else{
                 System.out.println("Invalid");
-                InvalidMove.popUp();
+                
                 destCount=0;
             }
         }
@@ -829,7 +966,7 @@ ready.setOnAction(e-> {
             }
             else{
                 System.out.println("Invalid");
-                InvalidMove.popUp();
+                
                 destCount=0;
             }
         }
@@ -1080,10 +1217,11 @@ ready.setOnAction(e-> {
             
     });
 //</editor-fold>
-      
 }
-    private void refresh(Label cardData,Button ready){
+    
+    private void refresh(Label cardData,Label faceUpText,Button ready){
         refreshReadyButton(ready);
+        refreshFaceUpText(faceUpText);
         refreshCardData(cardData);
     }
 
@@ -1095,6 +1233,11 @@ ready.setOnAction(e-> {
     
     private void refreshReadyButton(Button ready){
         ready.setText("Ready "+game.getPlayers().get(count).GetName());
+    }
+
+    private void refreshFaceUpText(Label faceUpText) {
+        faceUpText.setText("===============\n"
+                + "Face Up Train Cards\n"+"===============\n"+game.formatFaceUpTrainCards());    
     }
     
 }
