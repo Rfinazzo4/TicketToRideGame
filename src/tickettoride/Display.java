@@ -578,13 +578,33 @@ Line r7 =new Line(0,700,1200,700);
         selectedImage.setFitWidth(1200);
         selectedImage.setImage(newImage);
         
-        
+        // Boarder for the game rules
         ImageView BoarderImage = new ImageView();
-        Image newImage1 = new Image(Display.class.getResourceAsStream("images/background.jpeg"));
-
+        Image StartBoarder = new Image(Display.class.getResourceAsStream("images/background.jpeg"));
+        //setting the dimensions for the boarder image inthe beginning
         BoarderImage.setFitHeight(677);
         BoarderImage.setFitWidth(900);
-        BoarderImage.setImage(newImage1);
+        BoarderImage.setImage(StartBoarder);
+        
+        //Outline for dest cards
+        ImageView DestOutline = new ImageView();
+        Image Outline = new Image(Display.class.getResourceAsStream("images/Outline.JPG"));
+        //Changing Attributes for the positioning
+        DestOutline.setFitHeight(150);
+        DestOutline.setFitWidth(383);
+        DestOutline.setTranslateX(0);
+        DestOutline.setTranslateY(569);
+        DestOutline.setImage(Outline);
+        
+        //ScoreBard
+        ImageView scoreBoard = new ImageView();
+        Image Score = new Image(Display.class.getResourceAsStream("images/scoreBoard.JPG"));
+        //Changing Attributes
+        scoreBoard.setFitHeight(280);
+        scoreBoard.setFitWidth(180);
+        scoreBoard.setTranslateX(1022);
+        scoreBoard.setTranslateY(442);
+        scoreBoard.setImage(Score);
 
         
         
@@ -618,7 +638,7 @@ Line r7 =new Line(0,700,1200,700);
                 STLtoKSC, DCtoMON, NYCtoLR, LRtoNWO, HOUtoELP, NAStoCHA, 
                 LAtoSTF, STFtoHEL,MONtoBOS, LA, SEA, VAN, WIN, SLC, POR,PHE, 
                 LR, DEN, PIT, OKC, DUL, HEL,MIA,HOU, BOS, RAE, NYC, CHI, STM, 
-                DAL, NAS, CHA, DC, TOR,STL,KSC, NWO, ELP, STF, MON, cardInfo);  
+                DAL, NAS, CHA, DC, TOR,STL,KSC, NWO, ELP, STF, MON, cardInfo, DestOutline, scoreBoard);  
                 //, c1, c2, 
                 //c3, c4, c5, c6, c7, c8, c9, c10, c11, r1, r2, r3, r4, r5, 
                 //r6, r7);
@@ -635,6 +655,10 @@ Line r7 =new Line(0,700,1200,700);
         MakeMovePic.setTranslateX(120);
         MakeMovePic.setImage(AreYouReady);
 
+        
+        
+        
+        
         
         
         Button ready = new Button("Ready "+game.getPlayers().get(count).GetName());
