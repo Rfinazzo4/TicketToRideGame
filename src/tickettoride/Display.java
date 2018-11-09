@@ -106,38 +106,32 @@ Line r7 =new Line(0,700,1200,700);
         //Los Angeles
         
         Button LA = new Button(); 
-        // set text of button
-        LA.setText("LA");
-        // X and Y of button on the layout
-        LA.setTranslateX(180);
-        LA.setTranslateY(400);
-        // makes the button a circle and sets size
-        LA.setShape(new Circle(2));
-        LA.setMinSize(4,4);
+        LA.setText("LA"); // sets text of button
+        LA.setTranslateX(170); // x coordinate
+        LA.setTranslateY(400); // y coordinate 
+        LA.setShape(new Circle(4)); // makes button shape into circle
+        LA.setMinSize(4,4); // sets button shape minimum size
         
-
         //Seattle
         Button SEA = new Button();
         SEA.setText("SEA");
-        SEA.setTranslateX(85);
+        SEA.setTranslateX(175);
         SEA.setTranslateY(60);
-        SEA.setShape(new Circle(2));
+        SEA.setShape(new Circle(4));
         SEA.setMinSize(4,4);
-        //SEA.setGraphic((cityCircle_));
-        //SEA.setPadding(Insets.EMPTY);
        
         //Vancouver
         Button VAN = new Button();
         VAN.setText("VAN");
-        VAN.setTranslateX(75);
+        VAN.setTranslateX(165);
         VAN.setTranslateY(5);
-        VAN.setShape(new Circle(2));
+        VAN.setShape(new Circle(4));
         VAN.setMinSize(4,4);
        
         //Winnipeg
         Button WIN = new Button();
         WIN.setText("WIN");
-        WIN.setTranslateX(550);
+        WIN.setTranslateX(640);
         WIN.setTranslateY(50);
         WIN.setShape(new Circle(4));
         WIN.setMinSize(4,4);
@@ -145,7 +139,7 @@ Line r7 =new Line(0,700,1200,700);
         //Salt Lake City
         Button SLC = new Button();
         SLC.setText("SLC");
-        SLC.setTranslateX(260);
+        SLC.setTranslateX(350);
         SLC.setTranslateY(270);
         SLC.setShape(new Circle(4));
         SLC.setMinSize(4,4);
@@ -153,55 +147,57 @@ Line r7 =new Line(0,700,1200,700);
         //Portland
         Button POR = new Button();
         POR.setText("POR");
-        POR.setTranslateX(55);
+        POR.setTranslateX(145);
         POR.setTranslateY(105);
-        POR.setShape(new Circle(2));
+        POR.setShape(new Circle(4));
         POR.setMinSize(4,4);
        
         //Pheonix
         Button PHE = new Button();
         PHE.setText("PHE");
-        PHE.setTranslateX(220);
+        PHE.setTranslateX(310);
         PHE.setTranslateY(440);
-        PHE.setShape(new Circle(2));
+        PHE.setShape(new Circle(4));
         PHE.setMinSize(4,4);
        
         //Little Rock
         Button LR = new Button();
         LR.setText("LR");
-        LR.setTranslateX(670);
+        LR.setTranslateX(760);
         LR.setTranslateY(440);
-        LR.setShape(new Circle(2));
+        LR.setShape(new Circle(4));
         LR.setMinSize(4,4);
        
         //Denver
         Button DEN = new Button();
         DEN.setText("DEN");
-        DEN.setTranslateX(380);
+        DEN.setTranslateX(470);
         DEN.setTranslateY(325);
-        DEN.setShape(new Circle(2));
+        DEN.setShape(new Circle(4));
         DEN.setMinSize(4,4);
        
+        /*
         //Pittsburg
         Button PIT = new Button();
         PIT.setText("PIT");
         PIT.setTranslateX(930);
         PIT.setTranslateY(270);
-        PIT.setShape(new Circle(2));
+        PIT.setShape(new Circle(4));
         PIT.setMinSize(4,4);
+        */
        
         //Oaklahoma
         Button OKC = new Button();
         OKC.setText("OKC");
-        OKC.setTranslateX(530);
+        OKC.setTranslateX(620);
         OKC.setTranslateY(420);
         OKC.setShape(new Circle(4));
         OKC.setMinSize(4,4);
        
-        //Dulith
+        //Duluth
         Button DUL = new Button();
         DUL.setText("DUL");
-        DUL.setTranslateX(650);
+        DUL.setTranslateX(740);
         DUL.setTranslateY(130);
         DUL.setShape(new Circle(4));
         DUL.setMinSize(4,4);
@@ -209,57 +205,47 @@ Line r7 =new Line(0,700,1200,700);
         //Helana
         Button HEL = new Button();
         HEL.setText("HEL");
-        HEL.setTranslateX(270);
+        HEL.setTranslateX(360);
         HEL.setTranslateY(120);
-        HEL.setShape(new Circle(2));
-        HEL.setMinSize(4,4);
         HEL.setShape(new Circle(4));
         HEL.setMinSize(4,4);
        
         //Miami
         Button MIA = new Button();
         MIA.setText("MIA");
-        MIA.setTranslateX(985);
+        MIA.setTranslateX(1075);
         MIA.setTranslateY(650);
-        MIA.setShape(new Circle(2));
-        MIA.setMinSize(4,4);
         MIA.setShape(new Circle(4));
         MIA.setMinSize(4,4);
        
         //Houston
         Button HOU = new Button();
         HOU.setText("HOU");
-        HOU.setTranslateX(610);
+        HOU.setTranslateX(700);
         HOU.setTranslateY(570);
-        HOU.setShape(new Circle(2));
-        HOU.setMinSize(4,4);
         HOU.setShape(new Circle(4));
         HOU.setMinSize(4,4);
        
         //Boston
         Button BOS = new Button();
         BOS.setText("BOS");
-        BOS.setTranslateX(1100);
+        BOS.setTranslateX(1190);
         BOS.setTranslateY(190);
-        BOS.setShape(new Circle(2));
-        BOS.setMinSize(4,4);
         BOS.setShape(new Circle(4));
         BOS.setMinSize(4,4);
        
         //Raleigh
         Button RAE = new Button();
         RAE.setText("RAE");
-        RAE.setTranslateX(990);
+        RAE.setTranslateX(1080);
         RAE.setTranslateY(385);
-        RAE.setShape(new Circle(2));
-        RAE.setMinSize(4,4);
         RAE.setShape(new Circle(4));
         RAE.setMinSize(4,4);
        
         //Ney York
         Button NYC = new Button();
         NYC.setText("NYC");
-        NYC.setTranslateX(1050);
+        NYC.setTranslateX(1140);
         NYC.setTranslateY(230);
         NYC.setShape(new Circle(4));
         NYC.setMinSize(4,4);
@@ -267,7 +253,7 @@ Line r7 =new Line(0,700,1200,700);
         //Chicago
         Button CHI = new Button();
         CHI.setText("CHI");
-        CHI.setTranslateX(750);
+        CHI.setTranslateX(840);
         CHI.setTranslateY(250);
         CHI.setShape(new Circle(4));
         CHI.setMinSize(4,4);
@@ -275,7 +261,7 @@ Line r7 =new Line(0,700,1200,700);
         //Saint Maury
         Button STM = new Button();
         STM.setText("STM");
-        STM.setTranslateX(810);
+        STM.setTranslateX(900);
         STM.setTranslateY(120);
         STM.setShape(new Circle(4));
         STM.setMinSize(4,4);
@@ -284,7 +270,7 @@ Line r7 =new Line(0,700,1200,700);
         //Dallas
         Button DAL = new Button();
         DAL.setText("DAL");
-        DAL.setTranslateX(550);
+        DAL.setTranslateX(640);
         DAL.setTranslateY(500);
         DAL.setShape(new Circle(4));
         DAL.setMinSize(4,4);
@@ -292,7 +278,7 @@ Line r7 =new Line(0,700,1200,700);
         //Nashville
         Button NAS = new Button();
         NAS.setText("NAS");
-        NAS.setTranslateX(790);
+        NAS.setTranslateX(880);
         NAS.setTranslateY(405);
         NAS.setShape(new Circle(4));
         NAS.setMinSize(4,4);
@@ -300,7 +286,7 @@ Line r7 =new Line(0,700,1200,700);
         //Charleston
         Button CHA = new Button();
         CHA.setText("CHA");
-        CHA.setTranslateX(950);
+        CHA.setTranslateX(1040);
         CHA.setTranslateY(460);
         CHA.setShape(new Circle(4));
         CHA.setMinSize(4,4);
@@ -308,7 +294,7 @@ Line r7 =new Line(0,700,1200,700);
         //WDC
         Button DC = new Button();
         DC.setText("DC");
-        DC.setTranslateX(990);
+        DC.setTranslateX(1080);
         DC.setTranslateY(310);
         DC.setShape(new Circle(4));
         DC.setMinSize(4,4);
@@ -316,7 +302,7 @@ Line r7 =new Line(0,700,1200,700);
         //Toronto
         Button TOR = new Button();
         TOR.setText("TOR");
-        TOR.setTranslateX(910);
+        TOR.setTranslateX(1000);
         TOR.setTranslateY(180);
         TOR.setShape(new Circle(4));
         TOR.setMinSize(4,4);
@@ -324,7 +310,7 @@ Line r7 =new Line(0,700,1200,700);
         //St luois
         Button STL = new Button();
         STL.setText("STL");
-        STL.setTranslateX(700);
+        STL.setTranslateX(790);
         STL.setTranslateY(330);
         STL.setShape(new Circle(4));
         STL.setMinSize(4,4);
@@ -332,7 +318,7 @@ Line r7 =new Line(0,700,1200,700);
         //Kansis City
         Button KSC = new Button();
         KSC.setText("KSC");
-        KSC.setTranslateX(610);
+        KSC.setTranslateX(700);
         KSC.setTranslateY(330);
         KSC.setShape(new Circle(4));
         KSC.setMinSize(4,4);
@@ -340,7 +326,7 @@ Line r7 =new Line(0,700,1200,700);
         //Montreal
         Button MON = new Button();
         MON.setText("MON");
-        MON.setTranslateX(1020);
+        MON.setTranslateX(1110);
         MON.setTranslateY(110);
         MON.setShape(new Circle(4));
         MON.setMinSize(4,4);
@@ -348,7 +334,7 @@ Line r7 =new Line(0,700,1200,700);
         //New Orleans
         Button NWO = new Button();
         NWO.setText("NWO");
-        NWO.setTranslateX(730);
+        NWO.setTranslateX(820);
         NWO.setTranslateY(550);
         NWO.setShape(new Circle(4));
         NWO.setMinSize(4,4);
@@ -356,7 +342,7 @@ Line r7 =new Line(0,700,1200,700);
         //El Paso
         Button ELP = new Button();
         ELP.setText("ELP");
-        ELP.setTranslateX(340);
+        ELP.setTranslateX(430);
         ELP.setTranslateY(500);
         ELP.setShape(new Circle(4));
         ELP.setMinSize(4,4);
@@ -364,10 +350,19 @@ Line r7 =new Line(0,700,1200,700);
         //Santa Fe
         Button STF = new Button();
         STF.setText("STF");
-        STF.setTranslateX(360);
+        STF.setTranslateX(450);
         STF.setTranslateY(400);
         STF.setShape(new Circle(4));
         STF.setMinSize(4,4);
+        
+
+        // Bismarck
+        Button BIS = new Button();
+        BIS.setText("BIS");
+        BIS.setTranslateX(590);
+        BIS.setTranslateY(120);
+        BIS.setShape(new Circle(4));
+        BIS.setMinSize(4,4);
 
 //Create the Player option Buttons 
         Button p2 = new Button();
@@ -376,6 +371,373 @@ Line r7 =new Line(0,700,1200,700);
         p2.setText("2 Players");
         
 //</editor-fold>
+      
+      // ROUTE LENGTH LABEL
+//<editor-fold defaultstate="collapsed" desc="comment">
+
+        // Create Labels to display the length of each route.
+        // Labels will be the same color as the route and placed next to the route to let
+        // the user know how many Train Cards are needed for a specific route
+        
+
+        
+        
+        
+        // length labels for each route on the map
+        Label VANtoWINlength = new Label();
+        VANtoWINlength.setText("9"); // text
+        VANtoWINlength.setTextFill(Color.GREY); // color
+        VANtoWINlength.setTranslateX(430); // x coordinate
+        VANtoWINlength.setTranslateY(20); // y coordinate 
+        VANtoWINlength.setStyle("-fx-font-weight: bold"); // makes text bold
+        VANtoWINlength.setStyle("-fx-font: 18 arial;"); // text font and size
+            
+        
+        Label SEAtoLAlength = new Label();
+        SEAtoLAlength.setText("9");
+        SEAtoLAlength.setTextFill(Color.WHITE);
+        SEAtoLAlength.setTranslateX(175);
+        SEAtoLAlength.setTranslateY(205);
+        SEAtoLAlength.setStyle("-fx-font-weight: bold");
+        SEAtoLAlength.setStyle("-fx-font: 18 arial;");
+        
+       
+        Label SLCtoPORlength = new Label();
+        SLCtoPORlength.setText("6");
+        SLCtoPORlength.setTextFill(Color.BLUE);
+        SLCtoPORlength.setTranslateX(250);
+        SLCtoPORlength.setTranslateY(168);
+        SLCtoPORlength.setStyle("-fx-font-weight: bold");
+        SLCtoPORlength.setStyle("-fx-font: 18 arial;");
+         
+        
+        Label PHEtoLRlength = new Label();
+        PHEtoLRlength.setText("8");
+        PHEtoLRlength.setTextFill(Color.PURPLE);
+        PHEtoLRlength.setTranslateX(590);
+        PHEtoLRlength.setTranslateY(450);
+        PHEtoLRlength.setStyle("-fx-font-weight: bold");
+        PHEtoLRlength.setStyle("-fx-font: 18 arial;");
+        
+        Label DENtoBISlength = new Label();
+        DENtoBISlength.setText("6");
+        DENtoBISlength.setTextFill(Color.BLACK);
+        DENtoBISlength.setTranslateX(560);
+        DENtoBISlength.setTranslateY(230);
+        DENtoBISlength.setStyle("-fx-font-weight: bold");
+        DENtoBISlength.setStyle("-fx-font: 18 arial;");
+
+        Label OKCtoDULlength = new Label();
+        OKCtoDULlength.setText("8");
+        OKCtoDULlength.setTextFill(Color.RED);
+        OKCtoDULlength.setTranslateX(690);
+        OKCtoDULlength.setTranslateY(230);
+        OKCtoDULlength.setStyle("-fx-font-weight: bold");
+        OKCtoDULlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label SEAtoVANlength = new Label();
+        SEAtoVANlength.setText("1");
+        SEAtoVANlength.setTextFill(Color.GREY);
+        SEAtoVANlength.setTranslateX(170);
+        SEAtoVANlength.setTranslateY(37);
+        SEAtoVANlength.setStyle("-fx-font-weight: bold");
+        SEAtoVANlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label SEAtoPORlength = new Label();
+        SEAtoPORlength.setText("1");
+        SEAtoPORlength.setTextFill(Color.GREY);
+        SEAtoPORlength.setTranslateX(161);
+        SEAtoPORlength.setTranslateY(85);
+        SEAtoPORlength.setStyle("-fx-font-weight: bold");
+        SEAtoPORlength.setStyle("-fx-font: 18 arial;");
+
+        
+        Label HELtoLAlength = new Label();
+        HELtoLAlength.setText("8");
+        HELtoLAlength.setTextFill(Color.BLUE);
+        HELtoLAlength.setTranslateX(265);
+        HELtoLAlength.setTranslateY(300);
+        HELtoLAlength.setStyle("-fx-font-weight: bold");
+        HELtoLAlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label MIAtoHOUlength = new Label();
+        MIAtoHOUlength.setText("8");
+        MIAtoHOUlength.setTextFill(Color.PURPLE);
+        MIAtoHOUlength.setTranslateX(890);
+        MIAtoHOUlength.setTranslateY(625);
+        MIAtoHOUlength.setStyle("-fx-font-weight: bold");
+        MIAtoHOUlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label BOStoRAElength = new Label();
+        BOStoRAElength.setText("6");
+        BOStoRAElength.setTextFill(Color.WHITE);
+        BOStoRAElength.setTranslateX(1160);
+        BOStoRAElength.setTranslateY(300);
+        BOStoRAElength.setStyle("-fx-font-weight: bold");
+        BOStoRAElength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label NYCtoCHIlength = new Label();
+        NYCtoCHIlength.setText("5");
+        NYCtoCHIlength.setTextFill(Color.BLACK);
+        NYCtoCHIlength.setTranslateX(990);
+        NYCtoCHIlength.setTranslateY(250);
+        NYCtoCHIlength.setStyle("-fx-font-weight: bold");
+        NYCtoCHIlength.setStyle("-fx-font: 18 arial;");
+
+        
+        Label STMtoDALlength = new Label();
+        STMtoDALlength.setText("10");
+        STMtoDALlength.setTextFill(Color.BLUE);
+        STMtoDALlength.setTranslateX(840);
+        STMtoDALlength.setTranslateY(200);
+        STMtoDALlength.setStyle("-fx-font-weight: bold");
+        STMtoDALlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label DALtoNASlength = new Label();
+        DALtoNASlength.setText("5");
+        DALtoNASlength.setTextFill(Color.GREY);
+        DALtoNASlength.setTranslateX(815);
+        DALtoNASlength.setTranslateY(450);
+        DALtoNASlength.setStyle("-fx-font-weight: bold");
+        DALtoNASlength.setStyle("-fx-font: 18 arial;");
+        
+        Label NAStoMIAlength = new Label();
+        NAStoMIAlength.setText("5");
+        NAStoMIAlength.setTextFill(Color.GREY);
+        NAStoMIAlength.setTranslateX(970);
+        NAStoMIAlength.setTranslateY(525);
+        NAStoMIAlength.setStyle("-fx-font-weight: bold");
+        NAStoMIAlength.setStyle("-fx-font: 18 arial;");
+        
+        Label MIAtoCHAlength = new Label();
+        MIAtoCHAlength.setText("4");
+        MIAtoCHAlength.setTextFill(Color.BLUE);
+        MIAtoCHAlength.setTranslateX(1075);
+        MIAtoCHAlength.setTranslateY(525);
+        MIAtoCHAlength.setStyle("-fx-font-weight: bold");
+        MIAtoCHAlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label CHAtoDClength = new Label();
+        CHAtoDClength.setText("4");
+        CHAtoDClength.setTextFill(Color.PURPLE);
+        CHAtoDClength.setTranslateX(1050);
+        CHAtoDClength.setTranslateY(400);
+        CHAtoDClength.setStyle("-fx-font-weight: bold");
+        CHAtoDClength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label TORtoCHIlength = new Label();
+        TORtoCHIlength.setText("4");
+        TORtoCHIlength.setTextFill(Color.BLACK);
+        TORtoCHIlength.setTranslateX(915);
+        TORtoCHIlength.setTranslateY(210);
+        TORtoCHIlength.setStyle("-fx-font-weight: bold");
+        TORtoCHIlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label CHItoSTLlength = new Label();
+        CHItoSTLlength.setText("2");
+        CHItoSTLlength.setTextFill(Color.RED);
+        CHItoSTLlength.setTranslateX(835);
+        CHItoSTLlength.setTranslateY(300);
+        CHItoSTLlength.setStyle("-fx-font-weight: bold");
+        CHItoSTLlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label STLtoKSClength = new Label();
+        STLtoKSClength.setText("2");
+        STLtoKSClength.setTextFill(Color.GREY);
+        STLtoKSClength.setTranslateX(745);
+        STLtoKSClength.setTranslateY(320);
+        STLtoKSClength.setStyle("-fx-font-weight: bold");
+        STLtoKSClength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label DCtoMONlength = new Label();
+        DCtoMONlength.setText("5");
+        DCtoMONlength.setTextFill(Color.WHITE);
+        DCtoMONlength.setTranslateX(1130);
+        DCtoMONlength.setTranslateY(195);
+        DCtoMONlength.setStyle("-fx-font-weight: bold");
+        DCtoMONlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label NYCtoLRlength = new Label();
+        NYCtoLRlength.setText("9");
+        NYCtoLRlength.setTextFill(Color.WHITE);
+        NYCtoLRlength.setTranslateX(960);
+        NYCtoLRlength.setTranslateY(310);
+        NYCtoLRlength.setStyle("-fx-font-weight: bold");
+        NYCtoLRlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label LRtoNWOlength = new Label();
+        LRtoNWOlength.setText("3");
+        LRtoNWOlength.setTextFill(Color.WHITE);
+        LRtoNWOlength.setTranslateX(805);
+        LRtoNWOlength.setTranslateY(490);
+        LRtoNWOlength.setStyle("-fx-font-weight: bold");
+        LRtoNWOlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label HOUtoELPlength = new Label();
+        HOUtoELPlength.setText("6");
+        HOUtoELPlength.setTextFill(Color.RED);
+        HOUtoELPlength.setTranslateX(590);
+        HOUtoELPlength.setTranslateY(548);
+        HOUtoELPlength.setStyle("-fx-font-weight: bold");
+        HOUtoELPlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label NAStoCHAlength = new Label();
+        NAStoCHAlength.setText("3");
+        NAStoCHAlength.setTextFill(Color.BLACK);
+        NAStoCHAlength.setTranslateX(965);
+        NAStoCHAlength.setTranslateY(438);
+        NAStoCHAlength.setStyle("-fx-font-weight: bold");
+        NAStoCHAlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label LAtoSTFlength = new Label();
+        LAtoSTFlength.setText("6");
+        LAtoSTFlength.setTextFill(Color.BLACK);
+        LAtoSTFlength.setTranslateX(335);
+        LAtoSTFlength.setTranslateY(390);
+        LAtoSTFlength.setStyle("-fx-font-weight: bold");
+        LAtoSTFlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label MONtoBOSlength = new Label();
+        MONtoBOSlength.setText("2");
+        MONtoBOSlength.setTextFill(Color.PURPLE);
+        MONtoBOSlength.setTranslateX(1173);
+        MONtoBOSlength.setTranslateY(152);
+        MONtoBOSlength.setStyle("-fx-font-weight: bold");
+        MONtoBOSlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label DENtoSLClength = new Label();
+        DENtoSLClength.setText("5");
+        DENtoSLClength.setTextFill(Color.RED);
+        DENtoSLClength.setTranslateX(445);
+        DENtoSLClength.setTranslateY(300);
+        DENtoSLClength.setStyle("-fx-font-weight: bold");
+        DENtoSLClength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label PHEtoLAlength = new Label();
+        PHEtoLAlength.setText("5");
+        PHEtoLAlength.setTextFill(Color.BLUE);
+        PHEtoLAlength.setTranslateX(260);
+        PHEtoLAlength.setTranslateY(435);
+        PHEtoLAlength.setStyle("-fx-font-weight: bold");
+        PHEtoLAlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label RAEtoCHAlength = new Label();
+        RAEtoCHAlength.setText("3");
+        RAEtoCHAlength.setTextFill(Color.RED);
+        RAEtoCHAlength.setTranslateX(1090);
+        RAEtoCHAlength.setTranslateY(435);
+        RAEtoCHAlength.setStyle("-fx-font-weight: bold");
+        RAEtoCHAlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label WINtoDULlength = new Label();
+        WINtoDULlength.setText("4");
+        WINtoDULlength.setTextFill(Color.WHITE);
+        WINtoDULlength.setTranslateX(720);
+        WINtoDULlength.setTranslateY(100);
+        WINtoDULlength.setStyle("-fx-font-weight: bold");
+        WINtoDULlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label DULtoSTMlength = new Label();
+        DULtoSTMlength.setText("4");
+        DULtoSTMlength.setTextFill(Color.PURPLE);
+        DULtoSTMlength.setTranslateX(855);
+        DULtoSTMlength.setTranslateY(110);
+        DULtoSTMlength.setStyle("-fx-font-weight: bold");
+        DULtoSTMlength.setStyle("-fx-font: 18 arial;");
+        
+        Label STMtoMONlength = new Label();
+        STMtoMONlength.setText("7");
+        STMtoMONlength.setTextFill(Color.RED);
+        STMtoMONlength.setTranslateX(1040);
+        STMtoMONlength.setTranslateY(105);
+        STMtoMONlength.setStyle("-fx-font-weight: bold");
+        STMtoMONlength.setStyle("-fx-font: 18 arial;");
+        
+        Label TORtoMONlength = new Label();
+        TORtoMONlength.setText("3");
+        TORtoMONlength.setTextFill(Color.BLACK);
+        TORtoMONlength.setTranslateX(1075);
+        TORtoMONlength.setTranslateY(155);
+        TORtoMONlength.setStyle("-fx-font-weight: bold");
+        TORtoMONlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label KSCtoDENlength = new Label();
+        KSCtoDENlength.setText("8");
+        KSCtoDENlength.setTextFill(Color.GREY);
+        KSCtoDENlength.setTranslateX(595);
+        KSCtoDENlength.setTranslateY(325);
+        KSCtoDENlength.setStyle("-fx-font-weight: bold");
+        KSCtoDENlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label OKCtoSFElength = new Label();
+        OKCtoSFElength.setText("4");
+        OKCtoSFElength.setTextFill(Color.RED);
+        OKCtoSFElength.setTranslateX(545);
+        OKCtoSFElength.setTranslateY(405);
+        OKCtoSFElength.setStyle("-fx-font-weight: bold");
+        OKCtoSFElength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label NWOtoHOUlength = new Label();
+        NWOtoHOUlength.setText("2");
+        NWOtoHOUlength.setTextFill(Color.BLUE);
+        NWOtoHOUlength.setTranslateX(800);
+        NWOtoHOUlength.setTranslateY(570);
+        NWOtoHOUlength.setStyle("-fx-font-weight: bold");
+        NWOtoHOUlength.setStyle("-fx-font: 18 arial;");
+        
+        Label PHEtoELPlength = new Label();
+        PHEtoELPlength.setText("3");
+        PHEtoELPlength.setTextFill(Color.PURPLE);
+        PHEtoELPlength.setTranslateX(385);
+        PHEtoELPlength.setTranslateY(490);
+        PHEtoELPlength.setStyle("-fx-font-weight: bold");
+        PHEtoELPlength.setStyle("-fx-font: 18 arial;");
+        
+        Label HELtoBISlength = new Label();
+        HELtoBISlength.setText("8");
+        HELtoBISlength.setTextFill(Color.GREY);
+        HELtoBISlength.setTranslateX(505);
+        HELtoBISlength.setTranslateY(115);
+        HELtoBISlength.setStyle("-fx-font-weight: bold");
+        HELtoBISlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label BIStoWINlength = new Label();
+        BIStoWINlength.setText("5");
+        BIStoWINlength.setTextFill(Color.WHITE);
+        BIStoWINlength.setTranslateX(635);
+        BIStoWINlength.setTranslateY(100);
+        BIStoWINlength.setStyle("-fx-font-weight: bold");
+        BIStoWINlength.setStyle("-fx-font: 18 arial;");
+
+
+
+//</editor-fold>
 
 //ROUTE LINES
 //<editor-fold defaultstate="collapsed" desc="comment">
@@ -383,150 +745,217 @@ Line r7 =new Line(0,700,1200,700);
 // each route will have a color as well
 
 // Vancouver ---> Winnipeg & Grey
-        Line VANtoWIN = new Line(115, 15, 550, 65);
-        VANtoWIN.setStroke(Color.GREY);
-        VANtoWIN.setStrokeWidth(3);
+        Line VANtoWIN = new Line(205, 15, 640, 65); // x & y coordinates of each city
+        VANtoWIN.setStroke(Color.GREY); // line color
+        VANtoWIN.setStrokeWidth(3); // line width
        
-        // Seattle ---> LA & White
-        Line SEAtoLA = new Line(99, 85, 95, 400);
+        // Seattle ---> LA & Green
+        Line SEAtoLA = new Line(189, 85, 185, 400);
         SEAtoLA.setStroke(Color.WHITE);
         SEAtoLA.setStrokeWidth(3);
        
        
         // Salt Lake City ---> Portland & Blue
-        Line SLCtoPOR = new Line(265, 275, 85, 129);
+        Line SLCtoPOR = new Line(355, 275, 175, 129);
         SLCtoPOR.setStroke(Color.BLUE);
         SLCtoPOR.setStrokeWidth(3);
        
        
-        // Pheonix ---> Little Rock & Purple
-        Line PHEtoLR = new Line(255, 450, 672, 450);
+        // Pheonix ---> Little Rock & Yellow
+        Line PHEtoLR = new Line(345, 450, 762, 450);
         PHEtoLR.setStroke(Color.PURPLE);
         PHEtoLR.setStrokeWidth(3);
        
-        // Denver ---> Pittsburg & Black
-        Line DENtoPIT = new Line(415, 330, 930, 280);
-        DENtoPIT.setStroke(Color.BLACK);
-        DENtoPIT.setStrokeWidth(3);
+        // Denver ---> Bismarck & Black
+        Line DENtoBIS = new Line(505, 330, 605, 148);
+        DENtoBIS.setStroke(Color.BLACK);
+        DENtoBIS.setStrokeWidth(3);
        
         // Okalahoma City ---> Duluth & Red
-        Line OKCtoDUL = new Line(545, 420, 660, 155);
+        Line OKCtoDUL = new Line(655, 422, 750, 155);
         OKCtoDUL.setStroke(Color.RED);
         OKCtoDUL.setStrokeWidth(3);
        
         // Seattle ---> Vancouver & Grey
-        Line SEAtoVAN = new Line(95, 60, 95, 30);
+        Line SEAtoVAN = new Line(185, 60, 185, 30);
         SEAtoVAN.setStroke(Color.GREY);
         SEAtoVAN.setStrokeWidth(3);
        
         // Seatle ---> Portland & Grey
-        Line SEAtoPOR = new Line(90, 80, 85, 105);
+        Line SEAtoPOR = new Line(180, 80, 175, 105);
         SEAtoPOR.setStroke(Color.GREY);
         SEAtoPOR.setStrokeWidth(3);
        
         // Helena ---> Los Angeles & Blue
-        Line HELtoLA = new Line(280, 145, 100, 400);
+        Line HELtoLA = new Line(370, 145, 190, 400);
         HELtoLA.setStroke(Color.BLUE);
         HELtoLA.setStrokeWidth(3);
        
-        // Miami ---> Houston & Purple
-        Line MIAtoHOU = new Line(990, 660, 650, 580);
+        // Miami ---> Houston & Yellow
+        Line MIAtoHOU = new Line(1080, 660, 730, 595);
         MIAtoHOU.setStroke(Color.PURPLE);
         MIAtoHOU.setStrokeWidth(3);
        
-        // Boston ---> Raleigh & White
-        Line BOStoRAE = new Line(1120, 215, 1005, 385);
+        // Boston ---> Raleigh & Green
+        Line BOStoRAE = new Line(1210, 215, 1110, 385);
         BOStoRAE.setStroke(Color.WHITE);
         BOStoRAE.setStrokeWidth(3);
        
        
         // New York ---> Chicago & Black
-        Line NYCtoCHI = new Line(1050, 238, 785, 260);
+        Line NYCtoCHI = new Line(1140, 238, 875, 260);
         NYCtoCHI.setStroke(Color.BLACK);
         NYCtoCHI.setStrokeWidth(3);
        
         // Sault St Marie ---> Dallas & Blue
-        Line STMtoDAL = new Line(825, 145, 570, 500);
+        Line STMtoDAL = new Line(915, 145, 660, 500);
         STMtoDAL.setStroke(Color.BLUE);
         STMtoDAL.setStrokeWidth(3);
        
         // Dallas ---> Nashville & Grey
-        Line DALtoNAS = new Line(590, 515, 790, 420);
+        Line DALtoNAS = new Line(680, 515, 880, 420);
         DALtoNAS.setStroke(Color.GREY);
         DALtoNAS.setStrokeWidth(3);
        
         // Nashville ---> Miami & Grey
-        Line NAStoMIA = new Line(822, 430, 995, 655);
+        Line NAStoMIA = new Line(912, 430, 1085, 655);
         NAStoMIA.setStroke(Color.GREY);
         NAStoMIA.setStrokeWidth(3);
        
         // Miami ---> Charleston & Blue
-        Line MIAtoCHA = new Line(1005, 650, 970, 485);
+        Line MIAtoCHA = new Line(1095, 650, 1060, 485);
         MIAtoCHA.setStroke(Color.BLUE);
         MIAtoCHA.setStrokeWidth(3);
        
-        // Charleston ---> Washington DC & Purple
-        Line CHAtoDC = new Line(965, 460, 1005, 335);
+        // Charleston ---> Washington DC & Yellow
+        Line CHAtoDC = new Line(1055, 460, 1095, 335);
         CHAtoDC.setStroke(Color.PURPLE);
         CHAtoDC.setStrokeWidth(3);
        
         // Toronto ---> Chicago & Black
-        Line TORtoCHI = new Line(910, 195, 782, 255);
+        Line TORtoCHI = new Line(1000, 195, 872, 255);
         TORtoCHI.setStroke(Color.BLACK);
         TORtoCHI.setStrokeWidth(3);
        
         // Chicago ---> St. Louis & Red
-        Line CHItoSTL = new Line(760, 275, 725, 330);
+        Line CHItoSTL = new Line(850, 275, 815, 330);
         CHItoSTL.setStroke(Color.RED);
         CHItoSTL.setStrokeWidth(3);
        
-        // St. Louis ---> Kansis City & Grey
-        Line STLtoKSC = new Line(700, 340, 647, 340);
+        // St. Louis ---> Kansas City & Grey
+        Line STLtoKSC = new Line(790, 340, 737, 340);
         STLtoKSC.setStroke(Color.GREY);
         STLtoKSC.setStrokeWidth(3);
        
-        // Washington DC ---> Montreal & White
-        Line DCtoMON = new Line(1010, 310, 1035, 135);
+        // Washington DC ---> Montreal & Green
+        Line DCtoMON = new Line(1100, 310, 1125, 135);
         DCtoMON.setStroke(Color.WHITE);
         DCtoMON.setStrokeWidth(3);
        
-        // New York ---> Little Rock & White
-        Line NYCtoLR = new Line(1052, 245, 695, 443);
+        // New York ---> Little Rock & Green
+        Line NYCtoLR = new Line(1142, 245, 785, 443);
         NYCtoLR.setStroke(Color.WHITE);
         NYCtoLR.setStrokeWidth(3);
        
-        // Little Rock ---> New Orleans & White
-        Line LRtoNWO = new Line(682, 465, 740, 552);
+        // Little Rock ---> New Orleans & Green
+        Line LRtoNWO = new Line(772, 465, 830, 552);
         LRtoNWO.setStroke(Color.WHITE);
         LRtoNWO.setStrokeWidth(3);
        
-        // Houston ---> El Paso & Purple
-        Line HOUtoELP = new Line(618, 575, 368, 510);
-        HOUtoELP.setStroke(Color.PURPLE);
+        // Houston ---> El Paso & Yellow
+        Line HOUtoELP = new Line(708, 575, 458, 510);
+        HOUtoELP.setStroke(Color.RED);
         HOUtoELP.setStrokeWidth(3);
        
         // Nashville ---> Charleston & Black
-        Line NAStoCHA = new Line(828, 415, 951, 470);
+        Line NAStoCHA = new Line(918, 415, 1041, 470);
         NAStoCHA.setStroke(Color.BLACK);
         NAStoCHA.setStrokeWidth(3);
        
         // Los Angeles ---> Santa Fe & Black
-        Line LAtoSTF = new Line(107, 410, 360, 410);
+        Line LAtoSTF = new Line(197, 410, 450, 410);
         LAtoSTF.setStroke(Color.BLACK);
         LAtoSTF.setStrokeWidth(3);
        
+        /* Got rid of this route as it caused a dead-end 
         // Santa Fe ---> Helena & Grey
         Line STFtoHEL = new Line(370, 400, 290, 144);
         STFtoHEL.setStroke(Color.GREY);
         STFtoHEL.setStrokeWidth(3);
+        */
        
-        // Montreal ---> Boston & Purple
-        Line MONtoBOS = new Line(1050, 135, 1105, 195);
+        // Montreal ---> Boston & Yellow
+        Line MONtoBOS = new Line(1140, 135, 1195, 195);
         MONtoBOS.setStroke(Color.PURPLE);
         MONtoBOS.setStrokeWidth(3);
+        
+        // Denver ---> Salt Lake City & Red
+        Line DENtoSLC = new Line(470, 340, 380, 292);
+        DENtoSLC.setStroke(Color.RED);
+        DENtoSLC.setStrokeWidth(3);
+        
+        
+        // Phoenix ---> Los Angeles & Blue
+        Line PHEtoLA = new Line(335, 450, 195, 420);
+        PHEtoLA.setStroke(Color.BLUE);
+        PHEtoLA.setStrokeWidth(3);
+        
+        // Raleigh ---> Charleston & Red
+        Line RAEtoCHA = new Line(1095, 410, 1070, 475);
+        RAEtoCHA.setStroke(Color.RED);
+        RAEtoCHA.setStrokeWidth(3);
+        
+        // Winnipeg ---> Duluth & Green
+        Line WINtoDUL = new Line(670, 70, 740, 140);
+        WINtoDUL.setStroke(Color.WHITE);
+        WINtoDUL.setStrokeWidth(3);
+        
+        // Duluth ---> Salt St. Marie & Red
+        Line DULtoSTM = new Line(778, 140, 900, 130);
+        DULtoSTM.setStroke(Color.PURPLE);
+        DULtoSTM.setStrokeWidth(3);
+        
+        // Salt St. Marie ----> Montreal & Red
+        Line STMtoMON = new Line(935, 130, 1110, 125);
+        STMtoMON.setStroke(Color.RED);
+        STMtoMON.setStrokeWidth(3);
+        
+        // Toronto ---> Montreal & Black
+        Line TORtoMON = new Line(1035, 183, 1115, 129);
+        TORtoMON.setStroke(Color.BLACK);
+        TORtoMON.setStrokeWidth(3);
+        
+        // Kansas City ---> Denver & Grey
+        Line KSCtoDEN = new Line(705, 345, 500, 345);
+        KSCtoDEN.setStroke(Color.GREY);
+        KSCtoDEN.setStrokeWidth(3);
+        
+        // Oklahoma City ---> Santa Fe & Red
+        Line OKCtoSFE = new Line(625, 435, 480, 420);
+        OKCtoSFE.setStroke(Color.RED);
+        OKCtoSFE.setStrokeWidth(3);
+        
+        // New Orleans ---> Houston & Blue
+        Line NWOtoHOU = new Line(825, 565, 740, 580);
+        NWOtoHOU.setStroke(Color.BLUE);
+        NWOtoHOU.setStrokeWidth(3);
+        
+        // Phoenix ---> El Paso & Yellow
+        Line PHEtoELP = new Line(335, 465, 435, 510);
+        PHEtoELP.setStroke(Color.PURPLE);
+        PHEtoELP.setStrokeWidth(3);
+
+        // Helena ---> Bismarck & Grey
+        Line HELtoBIS = new Line(395, 135, 590, 135);
+        HELtoBIS.setStroke(Color.GREY);
+        HELtoBIS.setStrokeWidth(3);
+        
+        // Bismarck ---> Winnipeg & Green
+        Line BIStoWIN = new Line(615, 130, 650, 75);
+        BIStoWIN.setStroke(Color.WHITE);
+        BIStoWIN.setStrokeWidth(3);
 
 //</editor-fold>
-
         //Creating Image View for the Map
         ImageView selectedImage = new ImageView();
         //Load map image
@@ -535,7 +964,52 @@ Line r7 =new Line(0,700,1200,700);
         selectedImage.setFitHeight(720);
         selectedImage.setFitWidth(1200);
         selectedImage.setImage(newImage);
-        selectedImage.setTranslateX(100);
+        selectedImage.setTranslateX(90);
+      
+                //<editor-fold defaultstate="collapsed" desc="comment">
+        // Display each train card to the left side
+        ImageView blackTrain = new ImageView();
+        Image black = new Image(Display.class.getResourceAsStream("images/Black Traincard.png"));
+        blackTrain.setImage(black);
+        blackTrain.setFitWidth(90);
+        blackTrain.setFitHeight(120);
+        blackTrain.setTranslateY(600);
+
+        ImageView blueTrain = new ImageView();
+        Image blue = new Image(Display.class.getResourceAsStream("images/Blue traincard.png"));
+        blueTrain.setImage(blue);
+        blueTrain.setFitWidth(90);
+        blueTrain.setFitHeight(120);
+        blueTrain.setTranslateY(480);
+
+        ImageView purpleTrain = new ImageView();
+        Image purple = new Image(Display.class.getResourceAsStream("images/Purple Traincard.png"));
+        purpleTrain.setImage(purple);
+        purpleTrain.setFitWidth(90);
+        purpleTrain.setFitHeight(120);
+        purpleTrain.setTranslateY(360);
+
+        ImageView redTrain = new ImageView();
+        Image red = new Image(Display.class.getResourceAsStream("images/Red Traincard.png"));
+        redTrain.setImage(red);
+        redTrain.setFitWidth(90);
+        redTrain.setFitHeight(120);
+        redTrain.setTranslateY(240);
+
+        ImageView whiteTrain = new ImageView();
+        Image white = new Image(Display.class.getResourceAsStream("images/white train card.png"));
+        whiteTrain.setImage(white);
+        whiteTrain.setFitWidth(90);
+        whiteTrain.setFitHeight(120);
+        whiteTrain.setTranslateY(120);
+
+        ImageView locoTrain = new ImageView();
+        Image loco = new Image(Display.class.getResourceAsStream("images/Wildcard locomotive.png"));
+        locoTrain.setImage(loco);
+        locoTrain.setFitWidth(90);
+        locoTrain.setFitHeight(120);
+        locoTrain.setTranslateY(0);
+        //</editor-fold>
         
         //DEFINE SCENE 1
         StackPane root1 = new StackPane();
@@ -570,14 +1044,41 @@ Line r7 =new Line(0,700,1200,700);
                 + "Face Up Train Cards\n"+"===============\n"+game.formatFaceUpTrainCards());
         faceUpCards.getChildren().add(faceUpText);
         
-        root2.getChildren().addAll(selectedImage,VANtoWIN,
-                SEAtoLA, SLCtoPOR, PHEtoLR, DENtoPIT, OKCtoDUL, SEAtoVAN,
+        root2.getChildren().addAll(root2.getChildren().addAll(
+          
+                // map image and each train card image 
+                selectedImage, blackTrain, blueTrain, redTrain,
+                purpleTrain, whiteTrain, locoTrain,
+                
+                // route lines
+                VANtoWIN,SEAtoLA, SLCtoPOR, PHEtoLR, DENtoBIS, OKCtoDUL, SEAtoVAN,
                 SEAtoPOR, HELtoLA, MIAtoHOU,BOStoRAE, NYCtoCHI, STMtoDAL,
                 DALtoNAS, NAStoMIA, MIAtoCHA, CHAtoDC, TORtoCHI, CHItoSTL, 
                 STLtoKSC, DCtoMON, NYCtoLR, LRtoNWO, HOUtoELP, NAStoCHA, 
-                LAtoSTF, STFtoHEL,MONtoBOS, LA, SEA, VAN, WIN, SLC, POR,PHE, 
-                LR, DEN, PIT, OKC, DUL, HEL,MIA,HOU, BOS, RAE, NYC, CHI, STM, 
-                DAL, NAS, CHA, DC, TOR,STL,KSC, NWO, ELP, STF, MON, cardInfo,faceUpCards);  
+                LAtoSTF, MONtoBOS, DENtoSLC, PHEtoLA, RAEtoCHA, WINtoDUL, DULtoSTM,
+                STMtoMON, TORtoMON, KSCtoDEN, OKCtoSFE, NWOtoHOU, PHEtoELP, HELtoBIS,
+                BIStoWIN,
+                
+                // city buttons
+                LA, SEA, VAN, WIN, SLC, POR,PHE,LR, DEN, OKC, DUL, HEL, MIA, HOU, 
+                BOS, RAE, NYC, CHI, STM, DAL, NAS, CHA, DC, TOR, STL, KSC, NWO, 
+                ELP, STF, MON, BIS, 
+                
+                // route length labels 
+                VANtoWINlength, SEAtoLAlength, SLCtoPORlength, PHEtoLRlength, 
+                OKCtoDULlength, SEAtoVANlength, SEAtoPORlength, HELtoLAlength, 
+                MIAtoHOUlength, BOStoRAElength, NYCtoCHIlength, STMtoDALlength, 
+                DALtoNASlength, NAStoMIAlength, MIAtoCHAlength, CHAtoDClength,
+                TORtoCHIlength, CHItoSTLlength, STLtoKSClength, DCtoMONlength,
+                NYCtoLRlength, LRtoNWOlength, HOUtoELPlength, NAStoCHAlength,
+                LAtoSTFlength, MONtoBOSlength, DENtoSLClength, PHEtoLAlength, 
+                RAEtoCHAlength, WINtoDULlength, DULtoSTMlength, STMtoMONlength,
+                TORtoMONlength, KSCtoDENlength, OKCtoSFElength, NWOtoHOUlength,
+                PHEtoELPlength, HELtoBISlength, BIStoWINlength, DENtoBISlength,
+
+                //Scene Updates
+                cardInfo,faceUpCards);  
+                                   
                 //, c1, c2, 
                 //c3, c4, c5, c6, c7, c8, c9, c10, c11, r1, r2, r3, r4, r5, 
                 //r6, r7);
@@ -856,366 +1357,7 @@ ready.setOnAction(e-> {
         }
     });
     
-    SEA.setOnAction(e-> {
-        System.out.println("Here");
-        if(destCount ==0){
-            game.setDestOne(SEA.getText());
-            System.out.println("here2");
-            destCount++;
-        }
-        else if(destCount ==1){
-            game.setDestTwo(SEA.getText());
-            if(game.getDestOne().equals(LA.getText())||
-                    game.getDestOne().equals(POR.getText())||
-                    game.getDestOne().equals(VAN.getText())){
-                System.out.println("valid");
-                destCount=0;
-                refreshCardData(cardData);
-                primaryStage.setScene(transition);
-            }
-            else{
-                System.out.println("Invalid");
-                
-                destCount=0;
-            }
-        }
-    });
-    
-    POR.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(POR.getText());
-            destCount++;
-        }
-        else if(destCount == 1){
-            game.setDestTwo(POR.getText());
-            if(game.getDestOne().equals(SEA.getText())||
-                    game.getDestOne().equals(SLC.getText())||
-                    game.getDestOne().equals(CHI.getText())){
-                System.out.println("valid");
-                destCount=0;
-                refreshCardData(cardData);
-                primaryStage.setScene(transition);
-            }
-            else{
-                System.out.println("Invalid");
-                
-                destCount=0;
-            }
-        }
-    });
-    
-    VAN.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(VAN.getText());
-            destCount++;
-        }
-        else if(destCount ==1){
-            game.setDestTwo(VAN.getText());
-            if(game.getDestOne().equals(WIN.getText())||
-                    game.getDestOne().equals(SEA.getText())){
-                System.out.println("valid");
-                destCount=0;
-                refreshCardData(cardData);
-                primaryStage.setScene(transition);
-            }
-            else{
-                System.out.println("Invalid");
-                
-                destCount=0;
-            }
-        }
-    });
-    //Still needs to be edited check third location 
-    WIN.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(WIN.getText());
-            destCount++;
-        }
-        else if(destCount ==1){
-            game.setDestTwo(WIN.getText());
-            destCount=0;
-            if(game.getDestOne().equals(VAN.getText())||
-                    game.getDestOne().equals(DUL.getText())){
-                System.out.println("valid");
-                destCount=0;
-                refreshCardData(cardData);
-                primaryStage.setScene(transition);
-            }
-            else{
-                System.out.println("Invalid");
-                
-                destCount=0;
-            }
-        }
-    });
-    
-    SLC.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(SLC.getText());
-            destCount++;
-        }
-        else if(destCount ==1){
-            game.setDestTwo(SLC.getText());
-            destCount=0;
-            if(game.getDestOne().equals(POR.getText())||
-                    game.getDestOne().equals(DEN.getText())){
-                System.out.println("valid");
-                destCount=0;
-                refreshCardData(cardData);
-                primaryStage.setScene(transition);
-            }
-            else{
-                System.out.println("Invalid");
-                
-                destCount=0;
-            }
-        }
-    });
-    
-    PHE.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(PHE.getText());
-            destCount++;
-        }
-        else if(destCount ==1){
-            game.setDestTwo(PHE.getText());
-            destCount=0;
-        }
-    });
-    
-    LR.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(LR.getText());
-            destCount++;
-        }
-        else if(destCount ==1){
-            game.setDestTwo(LR.getText());
-            destCount=0;
-        }
-    });
-    
-    DEN.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(DEN.getText());
-            destCount++;
-        }
-        else if(destCount ==1){
-            game.setDestTwo(DEN.getText());
-            destCount=0;
-        }
-    });
-    
-    PIT.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(PIT.getText());
-            destCount++;
-        }
-        else if(destCount ==1){
-            game.setDestTwo(PIT.getText());
-            destCount=0;
-        }
-    });
-    
-    OKC.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(OKC.getText());
-            destCount++;
-        }
-        else if(destCount ==1){
-            game.setDestTwo(OKC.getText());
-            destCount=0;
-        }
-    });
-    
-    DUL.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(DUL.getText());
-            destCount++;
-        }
-        else if(destCount ==1){
-            game.setDestTwo(DUL.getText());
-            destCount=0;
-        }
-    });
-    
-    HEL.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(HEL.getText());
-            destCount++;
-        }
-        else if(destCount ==1){
-            game.setDestTwo(HEL.getText());
-            destCount=0;
-        }
-    });
-    
-    MON.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(MON.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(MON.getText());
-            destCount=0;
-            }
-            
-    });
- 
-     STF.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(STF.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(STF.getText());
-            destCount=0;
-            }
-            
-    });
-    
-     ELP.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(ELP.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(ELP.getText());
-            destCount=0;
-            }
-            
-    });
-    
-     NWO.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(NWO.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(NWO.getText());
-            destCount=0;
-            }
-            
-    });
-    
-     KSC.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(KSC.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(KSC.getText());
-            destCount=0;
-            }
-            
-    });
-    
-     STL.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(STL.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(STL.getText());
-            destCount=0;
-            }
-            
-    });
-    
-     TOR.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(TOR.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(TOR.getText());
-            destCount=0;
-            }
-            
-    });
-    
-     DC.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(DC.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(DC.getText());
-            destCount=0;
-            }
-            
-    });
-    
-     CHA.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(CHA.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(CHA.getText());
-            destCount=0;
-            }
-            
-    });
-    
-     NAS.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(NAS.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(NAS.getText());
-            destCount=0;
-            }
-            
-    });
-    
-     DAL.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(DAL.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(DAL.getText());
-            destCount=0;
-            }
-            
-    });
-    
-     STM.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(STM.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(STM.getText());
-            destCount=0;
-            }
-            
-    });
-    
-     HOU.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(HOU.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(HOU.getText());
-            destCount=0;
-            }
-            
-    });
-    
-     MIA.setOnAction(e-> {
-        if(destCount ==0){
-            game.setDestOne(MIA.getText());
-            destCount++;
-           }
-        else if(destCount ==1){
-            game.setDestTwo(MIA.getText());
-            destCount=0;
-            }
-            
-    });
+
 //</editor-fold>
 }
     

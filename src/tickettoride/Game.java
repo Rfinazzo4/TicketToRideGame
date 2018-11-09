@@ -70,9 +70,9 @@ public class Game {
         DestDeck.add(tempdc);
         tempdc= new DestCard("PHE", "LR", 8, "Purple"); //4 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("DEN", "PIT", 11, "Black"); //5 Card
+        tempdc= new DestCard("DEN", "BIS", 6, "Black"); //5 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("OKC", "DUL", 5, "Red"); //6 Card
+        tempdc= new DestCard("OKC", "DUL", 8, "Red"); //6 Card
         DestDeck.add(tempdc);
         tempdc= new DestCard("SEA", "VAN", 1, "Grey"); //7 Card
         DestDeck.add(tempdc);
@@ -110,18 +110,43 @@ public class Game {
         DestDeck.add(tempdc);
         tempdc= new DestCard("NWO", "HOU", 2, "Grey"); //24 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("HOU", "ELP", 6, "Purple"); //25 Card
+        tempdc= new DestCard("HOU", "ELP", 6, "Red"); //25 Card
         DestDeck.add(tempdc);
         tempdc= new DestCard("NAS", "CHA", 3, "Black"); //26 Card
         DestDeck.add(tempdc);
         tempdc= new DestCard("LA", "STF", 6, "Black"); //27 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("STF", "HEL", 6, "White"); //28 Card
+        tempdc= new DestCard("ELP", "DAL", 4, "Grey"); //28 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("ELP", "DAL", 4, "Grey"); //29 Card
+        tempdc= new DestCard("MON", "BOS", 2, "Purple"); //29 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("MON", "BOS", 2, "Purple"); //30 Card
+        tempdc= new DestCard("DEN", "SLC", 5, "Red"); //30 Card
         DestDeck.add(tempdc);
+        tempdc= new DestCard("PHE", "LA", 5, "Blue"); //31 Card
+        DestDeck.add(tempdc);
+        tempdc= new DestCard("RAE", "CHA", 3, "Red"); //32 Card
+        DestDeck.add(tempdc);
+        tempdc= new DestCard("WIN", "DUL", 4, "White"); //33 Card
+        DestDeck.add(tempdc);
+        tempdc= new DestCard("DUL", "STM", 4, "Purple"); //34 Card
+        DestDeck.add(tempdc);
+        tempdc= new DestCard("STM", "MON", 7, "Red"); //35 Card
+        DestDeck.add(tempdc);
+        tempdc= new DestCard("TOR", "MON", 3, "Black"); //36 Card
+        DestDeck.add(tempdc);
+        tempdc= new DestCard("KSC", "DEN", 8, "Grey"); //37 Card
+        DestDeck.add(tempdc);
+        tempdc= new DestCard("OKC", "SFE", 4, "Red"); //38 Card
+        DestDeck.add(tempdc);
+        tempdc= new DestCard("NWO", "HOU", 2, "Blue"); //39 Card
+        DestDeck.add(tempdc);
+        tempdc= new DestCard("PHE", "ELP", 3, "Purple"); //40 Card
+        DestDeck.add(tempdc);
+        tempdc= new DestCard("BIS", "WIN", 5, "White"); //41 Card
+        DestDeck.add(tempdc);
+        tempdc= new DestCard("HEL", "BIS", 8, "Grey"); //42 Card
+        DestDeck.add(tempdc);
+        
         //Finished Creating Dest Deck
         
         //Set Destination deck top index to 29
@@ -156,7 +181,7 @@ public class Game {
                         TrainDeck.add(traintemp);
                     }
                     break;
-                case 2: //create 2 White
+                case 2: //create 25 White
                     traintemp = new TrainCard("White");
                     for (int j=0;j<25;j++){
                         TrainDeck.add(traintemp);
