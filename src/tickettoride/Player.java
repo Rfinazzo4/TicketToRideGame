@@ -34,7 +34,7 @@ public class Player {
         this.name = name;
         this.score = 0; //players score starts with 0
         this.color = color;
-        this.traincars = 45; // Player starts with 45 train cars 
+        this.traincars = 50; // Player starts with 45 train cars 
         this.TDIndex=0; 
     
         traincards = new ArrayList<>();
@@ -63,11 +63,18 @@ public class Player {
         public void DecrementDestDeck(){
             DDIndex--;
         }
+        public void IncrementDestDeck(){
+            DDIndex++;
+        }
         
         
         public void DecrementTrainCardDeck(){
             //decrement index of top card
             TDIndex--;
+        }
+        public void IncrementTrainCardDeck(){
+            //decrement index of top card
+            TDIndex++;
         }
         
         //Getter for Name
@@ -112,8 +119,8 @@ public class Player {
     String formatTrainCards() {
         int blueCount = 0;
         int redCount = 0;
-        int greenCount = 0;
-        int yellowCount = 0;
+        int whiteCount = 0;
+        int purpleCount = 0;
         int blackCount = 0;
         int locoCount = 0;
         for (TrainCard t :traincards){
@@ -123,29 +130,29 @@ public class Player {
             else if (t.getColor()=="Red"){
                 redCount++;
             }
-            else if (t.getColor()=="Green"){
-                greenCount++;
+            else if (t.getColor()=="White"){
+                whiteCount++;
             }
-            else if (t.getColor()=="Yellow"){
-                yellowCount++;
+            else if (t.getColor()=="Purple"){
+                purpleCount++;
             }
             else if (t.getColor()=="Black"){
                 blackCount++;
             }
-            else if (t.getColor()=="Loco"){
+            else if (t.getColor()=="Locomotive"){
                 locoCount++;
             }
         }
         
-        return ("⟡ Blue("+blueCount+")\n⟡ Red("+redCount+")\n⟡ Green("+greenCount+
-                ")\n⟡ Yellow("+yellowCount+")\n⟡ Black("+blackCount+")\n⟡ Locomotive("+locoCount+")");
+        return ("⟡ Blue("+blueCount+")\n⟡ Red("+redCount+")\n⟡ White("+whiteCount+
+                ")\n⟡ Purple("+purpleCount+")\n⟡ Black("+blackCount+")\n⟡ Locomotive("+locoCount+")");
     }
 
     String formatDestCards() {
         String temp="";
         for(DestCard D:destcards){
             temp +="⟡ ";
-            temp += D.getD1()+ "  <->  ";
+            temp += D.getD1()+ " <- "+D.getLength()+" -> ";
             temp +=D.getD2() +"\n";    
         }
         return temp;
@@ -156,19 +163,64 @@ public class Player {
         destcards.remove(d);
         DDIndex--;
     }
+    
+    public void removeTrainCard(TrainCard t) {
+        
+        traincards.remove(t);
+        TDIndex--;
+    }
 
     private void setScore(DestCard d) {
         score =+d.getLength();
     }
 
-    public int getAmountTrainCardColor(String color) {
+    public int getAmountTrainCardColor(String tcolor) {
         int count=0;
         for (TrainCard t: traincards){
-            if(t.getColor().equals(color)){
+            System.out.println("here0");
+            if(t.getColor()==(tcolor)){
+                System.out.println("here10");
                 count++;
             }
         }
+        System.out.println("count"+count);
         return count;
+    }
+
+    public int getAmountTrainCardColor() {
+        int count=0;
+        for (TrainCard t: traincards){
+            count++;
+        }
+        return count;
+    }
+
+    boolean searchTrainCards() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    boolean hasTrainCard(String tempStr) { 
+        //checking if playerhas a locomotive card to choose from
+        
+        for(TrainCard t: traincards){
+            if(t.getColor()==tempStr){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public TrainCard getTrainCard(String color) {
+        for(TrainCard t: traincards){
+            if(t.getColor().equals(color)){
+                return t;
+            }
+        }
+        return null;
+    }
+
+    void subTraincars(int length) {
+        this.traincars=traincars-length;
     }
 }
     

@@ -15,13 +15,10 @@ public class Game {
     private ArrayList<TrainCard> TrainDeck;
     private ArrayList<DestCard> DestDeck;
     private ArrayList<Player> Playerlist;
+
     private String DestOne;
     private String DestTwo;
     
-    
-    
-    //Board
-    private Board board;            
         //Counts and indexs
     private int playerindex;        //Index of the current Player  (Is this needed??) 
     private int DDtopIndex;           //Destination Deck, index of top card
@@ -30,7 +27,6 @@ public class Game {
     private Display d; 
     private Random rand;
     private boolean play; //Determines whther the game is over (1=Continue playing
-    //, 0 = game over)
 
     
     // Game Constructor
@@ -51,14 +47,6 @@ public class Game {
         TrainDeck = new ArrayList<>();
         DestDeck = new ArrayList<>();
         Playerlist = new ArrayList<>();
-        
-        //Describe the game at the start, 
-        
-        //d.displayStart();
-        
-        //Ask if user wants to 
-        //d.readRules();
-        
         
         //Setup
         ///////////////
@@ -128,8 +116,6 @@ public class Game {
         DestDeck.add(tempdc);
         tempdc= new DestCard("LA", "STF", 6, "Black"); //27 Card
         DestDeck.add(tempdc);
-//        tempdc= new DestCard("STF", "HEL", 6, "White"); //28 Card
-//        DestDeck.add(tempdc);
         tempdc= new DestCard("ELP", "DAL", 4, "Grey"); //28 Card
         DestDeck.add(tempdc);
         tempdc= new DestCard("MON", "BOS", 2, "Purple"); //29 Card
@@ -168,8 +154,8 @@ public class Game {
         //Shuffle Destination Deck
         Collections.shuffle(DestDeck);
         
-        //Deal 3 Destination Cards to each Player
-        for (int i =0; i<3;i++){
+        //Deal 5 Destination Cards to each Player
+        for (int i =0; i<5;i++){
             int randint;
             for(Player p :Playerlist){
                 randint=rand.nextInt(DDtopIndex--);
@@ -183,38 +169,42 @@ public class Game {
         for (int i=0; i<6;i++){
             TrainCard traintemp;
             switch(i){
-                case 0: //create 15 Red
+                case 0: //create 25 Red
                     traintemp = new TrainCard("Red");
-                    for (int j=0;j<15;j++){
+                    for (int j=0;j<25;j++){
                         TrainDeck.add(traintemp);
                     }
                     break;
-                case 1: //create 15 Blue
+                case 1: //create 25 Blue
                     traintemp = new TrainCard("Blue");
-                    for (int j=0;j<15;j++){
+                    for (int j=0;j<25;j++){
                         TrainDeck.add(traintemp);
                     }
                     break;
-                case 2: //create 15 White
+                case 2: //create 25 White
                     traintemp = new TrainCard("White");
-                    for (int j=0;j<15;j++){
+                    for (int j=0;j<25;j++){
+                        TrainDeck.add(traintemp);
+                        for(Player p:Playerlist){
+                            p.AddToTrainDeck(traintemp);
+                        }
+                    }
+                    break;
+                case 3: //create 25 Black
+                    traintemp = new TrainCard("Black");
+                    for (int j=0;j<25;j++){
                         TrainDeck.add(traintemp);
                     }
                     break;
-                case 3: //create 15 Black
-                    traintemp = new TrainCard("Black");
-                    for (int j=0;j<15;j++){
-                        TrainDeck.add(traintemp);
-                    }break;
-                case 4: //create 15 Purple
+                case 4: //create 25 Purple
                     traintemp = new TrainCard("Purple");
-                    for (int j=0;j<15;j++){
+                    for (int j=0;j<25;j++){
                         TrainDeck.add(traintemp);
                     }   
                     break;
-                case 5: //create 15 Locomotive
+                case 5: //create 25 Locomotive
                     traintemp = new TrainCard("Locomotive");
-                    for (int j=0;j<15;j++){
+                    for (int j=0;j<25;j++){
                         TrainDeck.add(traintemp);
                     }   
                     break;
@@ -223,12 +213,12 @@ public class Game {
         }
         
         //Set TrainCard deck top index to 89
-        TDtopIndex=89;
+        TDtopIndex=149;
         //Shuffle Destination Deck
-        shuffleTrainDeck();
+        Collections.shuffle(TrainDeck);
         
-        //Deal 4 Train Cards to each Player
-        for (int i =0; i<4;i++){
+        //Deal 10 Train Cards to each Player
+        for (int i =0; i<10;i++){
             for(Player p :Playerlist){
                 
                 p.AddToTrainDeck(TrainDeck.get(TDtopIndex));
@@ -236,26 +226,17 @@ public class Game {
             }
         }
         
-        //Set top five Train Cards in deck to 'FaceUp' 
-        for(int i = 0;i<5;i++){
-            TrainDeck.get(TDtopIndex-i).setIsFaceUp(true);
-        }
+        setFaceUpCards();
         
         //GAME SETUP IS DONE
         //START PLAYING GAME
-        playGame();
-         
     }
     
     //Adding a player to the Playerlist
      void addPlayer(Player p) {
         Playerlist.add(p);
     }
-    
-    
-    public void playGame(){
-        
-    }
+   
     
     public void endGame(){
         //End game, calulate winner and call Display endgame
@@ -279,6 +260,22 @@ public class Game {
         }
     }
     
+    public ArrayList<TrainCard> getTrainDeck() {
+        return TrainDeck;
+    }
+
+    public ArrayList<DestCard> getDestDeck() {
+        return DestDeck;
+    }
+
+    public int getDDtopIndex() {
+        return DDtopIndex;
+    }
+
+    public int getTDtopIndex() {
+        return TDtopIndex;
+    }
+    
     //Setting the potential Destination to button clicked
     public void setDestOne(String dest){
         this.DestOne=dest;
@@ -289,19 +286,6 @@ public class Game {
     public void setDestTwo(String dest){
         this.DestTwo=dest;
         System.out.println("Dest2: "+dest);
-    }
-
-    public void shuffleTrainDeck(){
-
-        TrainCard Cardtemp;
-        int inttemp; 
-        for (int i =0;i<TrainDeck.size(); i++){
-            inttemp = rand.nextInt(TDtopIndex);
-            Cardtemp = TrainDeck.get(inttemp);
-            TrainDeck.set(inttemp, TrainDeck.get(i));
-            TrainDeck.set(i,Cardtemp); 
-        }
-        
     }
     
     public  ArrayList<Player> getPlayers(){
@@ -315,9 +299,13 @@ public class Game {
         DestDeck.remove(randint);
     }
 
-    void drawTrainCard(Player P) {
-        P.AddToTrainDeck(TrainDeck.get(TDtopIndex));
-        TrainDeck.remove(TDtopIndex--);
+    void drawTrainCard(Player P, int amount) {
+        for (int i=0;i<amount;i++){
+            P.AddToTrainDeck(TrainDeck.get(TDtopIndex-5));
+            TrainDeck.remove(TDtopIndex-5);
+            TDtopIndex--;
+        }
+        
     }
 
     	//Getter for DestOne 
@@ -329,4 +317,77 @@ public class Game {
         return this.DestTwo;
     }
 
+    String formatFaceUpTrainCards() {
+        String text ="";
+        for (int i = 0;i<5;i++){
+            String temp =TrainDeck.get(TDtopIndex-i).toString();
+            text += temp +" \n";
+        }
+        return text;
+    }
+
+    private void setFaceUpCards() {
+        //Set top five Train Cards in deck to 'FaceUp' 
+        for(int i = 0;i<5;i++){
+            TrainDeck.get(TDtopIndex-i).setIsFaceUp(true);
+        }
+    }
+
+    boolean drawOneFaceUpTrainCard(Player P, String color) {
+        for(int j = 0; j<5;j++){
+            if(TrainDeck.get(TDtopIndex-j).getColor().equals(color)){
+                P.AddToTrainDeck(TrainDeck.get(TDtopIndex-j));
+                TrainDeck.remove(TDtopIndex-j);
+                TDtopIndex--;
+                setFaceUpCards();
+                return true;
+            }
+        }
+        return false;    
+    }
+
+    boolean drawTwoFaceUpTrainCard(Player P, String color1, String color2) {
+        Integer color1Index= null; //set integer object to null
+        Integer color2Index = null; //set integer object to null
+        System.out.println(color1);
+        System.out.println(color2);
+        for(int j=0; j<5; j++){ //loop through the face up cards
+            
+            //if the first color is within the face up cards
+            if(TrainDeck.get(TDtopIndex-j).getColor().equals(color1)){
+                color1Index=j; //save index
+                System.out.println(color1Index);
+                color1="bad value"; //set to bad value in case duplicate colors in face up cards
+            }
+            else if(TrainDeck.get(TDtopIndex-j).getColor().equals(color2)){
+                color2Index = j; //save index
+                System.out.println(color2Index);
+                color2="bad value"; //set to bad value in case duplicate colors in face up cards
+            }
+        }
+        //If either of the colors was not found, return false
+        if(color1Index ==null||color2Index==null){
+                return false;
+        }
+        
+        else{
+            //At this point it is a valid move
+            
+            //Add two cards to players deck
+            P.AddToTrainDeck(TrainDeck.get(TDtopIndex-color1Index)); 
+            P.AddToTrainDeck(TrainDeck.get(TDtopIndex-color2Index));
+            
+            //remove them from game deck
+            TrainDeck.remove(TDtopIndex-color1Index);
+            TrainDeck.remove(TDtopIndex-color2Index);
+            
+            //decrement the top index of the train card deck
+            TDtopIndex--;
+            TDtopIndex--;
+            
+            //reset the face up train cards
+            setFaceUpCards();
+            return true;
+        }
+    }
 }
