@@ -55,9 +55,9 @@ public class Display extends Application{
       
     public String displayStart(){
         
-        return (" ⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖⬖ "+"\n"+
+            return ("✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯"+"\n"+
                 " Well Howdy Partner! We got ourselves a Train Ride Coming Your Way! "+"\n"+
-                " --------------------------------------------------------------------- "+"\n"+
+                " ✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯ "+"\n"+"\n" + 
                 " The Main Objective of the game is to score the highest amount of   "+"\n"+
                 " points. You can earn points by claiming a route between two        "+"\n"+
                 " adjacent cities, points are decide by the length of the route.     "+"\n"+
@@ -568,12 +568,25 @@ Line r7 =new Line(0,700,1200,700);
         
         //Creating Image View for the Map
         ImageView selectedImage = new ImageView();
+        
         //Load map image
         Image newImage = new Image(Display.class.getResourceAsStream("images/usazoom2c.jpg"));
+       
+        
         //set attributes
         selectedImage.setFitHeight(720);
         selectedImage.setFitWidth(1200);
         selectedImage.setImage(newImage);
+        
+        
+        ImageView BoarderImage = new ImageView();
+        Image newImage1 = new Image(Display.class.getResourceAsStream("images/background.jpeg"));
+
+        BoarderImage.setFitHeight(677);
+        BoarderImage.setFitWidth(900);
+        BoarderImage.setImage(newImage1);
+
+        
         
         //DEFINE SCENE 1
         StackPane root1 = new StackPane();
@@ -581,7 +594,7 @@ Line r7 =new Line(0,700,1200,700);
         
         Label welcome = new Label(displayStart());
         
-        root1.getChildren().addAll(welcome,p2);
+        root1.getChildren().addAll(BoarderImage,welcome,p2);
         scene1.setRoot(root1);
         
         //Define SCENE 2
@@ -613,13 +626,24 @@ Line r7 =new Line(0,700,1200,700);
         //DEFINE SCENE Transition
         Pane root3 = new Pane();
         Scene transition = new Scene(root3,5000,5000);
+        // Second background image for ready player
+        ImageView MakeMovePic = new ImageView();
+        Image AreYouReady = new Image(Display.class.getResourceAsStream("images/final1.JPG"));
+        // changing attributes for the positioning 
+        MakeMovePic.setFitHeight(777);
+        MakeMovePic.setFitWidth(1100);
+        MakeMovePic.setTranslateX(120);
+        MakeMovePic.setImage(AreYouReady);
+
         
         
         Button ready = new Button("Ready "+game.getPlayers().get(count).GetName());
         ready.setTranslateX(580);
         ready.setTranslateY(270);
         
+        root3.getChildren().addAll(MakeMovePic);
         root3.getChildren().add(ready);
+       
         
         
         primaryStage.setTitle("Ticker To Ride Game");

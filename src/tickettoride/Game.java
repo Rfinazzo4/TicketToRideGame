@@ -54,10 +54,10 @@ public class Game {
         
         //Describe the game at the start, 
         
-        //d.displayStart();
-        
-        //Ask if user wants to 
-        //d.readRules();
+//        d.displayStart();
+//        
+//        //Ask if user wants to 
+//        d.readRules();
         
         
         //Setup
