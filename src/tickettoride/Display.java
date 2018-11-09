@@ -66,7 +66,7 @@ public class Display extends Application{
     }
     
     public void endGame(Player winner){
-     
+        
     }
     
     @Override
@@ -956,6 +956,10 @@ Line r7 =new Line(0,700,1200,700);
         BIStoWIN.setStrokeWidth(3);
 
 //</editor-fold>
+
+
+        // Set labels for each Train Card. Display them on the card
+        Label blackCount = new Label();
         //Creating Image View for the Map
         ImageView selectedImage = new ImageView();
         //Load map image
@@ -965,9 +969,16 @@ Line r7 =new Line(0,700,1200,700);
         selectedImage.setFitWidth(1200);
         selectedImage.setImage(newImage);
         selectedImage.setTranslateX(90);
-      
+        
+                
+            // image for each train card display and the # available to each player
                 //<editor-fold defaultstate="collapsed" desc="comment">
+              
+                
+         
         // Display each train card to the left side
+        
+        
         ImageView blackTrain = new ImageView();
         Image black = new Image(Display.class.getResourceAsStream("images/Black Traincard.png"));
         blackTrain.setImage(black);
@@ -1011,6 +1022,64 @@ Line r7 =new Line(0,700,1200,700);
         locoTrain.setTranslateY(0);
         //</editor-fold>
         
+        // Labels for how many of each train card the player has 
+        
+        //<editor-fold defaultstate="collapsed" desc="comment">
+        // Set labels for each Train Card.
+        // Display them on the corner of each card
+        
+        
+        Label blackTrainCardcounter = new Label();
+        blackTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Black"))); // text
+        blackTrainCardcounter.setTextFill(Color.WHITE); // color
+        blackTrainCardcounter.setTranslateX(57); // x coordinate
+        blackTrainCardcounter.setTranslateY(600); // y coordinate
+        blackTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
+        blackTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        
+        Label blueTrainCardcounter = new Label();
+        blueTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Blue"))); // text
+        blueTrainCardcounter.setTextFill(Color.WHITE); // color
+        blueTrainCardcounter.setTranslateX(57); // x coordinate
+        blueTrainCardcounter.setTranslateY(480); // y coordinate
+        blueTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
+        blueTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        
+        Label purpleTrainCardcounter = new Label();
+        purpleTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Purple"))); // text
+        purpleTrainCardcounter.setTextFill(Color.WHITE); // color
+        purpleTrainCardcounter.setTranslateX(57); // x coordinate
+        purpleTrainCardcounter.setTranslateY(360); // y coordinate
+        purpleTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
+        purpleTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        
+        Label redTrainCardcounter = new Label();
+        redTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Red"))); // text
+        redTrainCardcounter.setTextFill(Color.WHITE); // color
+        redTrainCardcounter.setTranslateX(57); // x coordinate
+        redTrainCardcounter.setTranslateY(240); // y coordinate
+        redTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
+        redTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        
+        Label whiteTrainCardcounter = new Label();
+        whiteTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("White"))); // text
+        whiteTrainCardcounter.setTextFill(Color.BLACK); // color
+        whiteTrainCardcounter.setTranslateX(57); // x coordinate
+        whiteTrainCardcounter.setTranslateY(120); // y coordinate
+        whiteTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
+        whiteTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        
+        Label locoTrainCardcounter = new Label();
+        locoTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Locomotive"))); // text
+        locoTrainCardcounter.setTextFill(Color.WHITE); // color
+        locoTrainCardcounter.setTranslateX(57); // x coordinate
+        locoTrainCardcounter.setTranslateY(0); // y coordinate
+        locoTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
+        locoTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        
+//</editor-fold>
+        
+        
         //DEFINE SCENE 1
         StackPane root1 = new StackPane();
         Scene scene1 = new Scene(root1, 5000,5000);
@@ -1044,7 +1113,7 @@ Line r7 =new Line(0,700,1200,700);
                 + "Face Up Train Cards\n"+"===============\n"+game.formatFaceUpTrainCards());
         faceUpCards.getChildren().add(faceUpText);
         
-        root2.getChildren().addAll(root2.getChildren().addAll(
+        root2.getChildren().addAll(
           
                 // map image and each train card image 
                 selectedImage, blackTrain, blueTrain, redTrain,
@@ -1075,9 +1144,13 @@ Line r7 =new Line(0,700,1200,700);
                 RAEtoCHAlength, WINtoDULlength, DULtoSTMlength, STMtoMONlength,
                 TORtoMONlength, KSCtoDENlength, OKCtoSFElength, NWOtoHOUlength,
                 PHEtoELPlength, HELtoBISlength, BIStoWINlength, DENtoBISlength,
-
+                
+                // # of each train card labels
+                blackTrainCardcounter, blueTrainCardcounter, purpleTrainCardcounter,
+                redTrainCardcounter, whiteTrainCardcounter, locoTrainCardcounter,
+                
                 //Scene Updates
-                cardInfo,faceUpCards);  
+                faceUpCards);  
                                    
                 //, c1, c2, 
                 //c3, c4, c5, c6, c7, c8, c9, c10, c11, r1, r2, r3, r4, r5, 
@@ -1360,6 +1433,7 @@ ready.setOnAction(e-> {
 
 //</editor-fold>
 }
+    
     
     private void refresh(Label cardData,Label faceUpText,Button ready){
         refreshReadyButton(ready);
