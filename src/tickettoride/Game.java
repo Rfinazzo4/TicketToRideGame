@@ -26,7 +26,7 @@ public class Game {
         //Other misc variables
     private Display d; 
     private Random rand;
-    private boolean play; //Determines whther the game is over (1=Continue playing
+    
 
     
     // Game Constructor
@@ -38,11 +38,9 @@ public class Game {
         
         //Initalize Variables
         playerindex=0;      //Set index to zero
-        play=true;          //Set play to true; 
         //Create random object for creating random integers
         rand= new Random();
-        
-        d=new Display();
+       
         //Create the Decks and Player list
         TrainDeck = new ArrayList<>();
         DestDeck = new ArrayList<>();
