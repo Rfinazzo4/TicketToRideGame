@@ -144,16 +144,33 @@ public class Player {
             }
         }
         
-        return ("⟡ Blue("+blueCount+")\n⟡ Red("+redCount+")\n⟡ White("+whiteCount+
-                ")\n⟡ Purple("+purpleCount+")\n⟡ Black("+blackCount+")\n⟡ Locomotive("+locoCount+")");
+        
+        return (blueCount+"\n\n\n\n\n\n"+redCount+"\n"+whiteCount+"\n"+
+               purpleCount+"\n"+blackCount+"\n"+locoCount);
     }
 
     String formatDestCards() {
+        //format the destination cards
         String temp="";
+        int count=0;
+        
         for(DestCard D:destcards){
-            temp +="⟡ ";
-            temp += D.getD1()+ " <- "+D.getLength()+" -> ";
-            temp +=D.getD2() +"\n";    
+            //if first card in the line then add a tab on the end
+            if (count==0){
+                temp +="⟡ ";
+                temp += D.getD1()+ " <- "+D.getLength()+" -> ";
+                temp +=D.getD2(); 
+                temp+=" \t";
+                count++;
+            }
+            //if second card in the line then add a newline
+            else{
+                temp +="⟡ ";
+                temp += D.getD1()+ " <- "+D.getLength()+" -> ";
+                temp +=D.getD2(); 
+                temp +="\n";
+                count=0;
+            }
         }
         return temp;
     }
@@ -177,26 +194,11 @@ public class Player {
     public int getAmountTrainCardColor(String tcolor) {
         int count=0;
         for (TrainCard t: traincards){
-            System.out.println("here0");
             if(t.getColor()==(tcolor)){
-                System.out.println("here10");
                 count++;
             }
         }
-        System.out.println("count"+count);
         return count;
-    }
-
-    public int getAmountTrainCardColor() {
-        int count=0;
-        for (TrainCard t: traincards){
-            count++;
-        }
-        return count;
-    }
-
-    boolean searchTrainCards() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     boolean hasTrainCard(String tempStr) { 

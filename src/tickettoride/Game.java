@@ -86,7 +86,7 @@ public class Game {
         DestDeck.add(tempdc);
         tempdc= new DestCard("NYC", "CHI", 5, "Black"); //12 Card
         DestDeck.add(tempdc);
-        tempdc= new DestCard("STM", "DAL", 10, "Blue"); //13 Card
+        tempdc= new DestCard("STM", "DAL", 9, "Blue"); //13 Card
         DestDeck.add(tempdc);
         tempdc= new DestCard("DAL", "NAS", 5, "Grey"); //14 Card
         DestDeck.add(tempdc);
@@ -236,16 +236,6 @@ public class Game {
      void addPlayer(Player p) {
         Playerlist.add(p);
     }
-   
-    
-    public void endGame(){
-        //End game, calulate winner and call Display endgame
-        //here is where the caluation woudl occur
-
-        
-        //compare scores
-       
-    } 
     
     public void shuffleDestDeck(){
         //assuming there is 100 dest cards (need to check) 
@@ -388,6 +378,18 @@ public class Game {
             //reset the face up train cards
             setFaceUpCards();
             return true;
+        }
+    }
+
+    public Player calcWinner() {
+        if(Playerlist.get(0).GetScore()>Playerlist.get(1).GetScore()){
+            return Playerlist.get(0);
+        }
+        else if(Playerlist.get(0).GetScore()==Playerlist.get(1).GetScore()){
+            return null;
+        }
+        else{
+            return Playerlist.get(1);
         }
     }
 }
