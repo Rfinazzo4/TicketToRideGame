@@ -29,14 +29,14 @@ public class TrainCard {
     }
 
     public String getColor() {
-        return color;
+        return this.color;
     }
 
-    public boolean isIsFaceUp() {
+    public boolean getIsFaceUp() {
         return isFaceUp;
     }
 
-    public boolean isIsUsed() {
+    public boolean getIsUsed() {
         return isUsed;
     }
    

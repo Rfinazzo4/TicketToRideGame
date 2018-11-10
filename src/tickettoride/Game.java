@@ -46,6 +46,16 @@ public class Game {
         DestDeck = new ArrayList<>();
         Playerlist = new ArrayList<>();
         
+
+        //Describe the game at the start, 
+        
+//        d.displayStart();
+//        
+//        //Ask if user wants to 
+//        d.readRules();
+        
+        
+
         //Setup
         ///////////////
         
