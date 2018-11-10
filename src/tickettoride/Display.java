@@ -40,6 +40,7 @@ public class Display extends Application{
         return ("✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯"+"\n"+
                 " Well Howdy Partner! We got ourselves a Train Ride Coming Your Way! "+"\n"+
                 " ✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯ "+"\n"+"\n" + 
+
                 " The Main Objective of the game is to score the highest amount of   "+"\n"+
                 " points. You can earn points by claiming a route between two        "+"\n"+
                 " adjacent cities, points are decide by the length of the route.     "+"\n"+
@@ -65,10 +66,6 @@ public class Display extends Application{
       
     }
     
-    public void endGame(Player winner){
-     
-    }
-    
     @Override
     public void start(Stage primaryStage) {
         
@@ -77,6 +74,7 @@ public class Display extends Application{
         
 //GRIDLINES   
 //<editor-fold defaultstate="collapsed" desc="comment">
+
 
 //Line c1 =new Line(100,0,100,1000);
 //Line c2 =new Line(200,0,200,1000);
@@ -363,6 +361,7 @@ public class Display extends Application{
         BIS.setTranslateY(120);
         BIS.setShape(new Circle(4));
         BIS.setMinSize(4,4);
+
 
         //Create the Player option Buttons 
         Button p2 = new Button();
@@ -966,8 +965,11 @@ public class Display extends Application{
         BIStoWIN.setStrokeWidth(3);
 
 //</editor-fold>
-
 //CREATE IMAGES
+
+
+        // Set labels for each Train Card. Display them on the card
+        Label blackCount = new Label();
         //Creating Image View for the Map
         ImageView selectedImage = new ImageView();
         //Load map image
@@ -977,7 +979,6 @@ public class Display extends Application{
         selectedImage.setFitWidth(1200);
         selectedImage.setImage(newImage);
         selectedImage.setTranslateX(90);
-        
         
         //create boarder imaage
         ImageView BoarderImage = new ImageView();
@@ -1019,6 +1020,7 @@ public class Display extends Application{
         //IMAGES FOR TRAIN CARDS
                 //<editor-fold defaultstate="collapsed" desc="comment">
         // Display each train card to the left side
+
         ImageView blackTrain = new ImageView();
         Image black = new Image(Display.class.getResourceAsStream("images/Black Traincard.png"));
         blackTrain.setImage(black);
@@ -1062,6 +1064,64 @@ public class Display extends Application{
         locoTrain.setTranslateY(0);
         //</editor-fold>
         
+        // Labels for how many of each train card the player has 
+        
+        //<editor-fold defaultstate="collapsed" desc="comment">
+        // Set labels for each Train Card.
+        // Display them on the corner of each card
+        
+        
+        Label blackTrainCardcounter = new Label();
+        blackTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Black"))); // text
+        blackTrainCardcounter.setTextFill(Color.WHITE); // color
+        blackTrainCardcounter.setTranslateX(57); // x coordinate
+        blackTrainCardcounter.setTranslateY(600); // y coordinate
+        blackTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
+        blackTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        
+        Label blueTrainCardcounter = new Label();
+        blueTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Blue"))); // text
+        blueTrainCardcounter.setTextFill(Color.WHITE); // color
+        blueTrainCardcounter.setTranslateX(57); // x coordinate
+        blueTrainCardcounter.setTranslateY(480); // y coordinate
+        blueTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
+        blueTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        
+        Label purpleTrainCardcounter = new Label();
+        purpleTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Purple"))); // text
+        purpleTrainCardcounter.setTextFill(Color.WHITE); // color
+        purpleTrainCardcounter.setTranslateX(57); // x coordinate
+        purpleTrainCardcounter.setTranslateY(360); // y coordinate
+        purpleTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
+        purpleTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        
+        Label redTrainCardcounter = new Label();
+        redTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Red"))); // text
+        redTrainCardcounter.setTextFill(Color.WHITE); // color
+        redTrainCardcounter.setTranslateX(57); // x coordinate
+        redTrainCardcounter.setTranslateY(240); // y coordinate
+        redTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
+        redTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        
+        Label whiteTrainCardcounter = new Label();
+        whiteTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("White"))); // text
+        whiteTrainCardcounter.setTextFill(Color.BLACK); // color
+        whiteTrainCardcounter.setTranslateX(57); // x coordinate
+        whiteTrainCardcounter.setTranslateY(120); // y coordinate
+        whiteTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
+        whiteTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        
+        Label locoTrainCardcounter = new Label();
+        locoTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Locomotive"))); // text
+        locoTrainCardcounter.setTextFill(Color.WHITE); // color
+        locoTrainCardcounter.setTranslateX(57); // x coordinate
+        locoTrainCardcounter.setTranslateY(0); // y coordinate
+        locoTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
+        locoTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        
+//</editor-fold>
+        
+        
         //DEFINE SCENE 1
         StackPane root1 = new StackPane();
         Scene scene1 = new Scene(root1, 1280,720);
@@ -1069,6 +1129,7 @@ public class Display extends Application{
         Label welcome = new Label(displayStart());
         
         root1.getChildren().addAll(BoarderImage,welcome,p2);
+
         scene1.setRoot(root1);
         
         //Define SCENE 2
@@ -1078,8 +1139,7 @@ public class Display extends Application{
         Pane cardInfo = new Pane();
         cardInfo.setTranslateX(140);
         cardInfo.setTranslateY(575);
-        //cardInfo.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE,CornerRadii.EMPTY,Insets.EMPTY)));
-       
+               
        
         Label cardData = new Label("\t\t\t    Dest Cards:\n"+game.getPlayers().get(count).formatDestCards());
         cardData.setStyle("-fx-font-weight: bold"); // makes text bold
@@ -1122,6 +1182,7 @@ public class Display extends Application{
                 // map image and each train card image 
                 selectedImage, blackTrain, blueTrain, redTrain,
                 purpleTrain, whiteTrain, locoTrain,DestOutline, scoreBoard,
+
                 
                 // route lines
                 VANtoWIN,SEAtoLA, SLCtoPOR, PHEtoLR, DENtoBIS, OKCtoDUL, SEAtoVAN,
@@ -1139,6 +1200,7 @@ public class Display extends Application{
                 
                 //end Game button
                 endGame,
+
                 
                 // route length labels 
                 VANtoWINlength, SEAtoLAlength, SLCtoPORlength, PHEtoLRlength, 
@@ -1152,8 +1214,10 @@ public class Display extends Application{
                 TORtoMONlength, KSCtoDENlength, OKCtoSFElength, NWOtoHOUlength,
                 PHEtoELPlength, HELtoBISlength, BIStoWINlength, DENtoBISlength,
 
-                //Scene Updates
-                cardInfo,faceUpCards,playerScore, playerTrains, playerNameDisplay);  
+                //Scene Updates - // # of each train card labels
+                cardInfo, faceUpCards, playerScore, playerTrains, playerNameDisplay,                		blackTrainCardcounter, blueTrainCardcounter, purpleTrainCardcounter,
+                redTrainCardcounter, whiteTrainCardcounter, locoTrainCardcounter
+                );  
                                    
 //                c1, c2, 
 //                c3, c4, c5, c6, c7, c8, c9, c10, c11, r1, r2, r3, r4, r5, 
@@ -1630,7 +1694,6 @@ ready.setOnAction(e-> {
             }
         }
     });
-    
 
 //</editor-fold>
 }
@@ -1642,14 +1705,16 @@ ready.setOnAction(e-> {
     }
 
     private void refreshCardData(Label cardData) {
+
        cardData.setText("\t\t\t    Dest Cards:\n"+game.getPlayers().get(count).formatDestCards());
     }
-    
+
     private void refreshReadyButton(Button ready){
         ready.setText("Ready "+game.getPlayers().get(count).GetName());
     }
 
     private void refreshFaceUpText(Label faceUpText) {
+
         faceUpText.setText(game.formatFaceUpTrainCards());    
     }
     
