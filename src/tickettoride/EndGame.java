@@ -38,7 +38,7 @@ public class EndGame {
             winnerText = new Label("The Game ended in a Tie!");
         }
         else{
-            winnerText = new Label("The Winner is :"+winner.GetName()+"!. Congratulations!");
+            winnerText = new Label("The Winner is: "+winner.GetName()+"! Congratulations!");
         }
         winnerText.setTranslateY(-200);
         layout.getChildren().addAll(button1, scores, winnerText);

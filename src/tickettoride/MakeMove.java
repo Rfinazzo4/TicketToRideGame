@@ -166,27 +166,27 @@ public class MakeMove {
         text.setTranslateY(50);
         
         Button button1 = new Button("   Blue   ");
-        button1.setTranslateX(150); 
+        button1.setTranslateX(200); 
         button1.setTranslateY(100);
         
         Button button2 = new Button("  Purple  ");
-        button2.setTranslateX(250);
+        button2.setTranslateX(300);
         button2.setTranslateY(100);
         
         Button button3 = new Button("   Red    ");
-        button3.setTranslateX(150);
+        button3.setTranslateX(200);
         button3.setTranslateY(200);
         
         Button button4 = new Button("  White   ");
-        button4.setTranslateX(250);
+        button4.setTranslateX(300);
         button4.setTranslateY(200);
         
         Button button5 = new Button("  Black   ");
-        button5.setTranslateX(150);
+        button5.setTranslateX(200);
         button5.setTranslateY(300);
         
         Button button6 = new Button("Locomotive");
-        button6.setTranslateX(250);
+        button6.setTranslateX(300);
         button6.setTranslateY(300);
         
         
@@ -217,7 +217,7 @@ public class MakeMove {
         
         Pane layout = new Pane();
        
-        Scene scene = new Scene(layout,480,400);
+        Scene scene = new Scene(layout,600,600);
         layout.getChildren().addAll(button1, button2,button3,button4,button5,button6,text);
         window.setScene(scene);
         window.showAndWait();

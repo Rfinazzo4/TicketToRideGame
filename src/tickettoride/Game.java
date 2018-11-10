@@ -61,9 +61,6 @@ public class Game {
         DestDeck.add(tempdc);
         tempdc= new DestCard("SEA", "LA", 9, "White"); //2 Card 
         DestDeck.add(tempdc);
-        for(Player p :Playerlist){
-            p.AddToDestDeck(tempdc);
-        }
         tempdc= new DestCard("SLC", "POR", 6, "Blue"); //3 Card
         DestDeck.add(tempdc);
         tempdc= new DestCard("PHE", "LR", 8, "Purple"); //4 Card
@@ -148,7 +145,7 @@ public class Game {
         //Finished Creating Dest Deck
         
         //Set Destination deck top index to 29
-        DDtopIndex=29;
+        DDtopIndex=41;
         //Shuffle Destination Deck
         Collections.shuffle(DestDeck);
         
@@ -183,9 +180,6 @@ public class Game {
                     traintemp = new TrainCard("White");
                     for (int j=0;j<25;j++){
                         TrainDeck.add(traintemp);
-                        for(Player p:Playerlist){
-                            p.AddToTrainDeck(traintemp);
-                        }
                     }
                     break;
                 case 3: //create 25 Black
@@ -256,24 +250,18 @@ public class Game {
         return DestDeck;
     }
 
-    public int getDDtopIndex() {
-        return DDtopIndex;
-    }
 
-    public int getTDtopIndex() {
-        return TDtopIndex;
-    }
     
     //Setting the potential Destination to button clicked
     public void setDestOne(String dest){
         this.DestOne=dest;
-        System.out.println("Dest1: "+dest);
+        
     }
     
     //Setting the potential Destination to button clicked
     public void setDestTwo(String dest){
         this.DestTwo=dest;
-        System.out.println("Dest2: "+dest);
+       
     }
     
     public  ArrayList<Player> getPlayers(){
@@ -337,14 +325,13 @@ public class Game {
     boolean drawTwoFaceUpTrainCard(Player P, String color1, String color2) {
         Integer color1Index= null; //set integer object to null
         Integer color2Index = null; //set integer object to null
-        System.out.println(color1);
-        System.out.println(color2);
+        
         for(int j=0; j<5; j++){ //loop through the face up cards
             
             //if the first color is within the face up cards
             if(TrainDeck.get(TDtopIndex-j).getColor().equals(color1)){
                 color1Index=j; //save index
-                System.out.println(color1Index);
+                
                 color1="bad value"; //set to bad value in case duplicate colors in face up cards
             }
             else if(TrainDeck.get(TDtopIndex-j).getColor().equals(color2)){
