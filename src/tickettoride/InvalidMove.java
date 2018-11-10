@@ -17,11 +17,11 @@ import static tickettoride.MakeMove.temp;
  * @author Ryanfinazzo
  */
 public class InvalidMove {
-    public static void popUp(){
+    static void Route(){
         Stage window = new Stage();
         
         window.setTitle("Invalid Move");
-        Button button1 = new Button("Claim Route");
+        Button button1 = new Button("Reset");
         button1.setTranslateY(-100);
         
         
@@ -30,12 +30,87 @@ public class InvalidMove {
         });
         
         StackPane layout = new StackPane();
-        Label text = new Label("Invalid Move, try again.");
-        Scene scene = new Scene(layout,300,300);
+        Label text = new Label("Not a Correct Route. Please Try Again.");
+        Scene scene = new Scene(layout,500,500);
         layout.getChildren().addAll(button1,text);
         window.setScene(scene);
         window.showAndWait();
         
     }
-    
+
+    static void TrainCars() {
+        Stage window = new Stage();
+        
+        window.setTitle("Invalid Move");
+        Button button1 = new Button("Reset");
+        button1.setTranslateY(-100);
+        
+        button1.setOnAction(e-> {
+            window.close();
+        });
+        
+        StackPane layout = new StackPane();
+        Label text = new Label("Not Enough Train Cars. Please Try Again.");
+        Scene scene = new Scene(layout,500,500);
+        layout.getChildren().addAll(button1,text);
+        window.setScene(scene);
+        window.showAndWait();
+    }    
+
+    static void DestCard() {
+        Stage window = new Stage();
+        
+        window.setTitle("Invalid Move");
+        Button button1 = new Button("Reset");
+        button1.setTranslateY(-100);
+        
+        
+        button1.setOnAction(e-> {
+            window.close();
+        });
+        
+        StackPane layout = new StackPane();
+        Label text = new Label("You Do Not Have The Proper Destination Card. Please Try Again.");
+        Scene scene = new Scene(layout,500,500);
+        layout.getChildren().addAll(button1,text);
+        window.setScene(scene);
+        window.showAndWait(); 
+    }
+
+    static void TrainCards() {
+        Stage window = new Stage();
+        
+        window.setTitle("Invalid Move");
+        Button button1 = new Button("Reset");
+        button1.setTranslateY(-100);
+        
+        button1.setOnAction(e-> {
+            window.close();
+        });
+        
+        StackPane layout = new StackPane();
+        Label text = new Label("You Do Not Have The Proper Train Cards. Please Try Again.");
+        Scene scene = new Scene(layout,500,500);
+        layout.getChildren().addAll(button1,text);
+        window.setScene(scene);
+        window.showAndWait();     
+    }
+
+    static void NoSuchTrainCard(String color) {
+        Stage window = new Stage();
+        
+        window.setTitle("Invalid Move");
+        Button button1 = new Button("Reset");
+        button1.setTranslateY(-100);
+        
+        button1.setOnAction(e-> {
+            window.close();
+        });
+        
+        StackPane layout = new StackPane();
+        Label text = new Label("There is no "+color+" Face up Cards. Please Try Again. ");
+        Scene scene = new Scene(layout,500,500);
+        layout.getChildren().addAll(button1,text);
+        window.setScene(scene);
+        window.showAndWait();     }
 }
