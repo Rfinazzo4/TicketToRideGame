@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Collections;
 
-public class Game{
+public class Game {
     
         //Lists
     private ArrayList<TrainCard> TrainDeck;
