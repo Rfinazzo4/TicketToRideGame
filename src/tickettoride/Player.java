@@ -23,10 +23,6 @@ public class Player {
     private ArrayList<TrainCard> traincards;
     private ArrayList<DestCard> destcards;
     
-//      private String[] traincards;
-//      private int[] dotc;
-//      private int[] destcards;
-    
     
     //define and initilizae the attributes created
     Player(String name, String color){
