@@ -40,7 +40,6 @@ public class Display extends Application{
                 " The Main Objective of the game is to score the highest amount of   "+"\n"+
                 " points. You can earn points by claiming a route between two        "+"\n"+
                 " adjacent cities, points are decide by the length of the route.     "+"\n"+
-                " Another way of scoring is complete the longest continuous path\n\n"+
                 " --------------------------------------------------------------------- "+"\n"+
                 "The rules are as follows:"+"\n"+
                 "   ⟡ You can claim any route on the board when you have enough      "+"\n"+
@@ -51,13 +50,12 @@ public class Display extends Application{
                 "      the game.                                                     "+"\n"+
                 "   ⟡ Locomotive card is a wild train card, which can be used as any "+"\n"+
                 "      color.                                                        "+"\n"+
-                "   ⟡ If the locomotive card is one of the face up options, you have "+"\n"+
-                "      a choice of only picking that card up.                        "+"\n"+
                 "   ⟡ Any card used to claim a route is discarded after.             "+"\n"+
                 "   ⟡ You may only claim open routes.                                "+"\n"+
                 "   ⟡ You cannot claim two routes to the same city.                  "+"\n"+
+                "   ⟡ Every City is a direct route.                                  "+"\n"+
                 " --------------------------------------------------------------------- "+"\n"+
-                "                             How many players are joining? 2-5                "+"\n"+
+                "                             This is a Single Player VS CPU Game!               "+"\n"+
                 " --------------------------------------------------------------------- "+"\n");
       
     }
@@ -986,7 +984,7 @@ public class Display extends Application{
         
         // Second background image for ready player
         ImageView MakeMovePic = new ImageView();
-        Image AreYouReady = new Image(Display.class.getResourceAsStream("images/final1.JPG"));
+        Image AreYouReady = new Image(Display.class.getResourceAsStream("images/LoadingCpu.JPG"));
         // changing attributes for the positioning 
         MakeMovePic.setFitHeight(720);
         MakeMovePic.setFitWidth(1100);
