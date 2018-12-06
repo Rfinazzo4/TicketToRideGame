@@ -6,6 +6,7 @@
  */
 package tickettoride;
 
+import java.awt.event.ActionListener;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,6 +19,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.shape.Circle;
 
 
@@ -31,6 +33,8 @@ public class Display extends Application{
     //create color array or list; ????
     
     public static void main(String[] args) {launch(args);} 
+    
+    
       
     public String displayStart(){
         
@@ -63,9 +67,17 @@ public class Display extends Application{
       
     }
     
+    
+    private Stage stage;
+    
+    private Scene transition;
+    public Scene getTransition() {
+        return transition;
+    }
+    
     @Override
     public void start(Stage primaryStage) {
-        
+        this.stage = primaryStage; //stage is used for event handler classes
         game = new Game();
         count = 0;
         
@@ -370,6 +382,7 @@ public class Display extends Application{
         Button ready = new Button("Ready "+game.getPlayers().get(count).GetName());
         ready.setTranslateX(580);
         ready.setTranslateY(270);
+        game.setReady(ready);
         
         //Create End game button
         Button endGame = new Button("End Game");
@@ -1075,6 +1088,7 @@ public class Display extends Application{
         blackTrainCardcounter.setTranslateY(600); // y coordinate
         blackTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
         blackTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        game.setBlackTrainCardcounter(blackTrainCardcounter);
         
         Label blueTrainCardcounter = new Label();
         blueTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Blue"))); // text
@@ -1083,6 +1097,7 @@ public class Display extends Application{
         blueTrainCardcounter.setTranslateY(480); // y coordinate
         blueTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
         blueTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        game.setBlueTrainCardcounter(blueTrainCardcounter);
         
         Label purpleTrainCardcounter = new Label();
         purpleTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Purple"))); // text
@@ -1091,6 +1106,7 @@ public class Display extends Application{
         purpleTrainCardcounter.setTranslateY(360); // y coordinate
         purpleTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
         purpleTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        game.setPurpleTrainCardcounter(purpleTrainCardcounter);
         
         Label redTrainCardcounter = new Label();
         redTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Red"))); // text
@@ -1099,6 +1115,7 @@ public class Display extends Application{
         redTrainCardcounter.setTranslateY(240); // y coordinate
         redTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
         redTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        game.setRedTrainCardcounter(redTrainCardcounter);
         
         Label whiteTrainCardcounter = new Label();
         whiteTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("White"))); // text
@@ -1107,6 +1124,7 @@ public class Display extends Application{
         whiteTrainCardcounter.setTranslateY(120); // y coordinate
         whiteTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
         whiteTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        game.setWhiteTrainCardcounter(whiteTrainCardcounter);
         
         Label locoTrainCardcounter = new Label();
         locoTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Locomotive"))); // text
@@ -1115,6 +1133,7 @@ public class Display extends Application{
         locoTrainCardcounter.setTranslateY(0); // y coordinate
         locoTrainCardcounter.setStyle("-fx-font-weight: bold"); // makes text bold
         locoTrainCardcounter.setStyle("-fx-font: 30 arial;"); // text font and size
+        game.setLocoTrainCardcounter(locoTrainCardcounter);
         
 //</editor-fold>
         
@@ -1143,6 +1162,7 @@ public class Display extends Application{
         cardData.setStyle("-fx-font: 15 Georgia;"); // text font and size
         
         cardInfo.getChildren().add(cardData);
+        game.setCardData(cardData);
         
         Pane faceUpCards = new Pane();
         faceUpCards.setTranslateX(1120);
@@ -1151,9 +1171,11 @@ public class Display extends Application{
         
         Label faceUpText = new Label(game.formatFaceUpTrainCards());
         faceUpCards.getChildren().add(faceUpText);
+        game.setFaceUpText(faceUpText);
         
         faceUpText.setStyle("-fx-font-weight: bold"); // makes text bold
         faceUpText.setStyle("-fx-font: 18 Georgia;"); // text font and size
+        
         
         Label playerNameDisplay = new Label("Player "+(count+1));
         
@@ -1161,18 +1183,21 @@ public class Display extends Application{
         playerNameDisplay.setTranslateY(455); // y coordinate 
         playerNameDisplay.setStyle("-fx-font-weight: bold"); // makes text bold
         playerNameDisplay.setStyle("-fx-font: 20 Georgia;"); // text font and size
+        game.setPlayerNameDisplay(playerNameDisplay);
         
         Label playerScore = new Label(Integer.toString(game.getPlayers().get(count).GetScore()));
         playerScore.setTranslateX(1132); // x coordinate
         playerScore.setTranslateY(505); // y coordinate 
         playerScore.setStyle("-fx-font-weight: bold"); // makes text bold
         playerScore.setStyle("-fx-font: 30 Impact;"); // text font and size
+        game.setPlayerScore(playerScore);
         
         Label playerTrains = new Label(Integer.toString(game.getPlayers().get(count).GetTrainCars()));
         playerTrains.setTranslateX(1232); // x coordinate
         playerTrains.setTranslateY(505); // y coordinate 
         playerTrains.setStyle("-fx-font-weight: bold"); // makes text bold
         playerTrains.setStyle("-fx-font: 30 Impact;"); // text font and size
+        game.setPlayerTrains(playerTrains);
         
         root2.getChildren().addAll(
           
@@ -1212,7 +1237,8 @@ public class Display extends Application{
                 PHEtoELPlength, HELtoBISlength, BIStoWINlength, DENtoBISlength,
 
                 //Scene Updates - // # of each train card labels
-                cardInfo, faceUpCards, playerScore, playerTrains, playerNameDisplay,                		blackTrainCardcounter, blueTrainCardcounter, purpleTrainCardcounter,
+                cardInfo, faceUpCards, playerScore, playerTrains, playerNameDisplay,                		
+                blackTrainCardcounter, blueTrainCardcounter, purpleTrainCardcounter,
                 redTrainCardcounter, whiteTrainCardcounter, locoTrainCardcounter
                 );  
                                    
@@ -1223,6 +1249,8 @@ public class Display extends Application{
         //DEFINE SCENE Transition
         Pane root3 = new Pane();
         Scene transition = new Scene(root3,1280,720);
+        this.transition = transition; // need to use this.transition for the event handler classes
+ 
         
         root3.getChildren().addAll(MakeMovePic,ready);
         
@@ -1312,198 +1340,198 @@ ready.setOnAction(e-> {
 
 //LA Handler 
 //<editor-fold defaultstate="collapsed" desc="comment">
-LA.setOnAction((ActionEvent e)-> {
-    //check if this is the first destination they click
-    if(destCount ==0){
-        game.setDestOne(LA.getText()); //set the destone in game to the buttons text
-        destCount++; //increment the destination coutner for the 2nd destination
-    }
-    
-    //check if this is the second desitnation they click
-    else if(destCount == 1){
-        game.setDestTwo(LA.getText()); //set the second destination to the button text
-        
-        //1st Condition: If the destination is not a route
-        if(!(game.getDestOne().equals(SEA.getText())|| //check all nieghboring destinations
-                game.getDestOne().equals(STF.getText())||
-                game.getDestOne().equals(HEL.getText())||
-                game.getDestOne().equals(PHE.getText()))){
-            
-            
-            InvalidMove.Route();
-            destCount=0;
-            primaryStage.setScene(transition);
-            return;
-        }
-        else{   //passed 1st condition
-            //loop though the players destination card deck
-            
-            //set counter to determine if alerts should execute
-            int loopcounter =0;
-            int size = game.getPlayers().get(count).GetDestCards().size();
-            for(DestCard d : game.getPlayers().get(count).GetDestCards()){
-                loopcounter++;
-                //2nd CONDITION: Test if none of their dest cards match with the route they picked
-                if(!(d.toString().equals(game.getDestOne() +" "+game.getDestTwo()) //<- test the first combination of destinations
-                        ||d.toString().equals(game.getDestTwo() +" "+game.getDestOne()))){//<- test the second combination
-                    if (loopcounter ==size){
-                        
-                        InvalidMove.DestCard();
-                        destCount=0;
-                        primaryStage.setScene(transition);
-                        return;
-                    }
-                }
-                else{ //passed 2nd condition
-                    
-                    //3rd CONDITION: Testing the length of the route with the amount of Train cards the player has
-                    if(!(d.getLength() <= (game.getPlayers().get(count). //!(length < TrainCard(color)+TrainCard(Locomotive))|| color=grey
-                            getAmountTrainCardColor(d.getRoutecolor())
-                            +(game.getPlayers().get(count).
-                                    getAmountTrainCardColor("Locomotive")))
-                            ||d.getRoutecolor().equals("Grey"))){
-                        
-                        
-                        InvalidMove.TrainCards();
-                        destCount=0;
-                        primaryStage.setScene(transition);
-                        return;
-                    }
-                    else{   //passed 3rd condition
-                        
-                        //Grey SUB-CONDITIONS: Making sure they player has enough train cards for the length of the grey route
-                        if(d.getRoutecolor().equals("GREY")){
-                            if(d.getLength()>(game.getPlayers().get(count).GetTrainCards().size())){ //route length > all of players train cards
-                                
-                                InvalidMove.TrainCards();
-                                destCount=0;
-                                primaryStage.setScene(transition);
-                                return;
-                            }
-                        }
-                        //4th CONDITION: Test if the player does not have enough Train cars
-                        else if(!(d.getLength()< game.getPlayers().get(count).GetTrainCars())){//compare the length of the route with the amount of train cars
-                            
-                            
-                            InvalidMove.TrainCars();
-                            destCount=0;
-                            primaryStage.setScene(transition);
-                            return;
-                        }
-                        else{
-                            
-                            String [] tempStr= new String[d.getLength()]; //create string array to hold the multiple train cards
-                            
-                            if(d.getRoutecolor().equals("Grey")){
-                                // This logic is so they can choose which
-                                //colors train cards for the grey routes
-                                
-                                //loop through the length of the route
-                                for (int i=0;i<d.getLength();i++){
-                                    tempStr[i] = MakeMove.chooseTrainCards(i); //store each color in array
-                                    
-                                    if(!game.getPlayers().get(count).hasTrainCard(tempStr[i])){ //player does not have the proper train card
-                                        
-                                        for (int j =1;j<tempStr.length;j++){ //add the train cards back into deck
-                                            game.getPlayers().get(count).AddToTrainDeck(new TrainCard(tempStr[j]));
-                                        }
-                                        InvalidMove.TrainCars();
-                                        destCount=0;
-                                        primaryStage.setScene(transition);
-                                        return;
-                                    }
-                                    else{ //remove the card from their deck
-                                        game.getPlayers().get(count).removeTrainCard(game.getPlayers().get(count).getTrainCard(tempStr[i]));
-                                    }
-                                }
-                            }
-                            //If they have Locomotive, then ask if the user would like use them
-                            else if(game.getPlayers().get(count).hasTrainCard("Locomotive")){
-                                
-                                if (MakeMove.hasLocomotive()){
-                                    //loop through the length of the route
-                                    for (int i=0;i<d.getLength();i++){
-                                        tempStr[i] = MakeMove.chooseTwoOptionTrainCards(i,"Locomotive",d.getRoutecolor()); //store each color in array
-                                        
-                                        if(!game.getPlayers().get(count).hasTrainCard(tempStr[i])){ //player does not have the proper train card
-                                            
-                                            for (int j =1;j<tempStr.length;j++){ //add the train cards back into deck
-                                                game.getPlayers().get(count).AddToTrainDeck(new TrainCard(tempStr[j]));
-                                                
-                                            }
-                                            InvalidMove.TrainCards();
-                                            
-                                            destCount=0;
-                                            primaryStage.setScene(transition);
-                                            
-                                            return;
-                                        }
-                                        else{ //remove the card from their deck
-                                            game.getPlayers().get(count).removeTrainCard(game.getPlayers().get(count).getTrainCard(tempStr[i]));
-                                            
-                                        }
-                                    }
-                                }
-                                else{
-                                    //Here the train cards with the appropriate color will be taking out
-                                    //of their deck
-                                    for (int i=0;i<d.getLength();i++){
-                                        if(!(game.getPlayers().get(count).GetTrainCards().remove(game.getPlayers().get(count).getTrainCard(d.getRoutecolor())))){
-                                            for (int j=0;j<i;j++){
-                                                game.getPlayers().get(count).AddToTrainDeck(new TrainCard(d.getRoutecolor()));
-                                            }
-                                            InvalidMove.TrainCards();
-                                            
-                                            destCount=0;
-                                            primaryStage.setScene(transition);
-                                            
-                                            return;
-                                        }
-                                        game.getPlayers().get(count).DecrementTrainCardDeck();
-                                    }
-                                }
-                            }
-                            //
-                            else{
-                                //Here the train cards with the appropriate color will be taking out
-                                //of their deck
-                                for (int i=0;i<d.getLength();i++){ //loop through the legnth of the route
-                                    if(!(game.getPlayers().get(count).GetTrainCards().remove(game.getPlayers().get(count).getTrainCard(d.getRoutecolor())))){
-                                        for (int j=0;j<i;j++){
-                                            game.getPlayers().get(count).AddToTrainDeck(new TrainCard(d.getRoutecolor()));
-                                        }
-                                    }
-                                    game.getPlayers().get(count).DecrementTrainCardDeck();
-                                }
-                            }
-                            
-                            //If and only if we get to this point, is the move officallyvalid
-                            game.getPlayers().get(count).subTraincars(d.getLength()); //edit the players train cars
-                            game.getPlayers().get(count).removeDestCard(d); //remove the card
-                            
-                            if (count==0){ //increment or reset player counter
-                                count++;
-                            }
-                            else{
-                                count=0;
-                            }
-                            
-                            destCount=0; //reset the destination counter
-                            
-                            //refresh the game
-                            refresh(cardData, faceUpText, blackTrainCardcounter,
-                                    blueTrainCardcounter, whiteTrainCardcounter,
-                                    purpleTrainCardcounter, redTrainCardcounter,
-                                    locoTrainCardcounter,playerNameDisplay,playerScore,playerTrains, ready);
-                            primaryStage.setScene(transition);
-                            return;
-                        }
-                    }
-                }
-            }
-        }
-    }
-});
+//LA.setOnAction((ActionEvent e)-> {
+//    //check if this is the first destination they click
+//    if(destCount ==0){
+//        game.setDestOne(LA.getText()); //set the destone in game to the buttons text
+//        destCount++; //increment the destination coutner for the 2nd destination
+//    }
+//    
+//    //check if this is the second desitnation they click
+//    else if(destCount == 1){
+//        game.setDestTwo(LA.getText()); //set the second destination to the button text
+//        
+//        //1st Condition: If the destination is not a route
+//        if(!(game.getDestOne().equals(SEA.getText())|| //check all nieghboring destinations
+//                game.getDestOne().equals(STF.getText())||
+//                game.getDestOne().equals(HEL.getText())||
+//                game.getDestOne().equals(PHE.getText()))){
+//            
+//            
+//            InvalidMove.Route();
+//            destCount=0;
+//            primaryStage.setScene(transition);
+//            return;
+//        }
+//        else{   //passed 1st condition
+//            //loop though the players destination card deck
+//            
+//            //set counter to determine if alerts should execute
+//            int loopcounter =0;
+//            int size = game.getPlayers().get(count).GetDestCards().size();
+//            for(DestCard d : game.getPlayers().get(count).GetDestCards()){
+//                loopcounter++;
+//                //2nd CONDITION: Test if none of their dest cards match with the route they picked
+//                if(!(d.toString().equals(game.getDestOne() +" "+game.getDestTwo()) //<- test the first combination of destinations
+//                        ||d.toString().equals(game.getDestTwo() +" "+game.getDestOne()))){//<- test the second combination
+//                    if (loopcounter ==size){
+//                        
+//                        InvalidMove.DestCard();
+//                        destCount=0;
+//                        primaryStage.setScene(transition);
+//                        return;
+//                    }
+//                }
+//                else{ //passed 2nd condition
+//                    
+//                    //3rd CONDITION: Testing the length of the route with the amount of Train cards the player has
+//                    if(!(d.getLength() <= (game.getPlayers().get(count). //!(length < TrainCard(color)+TrainCard(Locomotive))|| color=grey
+//                            getAmountTrainCardColor(d.getRoutecolor())
+//                            +(game.getPlayers().get(count).
+//                                    getAmountTrainCardColor("Locomotive")))
+//                            ||d.getRoutecolor().equals("Grey"))){
+//                        
+//                        
+//                        InvalidMove.TrainCards();
+//                        destCount=0;
+//                        primaryStage.setScene(transition);
+//                        return;
+//                    }
+//                    else{   //passed 3rd condition
+//                        
+//                        //Grey SUB-CONDITIONS: Making sure they player has enough train cards for the length of the grey route
+//                        if(d.getRoutecolor().equals("GREY")){
+//                            if(d.getLength()>(game.getPlayers().get(count).GetTrainCards().size())){ //route length > all of players train cards
+//                                
+//                                InvalidMove.TrainCards();
+//                                destCount=0;
+//                                primaryStage.setScene(transition);
+//                                return;
+//                            }
+//                        }
+//                        //4th CONDITION: Test if the player does not have enough Train cars
+//                        else if(!(d.getLength()< game.getPlayers().get(count).GetTrainCars())){//compare the length of the route with the amount of train cars
+//                            
+//                            
+//                            InvalidMove.TrainCars();
+//                            destCount=0;
+//                            primaryStage.setScene(transition);
+//                            return;
+//                        }
+//                        else{
+//                            
+//                            String [] tempStr= new String[d.getLength()]; //create string array to hold the multiple train cards
+//                            
+//                            if(d.getRoutecolor().equals("Grey")){
+//                                // This logic is so they can choose which
+//                                //colors train cards for the grey routes
+//                                
+//                                //loop through the length of the route
+//                                for (int i=0;i<d.getLength();i++){
+//                                    tempStr[i] = MakeMove.chooseTrainCards(i); //store each color in array
+//                                    
+//                                    if(!game.getPlayers().get(count).hasTrainCard(tempStr[i])){ //player does not have the proper train card
+//                                        
+//                                        for (int j =1;j<tempStr.length;j++){ //add the train cards back into deck
+//                                            game.getPlayers().get(count).AddToTrainDeck(new TrainCard(tempStr[j]));
+//                                        }
+//                                        InvalidMove.TrainCars();
+//                                        destCount=0;
+//                                        primaryStage.setScene(transition);
+//                                        return;
+//                                    }
+//                                    else{ //remove the card from their deck
+//                                        game.getPlayers().get(count).removeTrainCard(game.getPlayers().get(count).getTrainCard(tempStr[i]));
+//                                    }
+//                                }
+//                            }
+//                            //If they have Locomotive, then ask if the user would like use them
+//                            else if(game.getPlayers().get(count).hasTrainCard("Locomotive")){
+//                                
+//                                if (MakeMove.hasLocomotive()){
+//                                    //loop through the length of the route
+//                                    for (int i=0;i<d.getLength();i++){
+//                                        tempStr[i] = MakeMove.chooseTwoOptionTrainCards(i,"Locomotive",d.getRoutecolor()); //store each color in array
+//                                        
+//                                        if(!game.getPlayers().get(count).hasTrainCard(tempStr[i])){ //player does not have the proper train card
+//                                            
+//                                            for (int j =1;j<tempStr.length;j++){ //add the train cards back into deck
+//                                                game.getPlayers().get(count).AddToTrainDeck(new TrainCard(tempStr[j]));
+//                                                
+//                                            }
+//                                            InvalidMove.TrainCards();
+//                                            
+//                                            destCount=0;
+//                                            primaryStage.setScene(transition);
+//                                            
+//                                            return;
+//                                        }
+//                                        else{ //remove the card from their deck
+//                                            game.getPlayers().get(count).removeTrainCard(game.getPlayers().get(count).getTrainCard(tempStr[i]));
+//                                            
+//                                        }
+//                                    }
+//                                }
+//                                else{
+//                                    //Here the train cards with the appropriate color will be taking out
+//                                    //of their deck
+//                                    for (int i=0;i<d.getLength();i++){
+//                                        if(!(game.getPlayers().get(count).GetTrainCards().remove(game.getPlayers().get(count).getTrainCard(d.getRoutecolor())))){
+//                                            for (int j=0;j<i;j++){
+//                                                game.getPlayers().get(count).AddToTrainDeck(new TrainCard(d.getRoutecolor()));
+//                                            }
+//                                            InvalidMove.TrainCards();
+//                                            
+//                                            destCount=0;
+//                                            primaryStage.setScene(transition);
+//                                            
+//                                            return;
+//                                        }
+//                                        game.getPlayers().get(count).DecrementTrainCardDeck();
+//                                    }
+//                                }
+//                            }
+//                            //
+//                            else{
+//                                //Here the train cards with the appropriate color will be taking out
+//                                //of their deck
+//                                for (int i=0;i<d.getLength();i++){ //loop through the legnth of the route
+//                                    if(!(game.getPlayers().get(count).GetTrainCards().remove(game.getPlayers().get(count).getTrainCard(d.getRoutecolor())))){
+//                                        for (int j=0;j<i;j++){
+//                                            game.getPlayers().get(count).AddToTrainDeck(new TrainCard(d.getRoutecolor()));
+//                                        }
+//                                    }
+//                                    game.getPlayers().get(count).DecrementTrainCardDeck();
+//                                }
+//                            }
+//                            
+//                            //If and only if we get to this point, is the move officallyvalid
+//                            game.getPlayers().get(count).subTraincars(d.getLength()); //edit the players train cars
+//                            game.getPlayers().get(count).removeDestCard(d); //remove the card
+//                            
+//                            if (count==0){ //increment or reset player counter
+//                                count++;
+//                            }
+//                            else{
+//                                count=0;
+//                            }
+//                            
+//                            destCount=0; //reset the destination counter
+//                            
+//                            //refresh the game
+//                            refresh(cardData, faceUpText, blackTrainCardcounter,
+//                                    blueTrainCardcounter, whiteTrainCardcounter,
+//                                    purpleTrainCardcounter, redTrainCardcounter,
+//                                    locoTrainCardcounter,playerNameDisplay,playerScore,playerTrains, ready);
+//                            primaryStage.setScene(transition);
+//                            return;
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//});
 //</editor-fold>
 
 //SEA Handler
@@ -7312,9 +7340,242 @@ TOR.setOnAction((ActionEvent e)-> {
 });
 //</editor-fold>
 
+    // Four routes to both LA and MON
+    LA.setOnAction(new FourRouteButtonHandler(LA, SEA, STF, HEL, PHE)); 
+    MON.setOnAction(new FourRouteButtonHandler(MON, BOS, DC, TOR, STM));
+    
+    // Three routes to SEA, PHE, DEN, BIS, WIN, HOU, DUL, LR, NAS, CHI, STM, MIA, CHA
+    
+    // Two routes to POR, VAN, SLC, HEL, ELP, STF, DAL, OKC, KSC, NWO, STL, RAE, 
+    //               DC, NYC, BOS, TOR, 
+   
+  
 }
     
-    private void refresh(Label cardData,Label faceUpText, Label blackTrainCardcounter,
+    // class to handle cities that have four routes connected to them
+    //<editor-fold defaultstate="collapsed" desc="comment">
+    class FourRouteButtonHandler implements EventHandler<ActionEvent> {
+        
+        // temp1 will be the city that has 4 routes connected to it
+        // rest of temp buttons are connected cities to the original city
+        Button temp1 = new Button();
+        Button temp2 = new Button();
+        Button temp3 = new Button();
+        Button temp4 = new Button();
+        Button temp5 = new Button();
+        
+        // constructor setting the cities
+        FourRouteButtonHandler(Button temp1, Button temp2, Button temp3, Button temp4,
+                Button temp5) {
+            this.temp1 = temp1;
+            this.temp2 = temp2;
+            this.temp3 = temp3;
+            this.temp4 = temp4;
+            this.temp5 = temp5;
+            
+        }
+        
+        // override the handle method for the event handler
+        @Override
+        public void handle(ActionEvent event) {
+            //check if this is the first destination they click
+            if(destCount ==0){
+                game.setDestOne(temp1.getText()); //set the destone in game to the buttons text
+                destCount++; //increment the destination coutner for the 2nd destination
+            }
+            
+            //check if this is the second desitnation they click
+            else if(destCount == 1){
+                game.setDestTwo(temp1.getText()); //set the second destination to the button text
+                
+                //1st Condition: If the destination is not a route
+                if(!(game.getDestOne().equals(temp2.getText())|| //check all nieghboring destinations
+                        game.getDestOne().equals(temp3.getText())||
+                        game.getDestOne().equals(temp4.getText())||
+                        game.getDestOne().equals(temp5.getText()))){
+                    
+                    
+                    InvalidMove.Route();
+                    destCount=0;
+                    stage.setScene(transition);
+                    return;
+                }
+                else{   //passed 1st condition
+                    //loop though the players destination card deck
+                    
+                    //set counter to determine if alerts should execute
+                    int loopcounter =0;
+                    int size = game.getPlayers().get(count).GetDestCards().size();
+                    for(DestCard d : game.getPlayers().get(count).GetDestCards()){
+                        loopcounter++;
+                        //2nd CONDITION: Test if none of their dest cards match with the route they picked
+                        if(!(d.toString().equals(game.getDestOne() +" "+game.getDestTwo()) //<- test the first combination of destinations
+                                ||d.toString().equals(game.getDestTwo() +" "+game.getDestOne()))){//<- test the second combination
+                            if (loopcounter ==size){
+                                
+                                InvalidMove.DestCard();
+                                destCount=0;
+                                stage.setScene(transition);
+                                return;
+                            }
+                        }
+                        else{ //passed 2nd condition
+                            
+                            //3rd CONDITION: Testing the length of the route with the amount of Train cards the player has
+                            if(!(d.getLength() <= (game.getPlayers().get(count). //!(length < TrainCard(color)+TrainCard(Locomotive))|| color=grey
+                                    getAmountTrainCardColor(d.getRoutecolor())
+                                    +(game.getPlayers().get(count).
+                                            getAmountTrainCardColor("Locomotive")))
+                                    ||d.getRoutecolor().equals("Grey"))){
+                                
+                                
+                                InvalidMove.TrainCards();
+                                destCount=0;
+                                stage.setScene(transition);
+                                return;
+                            }
+                            else{   //passed 3rd condition
+                                
+                                //Grey SUB-CONDITIONS: Making sure they player has enough train cards for the length of the grey route
+                                if(d.getRoutecolor().equals("GREY")){
+                                    if(d.getLength()>(game.getPlayers().get(count).GetTrainCards().size())){ //route length > all of players train cards
+                                        
+                                        InvalidMove.TrainCards();
+                                        destCount=0;
+                                        stage.setScene(transition);
+                                        return;
+                                    }
+                                }
+                                //4th CONDITION: Test if the player does not have enough Train cars
+                                else if(!(d.getLength()< game.getPlayers().get(count).GetTrainCars())){//compare the length of the route with the amount of train cars
+                                    
+                                    
+                                    InvalidMove.TrainCars();
+                                    destCount=0;
+                                    stage.setScene(transition);
+                                    return;
+                                }
+                                else{
+                                    
+                                    String [] tempStr= new String[d.getLength()]; //create string array to hold the multiple train cards
+                                    
+                                    if(d.getRoutecolor().equals("Grey")){
+                                        // This logic is so they can choose which
+                                        //colors train cards for the grey routes
+                                        
+                                        //loop through the length of the route
+                                        for (int i=0;i<d.getLength();i++){
+                                            tempStr[i] = MakeMove.chooseTrainCards(i); //store each color in array
+                                            
+                                            if(!game.getPlayers().get(count).hasTrainCard(tempStr[i])){ //player does not have the proper train card
+                                                
+                                                for (int j =1;j<tempStr.length;j++){ //add the train cards back into deck
+                                                    game.getPlayers().get(count).AddToTrainDeck(new TrainCard(tempStr[j]));
+                                                }
+                                                InvalidMove.TrainCars();
+                                                destCount=0;
+                                                stage.setScene(transition);
+                                                return;
+                                            }
+                                            else{ //remove the card from their deck
+                                                game.getPlayers().get(count).removeTrainCard(game.getPlayers().get(count).getTrainCard(tempStr[i]));
+                                            }
+                                        }
+                                    }
+                                    //If they have Locomotive, then ask if the user would like use them
+                                    else if(game.getPlayers().get(count).hasTrainCard("Locomotive")){
+                                        
+                                        if (MakeMove.hasLocomotive()){
+                                            //loop through the length of the route
+                                            for (int i=0;i<d.getLength();i++){
+                                                tempStr[i] = MakeMove.chooseTwoOptionTrainCards(i,"Locomotive",d.getRoutecolor()); //store each color in array
+                                                
+                                                if(!game.getPlayers().get(count).hasTrainCard(tempStr[i])){ //player does not have the proper train card
+                                                    
+                                                    for (int j =1;j<tempStr.length;j++){ //add the train cards back into deck
+                                                        game.getPlayers().get(count).AddToTrainDeck(new TrainCard(tempStr[j]));
+                                                        
+                                                    }
+                                                    InvalidMove.TrainCards();
+                                                    
+                                                    destCount=0;
+                                                    stage.setScene(transition);
+                                                    
+                                                    return;
+                                                }
+                                                else{ //remove the card from their deck
+                                                    game.getPlayers().get(count).removeTrainCard(game.getPlayers().get(count).getTrainCard(tempStr[i]));
+                                                    
+                                                }
+                                            }
+                                        }
+                                        else{
+                                            //Here the train cards with the appropriate color will be taking out
+                                            //of their deck
+                                            for (int i=0;i<d.getLength();i++){
+                                                if(!(game.getPlayers().get(count).GetTrainCards().remove(game.getPlayers().get(count).getTrainCard(d.getRoutecolor())))){
+                                                    for (int j=0;j<i;j++){
+                                                        game.getPlayers().get(count).AddToTrainDeck(new TrainCard(d.getRoutecolor()));
+                                                    }
+                                                    InvalidMove.TrainCards();
+                                                    
+                                                    destCount=0;
+                                                    stage.setScene(transition);
+                                                    
+                                                    return;
+                                                }
+                                                game.getPlayers().get(count).DecrementTrainCardDeck();
+                                            }
+                                        }
+                                    }
+                                    //
+                                    else{
+                                        //Here the train cards with the appropriate color will be taking out
+                                        //of their deck
+                                        for (int i=0;i<d.getLength();i++){ //loop through the legnth of the route
+                                            if(!(game.getPlayers().get(count).GetTrainCards().remove(game.getPlayers().get(count).getTrainCard(d.getRoutecolor())))){
+                                                for (int j=0;j<i;j++){
+                                                    game.getPlayers().get(count).AddToTrainDeck(new TrainCard(d.getRoutecolor()));
+                                                }
+                                            }
+                                            game.getPlayers().get(count).DecrementTrainCardDeck();
+                                        }
+                                    }
+                                    
+                                    //If and only if we get to this point, is the move officallyvalid
+                                    game.getPlayers().get(count).subTraincars(d.getLength()); //edit the players train cars
+                                    game.getPlayers().get(count).removeDestCard(d); //remove the card
+                                    
+                                    if (count==0){ //increment or reset player counter
+                                        count++;
+                                    }
+                                    else{
+                                        count=0;
+                                    }
+                                    
+                                    destCount=0; //reset the destination counter
+                                    
+                                    //refresh the game
+                                    refresh(game.getCardData(), game.getFaceUpText(), game.getBlackTrainCardcounter(),
+                                            game.getBlueTrainCardcounter(), game.getWhiteTrainCardcounter(),
+                                            game.getPurpleTrainCardcounter(), game.getRedTrainCardcounter(),
+                                            game.getLocoTrainCardcounter(), game.getPlayerNameDisplay(), game.getPlayerScore(),
+                                            game.getPlayerTrains(), game.getReady());
+                                    stage.setScene(transition);
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+//</editor-fold>
+   
+    
+    public void refresh(Label cardData,Label faceUpText, Label blackTrainCardcounter,
             Label blueTrainCardcounter,Label whiteTrainCardcounter, 
             Label purpleTrainCardcounter,Label redTrainCardcounter, 
             Label locoTrainCardcounter, Label playerNameDisplay, Label playerScore, Label playerTrains, Button ready){
@@ -7339,58 +7600,57 @@ TOR.setOnAction((ActionEvent e)-> {
         //refresh the ready button
         refreshReadyButton(ready);
         
-        
     }
 
-    private void refreshCardData(Label cardData) {
+    public void refreshCardData(Label cardData) {
 
        cardData.setText("\t\t\t    Dest Cards:\n"+game.getPlayers().get(count).formatDestCards());
     }
 
-    private void refreshReadyButton(Button ready){
+    public void refreshReadyButton(Button ready){
         ready.setText("Ready "+game.getPlayers().get(count).GetName());
     }
 
-    private void refreshFaceUpText(Label faceUpText) {
+    public void refreshFaceUpText(Label faceUpText) {
 
         faceUpText.setText(game.formatFaceUpTrainCards());    
     }
 
-    private void refreshBlackTrain(Label blackTrainCardcounter) {
+    public void refreshBlackTrain(Label blackTrainCardcounter) {
         blackTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Black")));    
     }
 
-    private void refreshBlueTrain(Label blueTrainCardcounter) {
+    public void refreshBlueTrain(Label blueTrainCardcounter) {
         blueTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Blue")));
     }
 
-    private void refreshWhitetrain(Label whiteTrainCardcounter) {
+    public void refreshWhitetrain(Label whiteTrainCardcounter) {
         whiteTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("White")));
     }
 
-    private void refreshPurpleTrain(Label purpleTrainCardcounter) {
+    public void refreshPurpleTrain(Label purpleTrainCardcounter) {
         purpleTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Purple")));
     }
 
-    private void refreshRedTrain(Label redTrainCardcounter) {
+    public void refreshRedTrain(Label redTrainCardcounter) {
         redTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Red")));
     }
 
-    private void refreshLocoTrain(Label locoTrainCardcounter) {
+    public void refreshLocoTrain(Label locoTrainCardcounter) {
         locoTrainCardcounter.setText(Integer.toString(game.getPlayers().get(count).getAmountTrainCardColor("Locomotive")));
 
     }
 
-    private void refeshPlayerName(Label playerNameDisplay) {
+    public void refeshPlayerName(Label playerNameDisplay) {
         playerNameDisplay.setText("Player "+(count+1));
     }
 
-    private void refeshPlayerScore(Label playerScore) {
+    public void refeshPlayerScore(Label playerScore) {
         playerScore.setText(Integer.toString(game.getPlayers().get(count).GetScore()));
     }
 
-    private void refreshPlayerTrains(Label playerTrains) {
+    public void refreshPlayerTrains(Label playerTrains) {
         playerTrains.setText(Integer.toString(game.getPlayers().get(count).GetTrainCars()));
     }
-  
+    
 }
