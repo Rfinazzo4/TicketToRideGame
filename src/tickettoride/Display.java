@@ -1278,10 +1278,16 @@ ready.setOnAction(e-> {
                 }               
             }
             
-            
-            //need to keep designing the AIPlayer to understand what info we need from the game
-            int x = game.getAI().CPUMakeMove(game.getUser().GetScore(), game.getFaceUpCards() ,,,,);
-            switch x()
+            t42gvwrtvwefrteqregrtgrevft4er
+            // Need to keep designing the AIPlayer to understand what info we need from the game
+            int x = game.getAI().CPUMakeMove(game.getUser().GetScore(), game.getFaceUpCards());
+            switch (x){
+                // if returned one, AI has chosen to claim a route. 
+                case 0:
+                    // Get Dest Card the AI is using
+                    DestCard desttemp=game.getAI().findBestRoute();
+                    
+            }
             
             refresh(cardData, faceUpText, blackTrainCardcounter,
                     blueTrainCardcounter, whiteTrainCardcounter, 

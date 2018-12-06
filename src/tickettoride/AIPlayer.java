@@ -12,7 +12,7 @@ public class AIPlayer extends Player{
     public AIPlayer(String name, String color) {
         super(name, color);
     }
-    public void CPUMakeMove(int userScore, ArrayList<TrainCard> faceUpCards){
+    public int CPUMakeMove(int userScore, ArrayList<TrainCard> faceUpCards){
         //AGENT IDEAS
 
         // 1. Goal agent based Highest priority (1) 
@@ -20,19 +20,38 @@ public class AIPlayer extends Player{
         // - Else check reflex agent below 
         
         boolean goalValue = GAgentScore(userScore);
+        // If this returns true.  Can we claim a route?
+        // call possible claim function
+        // If so return 0 - which will specify the system in Display to call
+        // game.GetAI().claimroute 
+        // If not, move on to below
+        if(goalValue){
+            if(claimPossible()){
+                return 0;
+            }
+        }
+        
         
         // 2. Reflex agent based on low amount of Train cards, priority (2)
         // - If Train cars are lower than a certain number, draw train card
         // - else do not draw, check reflec agent below
         
         boolean reflex1Value = RAgentTrainCards(this.GetTrainCards());
+        // if true,
+        // return - 1 which will specify to quickly draw two train cards which
+        // will call game.getAI().draw two train cards
+        //else continue
+        
        
         // 3. Reflex agent based on low amount of Dest cards
         // - if Dest cards is lower than three, draw dest card, priority (3) 
         // - else check model agent below
         
         boolean reflex2Value = RAgentDestCards(this.GetDestCards());
-        
+        // if true,
+        // return - 2 which will specify to quickly draw a dest card which
+        // will call game.getAI().drawdestcard
+        //else continue
         
         // 4. Model based agent(4)
         // If we get to this point here, we will base the move on what the Agent
@@ -40,12 +59,23 @@ public class AIPlayer extends Player{
         // - check all priorities given by enviornment
         // - make decision based on these
         
+        
+        
+        
+        
+        //
         int modelValue = MAgent(this.GetDestCards(),this.GetTrainCards(),userScore, this.GetScore());
         
         switch(modelValue){
             case 0://this specifis that we should claim a route
             case 1://this specifis that we should claim a route
         }
+        
+        
+        
+        
+        //
+        return 0;
     }
    
     
@@ -91,8 +121,9 @@ public class AIPlayer extends Player{
         
         
         if (percept3==0){
-            return 0; //this specifis that we should claim a route
+            return 0; //this specifies that we should claim a route
         }
+        return 0;
     
     }
     
@@ -122,22 +153,76 @@ public class AIPlayer extends Player{
     private int MBpercept3(ArrayList<DestCard> destcards, ArrayList<TrainCard> traincards) {
         // Percept3 will return the distance left from claiming the closest route
         // How close are we to claiming a route (dest card lengths and train card color amounts)
-        int color; //number of cards AI has of specific color
+        int temp; //number of cards AI has of specific color
         
         //set leastlength to a high number to be ovverriden
         int leastLength=100; //holds the return value
         for(DestCard route : destcards){
-            color = this.getAmountTrainCardColor(route.getRoutecolor());
-            color+=this.getAmountTrainCardColor("Locomotive");
+            if(!route.getRoutecolor().equals("Grey")){
+                temp = this.getAmountTrainCardColor(route.getRoutecolor());
+                temp+=this.getAmountTrainCardColor("Locomotive");
             
-            if(color>=route.getLength()){
-                return 0; //meaning we can claim a route
+                if(temp>=route.getLength()){
+                    return 0; //meaning we can claim a route
+                }
+                else if((route.getLength()-temp)<leastLength){
+                    leastLength = route.getLength()-temp;
+                }
             }
-            else if((route.getLength()-color)<leastLength){
-                leastLength = route.getLength()-color;
+            else{
+                if(this.GetTrainCards().size()>route.getLength()){
+                    return 0;
+                }
             }
+        
         }
         return leastLength;
     }
 
+    private boolean claimPossible() {
+        int temp; //temp to keep track of total amount of cards
+        for(DestCard route : this.GetDestCards()){
+            if(!route.getRoutecolor().equals("Grey")){
+                temp = this.getAmountTrainCardColor(route.getRoutecolor());
+                temp+= this.getAmountTrainCardColor("Locomotive");
+            
+                if(temp>=route.getLength()){
+                    return true; //meaning we can claim a route
+                }
+            }
+            else{
+                if(this.GetTrainCards().size()>route.getLength()){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    DestCard findBestRoute() {
+        int temp; //temp to keep track of total amount of cards
+        DestCard longRoute = new DestCard("","",0,""); //longest route than can be claimed by the AI
+        
+        for(DestCard route : this.GetDestCards()){
+            if(!route.getRoutecolor().equals("Grey")){
+                temp = this.getAmountTrainCardColor(route.getRoutecolor());
+                temp += this.getAmountTrainCardColor("Locomotive");
+            
+                if(temp>=route.getLength()){
+                    //meaning we can claim this route
+                    if(longRoute.getLength()<route.getLength()){
+                        longRoute=route; //overwrite if the current route is greater than long route
+                    }
+                }
+            }
+            else{
+                if(this.GetTrainCards().size()>route.getLength()){
+                    if(longRoute.getLength()<route.getLength()){
+                        longRoute=route;//overwrite if current grey route is greater than long route
+                    }
+                }
+            }
+        }
+        return longRoute;
+    }
 }
