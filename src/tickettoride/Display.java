@@ -369,6 +369,7 @@ public class Display extends Application{
         VANtoWINlength.setStyle("-fx-font: 18 arial;"); // text font and size
             
         
+        
         Label SEAtoLAlength = new Label();
         SEAtoLAlength.setText("9");
         SEAtoLAlength.setTextFill(Color.WHITE);
@@ -710,6 +711,17 @@ public class Display extends Application{
         BIStoWINlength.setTranslateY(100);
         BIStoWINlength.setStyle("-fx-font-weight: bold");
         BIStoWINlength.setStyle("-fx-font: 18 arial;");
+        
+        
+        Label ELPtoDALlength = new Label();
+        ELPtoDALlength.setText("4");
+        ELPtoDALlength.setTextFill(Color.GREY);
+        ELPtoDALlength.setTranslateX(543);
+        ELPtoDALlength.setTranslateY(490);
+        ELPtoDALlength.setStyle("-fx-font-weight: bold");
+        ELPtoDALlength.setStyle("-fx-font: 18 arial;");
+        
+        
 
 
 
@@ -931,6 +943,11 @@ public class Display extends Application{
         BIStoWIN.setStroke(Color.WHITE);
         BIStoWIN.setStrokeWidth(3);
 
+        //El Paso -----> Dallas & Grey
+        Line ELPtoDAL = new Line(435,510,680,515);
+        ELPtoDAL.setStroke(Color.GREY);
+        ELPtoDAL.setStrokeWidth(3);
+        
 //</editor-fold>
 //CREATE IMAGES
 
@@ -1157,7 +1174,7 @@ public class Display extends Application{
                 STLtoKSC, DCtoMON, NYCtoLR, LRtoNWO, HOUtoELP, NAStoCHA, 
                 LAtoSTF, MONtoBOS, DENtoSLC, PHEtoLA, RAEtoCHA, WINtoDUL, DULtoSTM,
                 STMtoMON, TORtoMON, KSCtoDEN, OKCtoSFE, NWOtoHOU, PHEtoELP, HELtoBIS,
-                BIStoWIN,
+                BIStoWIN,ELPtoDAL,
                 
                 // city buttons
                 LA, SEA, VAN, WIN, SLC, POR,PHE,LR, DEN, OKC, DUL, HEL, MIA, HOU, 
@@ -1178,7 +1195,7 @@ public class Display extends Application{
                 LAtoSTFlength, MONtoBOSlength, DENtoSLClength, PHEtoLAlength, 
                 RAEtoCHAlength, WINtoDULlength, DULtoSTMlength, STMtoMONlength,
                 TORtoMONlength, KSCtoDENlength, OKCtoSFElength, NWOtoHOUlength,
-                PHEtoELPlength, HELtoBISlength, BIStoWINlength, DENtoBISlength,
+                PHEtoELPlength, HELtoBISlength, BIStoWINlength, DENtoBISlength,ELPtoDALlength,
 
                 //Scene Updates - // # of each train card labels
                 cardInfo, faceUpCards, playerScore, playerTrains, playerNameDisplay,                		blackTrainCardcounter, blueTrainCardcounter, purpleTrainCardcounter,
