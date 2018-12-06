@@ -255,6 +255,17 @@ public class Game {
      void addPlayer(Player p) {
         Playerlist.add(p);
     }
+   
+    
+    public void endGame(){
+        //End game, calulate winner and call Display endgame
+        //here is where the caluation woudl occur
+
+        
+        //compare scores
+
+       
+    } 
     
     public void shuffleDestDeck(){
         //assuming there is 100 dest cards (need to check) 
