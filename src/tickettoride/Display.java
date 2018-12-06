@@ -31,34 +31,7 @@ public class Display extends Application{
     
     public static void main(String[] args) {launch(args);} 
       
-    public String displayStart(){
-        
-        return ("✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯"+"\n"+
-                " Well Howdy Partner! We got ourselves a Train Ride Coming Your Way! "+"\n"+
-                " ✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯ "+"\n"+"\n" + 
-
-                " The Main Objective of the game is to score the highest amount of   "+"\n"+
-                " points. You can earn points by claiming a route between two        "+"\n"+
-                " adjacent cities, points are decide by the length of the route.     "+"\n"+
-                " --------------------------------------------------------------------- "+"\n"+
-                "The rules are as follows:"+"\n"+
-                "   ⟡ You can claim any route on the board when you have enough      "+"\n"+
-                "      of the same color train car cards to the route color.         "+"\n"+ 
-                "   ⟡ If you choose to return a DestCard it will go in the bottom    "+"\n"+
-                "      of the deck.                                                  "+"\n"+
-                "   ⟡ You must keep your destination card a secret till the end of   "+"\n"+
-                "      the game.                                                     "+"\n"+
-                "   ⟡ Locomotive card is a wild train card, which can be used as any "+"\n"+
-                "      color.                                                        "+"\n"+
-                "   ⟡ Any card used to claim a route is discarded after.             "+"\n"+
-                "   ⟡ You may only claim open routes.                                "+"\n"+
-                "   ⟡ You cannot claim two routes to the same city.                  "+"\n"+
-                "   ⟡ Every City is a direct route.                                  "+"\n"+
-                " --------------------------------------------------------------------- "+"\n"+
-                "                             This is a Single Player VS CPU Game!               "+"\n"+
-                " --------------------------------------------------------------------- "+"\n");
-      
-    }
+  
     
     @Override
     public void start(Stage primaryStage) {
@@ -361,7 +334,7 @@ public class Display extends Application{
         Button p2 = new Button();
         p2.setTranslateX(0);
         p2.setTranslateY(245);
-        p2.setText("2 Players");
+        p2.setText("Start Game");
         
         //Create Ready Button
         Button ready = new Button("Ready "+game.getPlayers().get(count).GetName());
@@ -976,10 +949,10 @@ public class Display extends Application{
         
         //create boarder imaage
         ImageView BoarderImage = new ImageView();
-        Image startBoarder = new Image(Display.class.getResourceAsStream("images/background.jpeg"));
+        Image startBoarder = new Image(Display.class.getResourceAsStream("images/rules.jpg"));
 
-        BoarderImage.setFitHeight(677);
-        BoarderImage.setFitWidth(900);
+        BoarderImage.setFitHeight(750);
+        BoarderImage.setFitWidth(1000);
         BoarderImage.setImage(startBoarder);
         
         // Second background image for ready player
@@ -1120,9 +1093,8 @@ public class Display extends Application{
         StackPane root1 = new StackPane();
         Scene scene1 = new Scene(root1, 1280,720);
         
-        Label welcome = new Label(displayStart());
         
-        root1.getChildren().addAll(BoarderImage,welcome,p2);
+        root1.getChildren().addAll(BoarderImage,p2);
 
         scene1.setRoot(root1);
         
