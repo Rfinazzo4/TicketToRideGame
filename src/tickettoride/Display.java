@@ -339,7 +339,7 @@ public class Display extends Application{
         //Create Ready Button
         Button ready = new Button("Ready "+game.getPlayers().get(count).GetName());
         ready.setTranslateX(580);
-        ready.setTranslateY(270);
+        ready.setTranslateY(475);
         
         //Create End game button
         Button endGame = new Button("End Game");
