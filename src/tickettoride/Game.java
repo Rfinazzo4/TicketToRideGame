@@ -14,7 +14,8 @@ public class Game {
         //Lists
     private ArrayList<TrainCard> TrainDeck;
     private ArrayList<DestCard> DestDeck;
-    private ArrayList<Player> Playerlist;
+    private Player user;
+    private AIPlayer AI;
 
     private String DestOne;
     private String DestTwo;
@@ -44,26 +45,19 @@ public class Game {
         //Create the Decks and Player list
         TrainDeck = new ArrayList<>();
         DestDeck = new ArrayList<>();
-        Playerlist = new ArrayList<>();
         
-
-        //Describe the game at the start, 
+        user = new Player("Player 1", "Red");
         
-//        d.displayStart();
-//        
-//        //Ask if user wants to 
-//        d.readRules();
-        
-        
-
+        AI =new AIPlayer("AI PLayer", "Blue");
+       
         //Setup
         ///////////////
         
         //Initialize the Players
-        Player P=new Player("Player 1", "Red");
-        Playerlist.add(P);
-        P=new Player("Player 2", "Blue");
-        Playerlist.add(P);
+//        Player P1=new Player("Player 1", "Red");
+//        Playerlist.add(P1);
+//        AIPlayer P2=new AIPlayer("AI PLayer", "Blue");
+//        Playerlist.add(P2);
         
 
         //Create Dest cards 
@@ -162,12 +156,22 @@ public class Game {
         //Deal 5 Destination Cards to each Player
         for (int i =0; i<5;i++){
             int randint;
-            for(Player p :Playerlist){
-                randint=rand.nextInt(DDtopIndex--);
-        
-                p.AddToDestDeck(DestDeck.get(randint));
-                DestDeck.remove(randint);
-            }
+            //Deal card to user
+            randint=rand.nextInt(DDtopIndex--);
+            user.AddToDestDeck(DestDeck.get(randint));
+            DestDeck.remove(randint);
+            
+            //Deal card to AI
+            randint=rand.nextInt(DDtopIndex--);
+            AI.AddToDestDeck(DestDeck.get(randint));
+            DestDeck.remove(randint);
+
+//            for(Player p :Playerlist){
+//                randint=rand.nextInt(DDtopIndex--);
+//        
+//                p.AddToDestDeck(DestDeck.get(randint));
+//                DestDeck.remove(randint);
+//            }
         }
         
         //Create Train cards 
@@ -221,11 +225,18 @@ public class Game {
         
         //Deal 10 Train Cards to each Player
         for (int i =0; i<10;i++){
-            for(Player p :Playerlist){
-                
-                p.AddToTrainDeck(TrainDeck.get(TDtopIndex));
-                TrainDeck.remove(TDtopIndex--);
-            }
+            //Deal card to user
+            user.AddToTrainDeck(TrainDeck.get(TDtopIndex));
+            TrainDeck.remove(TDtopIndex--);
+            
+            //Deal card to AI
+            AI.AddToTrainDeck(TrainDeck.get(TDtopIndex));
+            TrainDeck.remove(TDtopIndex--);
+//            for(Player p :Playerlist){
+//                p.AddToTrainDeck(TrainDeck.get(TDtopIndex));
+//                TrainDeck.remove(TDtopIndex--); 
+//         
+//            }
         }
         
         setFaceUpCards();
@@ -234,10 +245,10 @@ public class Game {
         //START PLAYING GAME
     }
     
-    //Adding a player to the Playerlist
-     void addPlayer(Player p) {
-        Playerlist.add(p);
-    }
+//    //Adding a player to the Playerlist
+//     void addPlayer(Player p) {
+//        Playerlist.add(p);
+//    }
     
     public void shuffleDestDeck(){
         //assuming there is 100 dest cards (need to check) 
@@ -251,6 +262,15 @@ public class Game {
             
         }
     }
+    
+      public Player getUser() {
+        return user;
+    }
+
+    public AIPlayer getAI() {
+        return AI;
+    }
+    
     
     public ArrayList<TrainCard> getTrainDeck() {
         return TrainDeck;
@@ -274,9 +294,9 @@ public class Game {
        
     }
     
-    public  ArrayList<Player> getPlayers(){
-        return Playerlist;
-    }
+//    public  ArrayList<Player> getPlayers(){
+//        return Playerlist;
+//    }
 
     void drawDestCard(Player P) {
         int randint;
@@ -301,6 +321,16 @@ public class Game {
     //getter for DestTwo
     public String getDestTwo(){
         return this.DestTwo;
+    }
+    
+    public ArrayList<TrainCard> getFaceUpCards(){
+        ArrayList<TrainCard> temp=new ArrayList<TrainCard>();
+        for(TrainCard t : TrainDeck){
+            if (t.getIsFaceUp()){
+                temp.add(t);
+            }
+        }
+        return temp;
     }
 
     String formatFaceUpTrainCards() {
@@ -377,14 +407,14 @@ public class Game {
     }
 
     public Player calcWinner() {
-        if(Playerlist.get(0).GetScore()>Playerlist.get(1).GetScore()){
-            return Playerlist.get(0);
+        if(user.GetScore()>AI.GetScore()){
+            return user;
         }
-        else if(Playerlist.get(0).GetScore()==Playerlist.get(1).GetScore()){
+        else if(user.GetScore()==AI.GetScore()){
             return null;
         }
         else{
-            return Playerlist.get(1);
+            return AI;
         }
     }
 }
