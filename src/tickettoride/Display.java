@@ -1286,7 +1286,30 @@ ready.setOnAction(e-> {
                 case 0:
                     // Get Dest Card the AI is using
                     DestCard desttemp=game.getAI().findBestRoute();
-                    
+                    if(desttemp.getRoutecolor().equals("Grey")){
+                        for (int i=0;i<desttemp.getLength();i++){
+                            for(TrainCard t: game.getAI().GetTrainCards()){
+                                game.getAI().removeTrainCard(t);
+                                break;
+                            }
+                        }
+                    }
+                    else{
+                        //Here the train cards with the appropriate color will be taking out
+                        //of their deck
+                        for (int i=0;i<desttemp.getLength();i++){
+                            for(TrainCard t: game.getAI().GetTrainCards()){
+                                if(t.getColor().equals(desttemp.getRoutecolor())||t.getColor().equals("Locomotive")){
+                                    game.getAI().removeTrainCard(t);
+                                    break;
+                                }
+                            }
+                        }
+                    }        
+                    game.getAI().subTraincars(desttemp.getLength()); //edit the players train cars
+                    game.getAI().removeDestCard(desttemp); //remove the card
+                    destCount=0; //reset the destination counter
+                    break;
             }
             
             refresh(cardData, faceUpText, blackTrainCardcounter,
@@ -1395,7 +1418,7 @@ LA.setOnAction((ActionEvent e)-> {
                             
                             if(d.getRoutecolor().equals("Grey")){
                                 // This logic is so they can choose which
-                                //colors train cards for the grey routes
+                                // colors train cards for the grey routes
                                 
                                 //loop through the length of the route
                                 for (int i=0;i<d.getLength();i++){
@@ -1476,7 +1499,7 @@ LA.setOnAction((ActionEvent e)-> {
                                 }
                             }
                             
-                            //If and only if we get to this point, is the move officallyvalid
+                            //If and only if we get to this point, is the move offically valid
                             game.getUser().subTraincars(d.getLength()); //edit the players train cars
                             game.getUser().removeDestCard(d); //remove the card
                             
