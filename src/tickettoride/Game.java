@@ -8,6 +8,8 @@ package tickettoride;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Collections;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 public class Game {
     
@@ -27,6 +29,21 @@ public class Game {
         //Other misc variables
     private Display d; 
     private Random rand;
+    private Label setFaceUpText;
+    
+    // Labels and Button for refresh method
+    Label gameCardData = new Label();
+    Label gameFaceUpText = new Label();
+    Label gameBlackTrainCardcounter = new Label();
+    Label gameBlueTrainCardcounter = new Label();
+    Label gamePurpleTrainCardcounter = new Label();
+    Label gameRedTrainCardcounter = new Label();
+    Label gameWhiteTrainCardcounter = new Label();
+    Label gameLocoTrainCardcounter = new Label();
+    Label gamePlayerNameDisplay = new Label();
+    Label gamePlayerScore = new Label();
+    Label gamePlayerTrains = new Label();
+    Button gameReady = new Button();
     
 
     
@@ -245,10 +262,28 @@ public class Game {
         //START PLAYING GAME
     }
     
+<<<<<<< HEAD
 //    //Adding a player to the Playerlist
 //     void addPlayer(Player p) {
 //        Playerlist.add(p);
 //    }
+=======
+    //Adding a player to the Playerlist
+     void addPlayer(Player p) {
+        Playerlist.add(p);
+    }
+   
+    
+    public void endGame(){
+        //End game, calulate winner and call Display endgame
+        //here is where the caluation woudl occur
+
+        
+        //compare scores
+
+       
+    } 
+>>>>>>> e2bd1160e129fc8cf4aa98cc7ed8c6728deb40df
     
     public void shuffleDestDeck(){
         //assuming there is 100 dest cards (need to check) 
@@ -418,4 +453,140 @@ public class Game {
             return AI;
         }
     }
+
+    
+    // setter for CardData (refresh method)
+    void setCardData(Label cardData) {
+       this.gameCardData = cardData;
+    }
+    
+    // getter for cardData (refresh method)
+    public Label getCardData() {  
+        return gameCardData; 
+    }
+    
+    
+    // setter for faceUpText (refresh method)
+    void setFaceUpText(Label faceUpText) {
+        this.setFaceUpText = faceUpText;
+    }
+    
+    // getter for faceUpText (refresh method)
+    public Label getFaceUpText() { 
+        return gameFaceUpText;
+    }
+    
+    
+    // setter for blackTrainCardCounter (refresh method)
+    void setBlackTrainCardcounter(Label blackTrainCardcounter) {
+        this.gameBlackTrainCardcounter = blackTrainCardcounter;
+    }
+    
+    // getter for blackTrainCardCounter (refresh method)
+    public Label getBlackTrainCardcounter() {
+        return gameBlackTrainCardcounter;
+    }
+    
+    
+    // setter for blueTrainCardCounter (refresh method)
+    void setBlueTrainCardcounter(Label blueTrainCardcounter) {
+        this.gameBlueTrainCardcounter = blueTrainCardcounter;
+    }
+    
+    // getter for blueTrainCardCounter (refresh method)
+    public Label getBlueTrainCardcounter() {
+        return gameBlueTrainCardcounter;
+    }
+    
+    
+    // setter for purpleTrainCardCounter (refresh method)
+    void setPurpleTrainCardcounter(Label purpleTrainCardcounter) {
+        this.gamePurpleTrainCardcounter = purpleTrainCardcounter; 
+    }
+    
+    // getter for purpleTrainCardCounter (refresh method)
+    public Label getPurpleTrainCardcounter() {
+        return gamePurpleTrainCardcounter;
+    }
+    
+    
+    // setter for redTrainCardCounter (refresh method)
+    void setRedTrainCardcounter(Label redTrainCardcounter) {
+        this.gameRedTrainCardcounter = redTrainCardcounter;    
+    }
+    
+    // getter for redTrainCardCounter (refresh method)
+    public Label getRedTrainCardcounter() {
+        return gameRedTrainCardcounter;
+    }
+    
+    
+    // setter for whiteTrainCardCounter (refresh method)
+    void setWhiteTrainCardcounter(Label whiteTrainCardcounter) {
+        this.gameWhiteTrainCardcounter = whiteTrainCardcounter;
+    }
+    
+    // getter for whiteTrainCardCounter (refresh method)
+    public Label getWhiteTrainCardcounter() {
+        return gameWhiteTrainCardcounter;
+    }
+    
+    // getter for locoTrainCardCounter (refresh method)
+    void setLocoTrainCardcounter(Label locoTrainCardcounter) {
+        this.gameLocoTrainCardcounter = locoTrainCardcounter;
+    }
+    
+    // getter for locoTrainCardCounter (refresh method)
+    public Label getLocoTrainCardcounter() {
+        return gameLocoTrainCardcounter;
+    }
+    
+    
+    // setter for playerNameDisplay (refresh method)
+    void setPlayerNameDisplay(Label playerNameDisplay) {
+       this.gamePlayerNameDisplay = playerNameDisplay;
+    }
+    
+    // getter for playerNameDisplay (refresh method)
+    public Label getPlayerNameDisplay() {
+        return gamePlayerNameDisplay;
+    }
+    
+    
+    // setter for playerScore (refresh method)
+    void setPlayerScore(Label playerScore) {
+        this.gamePlayerScore = playerScore;
+    }
+    
+    // // getter for playerScore (refresh method)
+    public Label getPlayerScore() {
+        return gamePlayerScore;
+    }
+    
+    
+    // setter for playerTrains (refresh method)
+    void setPlayerTrains(Label playerTrains) {
+        this.gamePlayerTrains = playerTrains;
+    }
+    
+    // getter for playerTrains (refresh method)
+    public Label getPlayerTrains() {
+        return gamePlayerTrains;
+    }
+    
+    
+    // setter for ready Button (refresh method)
+    void setReady(Button ready) {
+        this.gameReady = ready;
+    }
+    
+    // getter for ready Button (refresh method)
+    public Button getReady() {
+        return gameReady;
+    }
+    
+    
+    
+    
+    
 }
