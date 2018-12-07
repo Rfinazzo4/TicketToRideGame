@@ -1278,12 +1278,11 @@ ready.setOnAction(e-> {
                 }               
             }
             
-            t42gvwrtvwefrteqregrtgrevft4er
-            // Need to keep designing the AIPlayer to understand what info we need from the game
-            int x = game.getAI().CPUMakeMove(game.getUser().GetScore(), game.getFaceUpCards());
-            switch (x){
+            //the value in decision is the decision the AI makes, the code below is to process that decision
+            int decision = game.getAI().CPUMakeMove(game.getUser().GetScore(), game.getFaceUpCards());
+            switch (decision){
                 // if returned one, AI has chosen to claim a route. 
-                case 0:
+                case 1:
                     // Get Dest Card the AI is using
                     DestCard desttemp=game.getAI().findBestRoute();
                     if(desttemp.getRoutecolor().equals("Grey")){
@@ -1310,8 +1309,115 @@ ready.setOnAction(e-> {
                     game.getAI().removeDestCard(desttemp); //remove the card
                     destCount=0; //reset the destination counter
                     break;
+                   
+                case 2:
+                    game.drawTrainCard(game.getAI(),2);
+                    break;
+                    
+                case 3: 
+                    game.drawDestCard(game.getAI());
+                    break;
+                    
+                case 5:
+                    // 2 face up Locomotive Cards
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Locomotive");
+                    break;
+                    
+                case 6:
+                    // 2 face up, 1 Locomotive, 1 red
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Red");
+                    break;
+                    
+                case 7:
+                    // 2 face up, 1 Locomotive, 1 blue
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Blue");
+                    break;
+                    
+                case 8:
+                    // 2 face up, 1 Locomotive, 1 white
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "White");
+                    break;
+                    
+                case 9:
+                    // 2 face up, 1 Locomotive, 1 black
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Black");
+                    break;
+                    
+                case 10:
+                    // 2 face up, 1 Locomotive, 1 purple
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Purple");
+                    break;
+                    
+                case 11:
+                    // 2 face up red Cards
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Red", "Red");
+                    break;
+                    
+                case 12:
+                    // 2 face up card blue
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Blue", "Blue");
+                    break;
+                    
+                case 13:
+                    // 2 face up card white
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "White", "White");
+                    break;
+                    
+                case 14:
+                    // 2 2 face up card black
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Black", "Black");
+                    break;
+                    
+                case 15:
+                    // 2 face up card purple
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Purple", "Purple");
+                    break;
+                    
+                case 16:
+                    // draw one face down
+                    // draw one face up Locomotive
+                    game.drawOneFaceUpTrainCard(game.getAI(), "Locomotive");
+                    game.drawTrainCard(game.getAI(),1);
+                    break;
+                    
+                case 17:
+                    // draw one face down
+                    // draw one face up red
+                    game.drawOneFaceUpTrainCard(game.getAI(), "Red");
+                   game.drawTrainCard(game.getAI(),1);
+                    break;
+                    
+                case 18:
+                    // draw one face down
+                    // draw one face up blue
+                    game.drawOneFaceUpTrainCard(game.getAI(), "Blue");
+                    game.drawTrainCard(game.getAI(),1);
+                    break;
+                    
+                case 19:
+                    // draw one face down
+                    // draw one face up white
+                    game.drawOneFaceUpTrainCard(game.getAI(), "White");
+                    game.drawTrainCard(game.getAI(),1);
+                    break;
+                    
+                case 20:
+                    // draw one face down
+                    // draw one face up black
+                    game.drawOneFaceUpTrainCard(game.getAI(), "Black");
+                    game.drawTrainCard(game.getAI(),1);
+                    break;
+                    
+                case 21:
+                    // draw one face down
+                    // draw one face up purple
+                    game.drawOneFaceUpTrainCard(game.getAI(), "Purple");
+                    game.drawTrainCard(game.getAI(),1);
+                    break;
+                    
+                default:
+                    game.drawTrainCard(game.getAI(),2);
             }
-            
             refresh(cardData, faceUpText, blackTrainCardcounter,
                     blueTrainCardcounter, whiteTrainCardcounter, 
                     purpleTrainCardcounter, redTrainCardcounter, 
@@ -1320,7 +1426,146 @@ ready.setOnAction(e-> {
         }
         else if(temp.equals("DrawDest")){
             game.drawDestCard(game.getUser());
-            game.getAI().CPUMakeMove();
+           
+            //the value in decision is the decision the AI makes, the code below is to process that decision
+            int decision = game.getAI().CPUMakeMove(game.getUser().GetScore(), game.getFaceUpCards());
+            switch (decision){
+                // if returned one, AI has chosen to claim a route. 
+                case 1:
+                    // Get Dest Card the AI is using
+                    DestCard desttemp=game.getAI().findBestRoute();
+                    if(desttemp.getRoutecolor().equals("Grey")){
+                        for (int i=0;i<desttemp.getLength();i++){
+                            for(TrainCard t: game.getAI().GetTrainCards()){
+                                game.getAI().removeTrainCard(t);
+                                break;
+                            }
+                        }
+                    }
+                    else{
+                        //Here the train cards with the appropriate color will be taking out
+                        //of their deck
+                        for (int i=0;i<desttemp.getLength();i++){
+                            for(TrainCard t: game.getAI().GetTrainCards()){
+                                if(t.getColor().equals(desttemp.getRoutecolor())||t.getColor().equals("Locomotive")){
+                                    game.getAI().removeTrainCard(t);
+                                    break;
+                                }
+                            }
+                        }
+                    }        
+                    game.getAI().subTraincars(desttemp.getLength()); //edit the players train cars
+                    game.getAI().removeDestCard(desttemp); //remove the card
+                    destCount=0; //reset the destination counter
+                    break;
+                   
+                case 2:
+                    game.drawTrainCard(game.getAI(),2);
+                    break;
+                case 3: 
+                    game.drawDestCard(game.getAI());
+                    break;
+                case 5:
+                    // 2 face up Locomotive Cards
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Locomotive");
+                    break;
+                    
+                case 6:
+                    // 2 face up, 1 Locomotive, 1 red
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Red");
+                    break;
+                    
+                case 7:
+                    // 2 face up, 1 Locomotive, 1 blue
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Blue");
+                    break;
+                    
+                case 8:
+                    // 2 face up, 1 Locomotive, 1 white
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "White");
+                    break;
+                    
+                case 9:
+                    // 2 face up, 1 Locomotive, 1 black
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Black");
+                    break;
+                    
+                case 10:
+                    // 2 face up, 1 Locomotive, 1 purple
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Purple");
+                    break;
+                    
+                case 11:
+                    // 2 face up red Cards
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Red", "Red");
+                    break;
+                    
+                case 12:
+                    // 2 face up card blue
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Blue", "Blue");
+                    break;
+                    
+                case 13:
+                    // 2 face up card white
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "White", "White");
+                    break;
+                    
+                case 14:
+                    // 2 2 face up card black
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Black", "Black");
+                    break;
+                    
+                case 15:
+                    // 2 face up card purple
+                    game.drawTwoFaceUpTrainCard(game.getAI(), "Purple", "Purple");
+                    break;
+                    
+                case 16:
+                    // draw one face down
+                    // draw one face up Locomotive
+                    game.drawOneFaceUpTrainCard(game.getAI(), "Locomotive");
+                    game.drawTrainCard(game.getAI(),1);
+                    break;
+                    
+                case 17:
+                    // draw one face down
+                    // draw one face up red
+                    game.drawOneFaceUpTrainCard(game.getAI(), "Red");
+                   game.drawTrainCard(game.getAI(),1);
+                    break;
+                    
+                case 18:
+                    // draw one face down
+                    // draw one face up blue
+                    game.drawOneFaceUpTrainCard(game.getAI(), "Blue");
+                    game.drawTrainCard(game.getAI(),1);
+                    break;
+                    
+                case 19:
+                    // draw one face down
+                    // draw one face up white
+                    game.drawOneFaceUpTrainCard(game.getAI(), "White");
+                    game.drawTrainCard(game.getAI(),1);
+                    break;
+                    
+                case 20:
+                    // draw one face down
+                    // draw one face up black
+                    game.drawOneFaceUpTrainCard(game.getAI(), "Black");
+                    game.drawTrainCard(game.getAI(),1);
+                    break;
+                    
+                case 21:
+                    // draw one face down
+                    // draw one face up purple
+                    game.drawOneFaceUpTrainCard(game.getAI(), "Purple");
+                    game.drawTrainCard(game.getAI(),1);
+                    break;
+                    
+                default:
+                    game.drawTrainCard(game.getAI(),2);
+            }
+            
             refresh(cardData, faceUpText, blackTrainCardcounter,
                     blueTrainCardcounter, whiteTrainCardcounter, 
                     purpleTrainCardcounter, redTrainCardcounter, 
@@ -1503,7 +1748,144 @@ LA.setOnAction((ActionEvent e)-> {
                             game.getUser().subTraincars(d.getLength()); //edit the players train cars
                             game.getUser().removeDestCard(d); //remove the card
                             
-                            game.getAI().CPUMakeMove();
+                            //the value in decision is the decision the AI makes, the code below is to process that decision
+                            int decision = game.getAI().CPUMakeMove(game.getUser().GetScore(), game.getFaceUpCards());
+                            switch (decision){
+                                // if returned one, AI has chosen to claim a route. 
+                                case 1:
+                                    // Get Dest Card the AI is using
+                                    DestCard desttemp=game.getAI().findBestRoute();
+                                    if(desttemp.getRoutecolor().equals("Grey")){
+                                        for (int i=0;i<desttemp.getLength();i++){
+                                            for(TrainCard t: game.getAI().GetTrainCards()){
+                                                game.getAI().removeTrainCard(t);
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    else{
+                                        //Here the train cards with the appropriate color will be taking out
+                                        //of their deck
+                                        for (int i=0;i<desttemp.getLength();i++){
+                                            for(TrainCard t: game.getAI().GetTrainCards()){
+                                                if(t.getColor().equals(desttemp.getRoutecolor())||t.getColor().equals("Locomotive")){
+                                                    game.getAI().removeTrainCard(t);
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }        
+                                    game.getAI().subTraincars(desttemp.getLength()); //edit the players train cars
+                                    game.getAI().removeDestCard(desttemp); //remove the card
+                                    destCount=0; //reset the destination counter
+                                    break;
+
+                                case 2:
+                                    game.drawTrainCard(game.getAI(),2);
+                                    break;
+                                case 3: 
+                                    game.drawDestCard(game.getAI());
+                                    break;
+                                case 5:
+                                    // 2 face up Locomotive Cards
+                                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Locomotive");
+                                    break;
+
+                                case 6:
+                                    // 2 face up, 1 Locomotive, 1 red
+                                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Red");
+                                    break;
+
+                                case 7:
+                                    // 2 face up, 1 Locomotive, 1 blue
+                                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Blue");
+                                    break;
+
+                                case 8:
+                                    // 2 face up, 1 Locomotive, 1 white
+                                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "White");
+                                    break;
+
+                                case 9:
+                                    // 2 face up, 1 Locomotive, 1 black
+                                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Black");
+                                    break;
+
+                                case 10:
+                                    // 2 face up, 1 Locomotive, 1 purple
+                                    game.drawTwoFaceUpTrainCard(game.getAI(), "Locomotive", "Purple");
+                                    break;
+
+                                case 11:
+                                    // 2 face up red Cards
+                                    game.drawTwoFaceUpTrainCard(game.getAI(), "Red", "Red");
+                                    break;
+
+                                case 12:
+                                    // 2 face up card blue
+                                    game.drawTwoFaceUpTrainCard(game.getAI(), "Blue", "Blue");
+                                    break;
+
+                                case 13:
+                                    // 2 face up card white
+                                    game.drawTwoFaceUpTrainCard(game.getAI(), "White", "White");
+                                    break;
+
+                                case 14:
+                                    // 2 2 face up card black
+                                    game.drawTwoFaceUpTrainCard(game.getAI(), "Black", "Black");
+                                    break;
+
+                                case 15:
+                                    // 2 face up card purple
+                                    game.drawTwoFaceUpTrainCard(game.getAI(), "Purple", "Purple");
+                                    break;
+
+                                case 16:
+                                    // draw one face down
+                                    // draw one face up Locomotive
+                                    game.drawOneFaceUpTrainCard(game.getAI(), "Locomotive");
+                                    game.drawTrainCard(game.getAI(),1);
+                                    break;
+
+                                case 17:
+                                    // draw one face down
+                                    // draw one face up red
+                                    game.drawOneFaceUpTrainCard(game.getAI(), "Red");
+                                   game.drawTrainCard(game.getAI(),1);
+                                    break;
+
+                                case 18:
+                                    // draw one face down
+                                    // draw one face up blue
+                                    game.drawOneFaceUpTrainCard(game.getAI(), "Blue");
+                                    game.drawTrainCard(game.getAI(),1);
+                                    break;
+
+                                case 19:
+                                    // draw one face down
+                                    // draw one face up white
+                                    game.drawOneFaceUpTrainCard(game.getAI(), "White");
+                                    game.drawTrainCard(game.getAI(),1);
+                                    break;
+
+                                case 20:
+                                    // draw one face down
+                                    // draw one face up black
+                                    game.drawOneFaceUpTrainCard(game.getAI(), "Black");
+                                    game.drawTrainCard(game.getAI(),1);
+                                    break;
+
+                                case 21:
+                                    // draw one face down
+                                    // draw one face up purple
+                                    game.drawOneFaceUpTrainCard(game.getAI(), "Purple");
+                                    game.drawTrainCard(game.getAI(),1);
+                                    break;
+
+                                default:
+                                    game.drawTrainCard(game.getAI(),2);
+                            }
                             destCount=0; //reset the destination counter
                             
                             //refresh the game
@@ -1692,7 +2074,7 @@ LA.setOnAction((ActionEvent e)-> {
                                     game.getUser().subTraincars(d.getLength()); //edit the players train cars
                                     game.getUser().removeDestCard(d); //remove the card
                                     
-                                    game.getAI().CPUMakeMove();
+                                    //game.getAI().CPUMakeMove();
                                     
                                     destCount=0; //reset the destination counter
                                     
@@ -1880,7 +2262,7 @@ POR.setOnAction((ActionEvent e)-> {
                             game.getUser().subTraincars(d.getLength()); //edit the players train cars
                             game.getUser().removeDestCard(d); //remove the card
                             
-                            game.getAI().CPUMakeMove();
+                            //game.getAI().CPUMakeMove();
                             destCount=0; //reset the destination counter
                             
                             //refresh the game
@@ -2067,7 +2449,7 @@ VAN.setOnAction((ActionEvent e)-> {
                             game.getUser().subTraincars(d.getLength()); //edit the players train cars
                             game.getUser().removeDestCard(d); //remove the card
                             
-                            game.getAI().CPUMakeMove();
+                            //game.getAI().CPUMakeMove();
                             destCount=0; //reset the destination counter
                             
                             //refresh the game
@@ -2255,7 +2637,7 @@ PHE.setOnAction((ActionEvent e)-> {
                             game.getUser().subTraincars(d.getLength()); //edit the players train cars
                             game.getUser().removeDestCard(d); //remove the card
                             
-                            game.getAI().CPUMakeMove();
+                            //game.getAI().CPUMakeMove();
                             destCount=0; //reset the destination counter
                             
                             //refresh the game

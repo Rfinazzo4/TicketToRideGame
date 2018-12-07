@@ -312,6 +312,7 @@ public class Game {
             TDtopIndex--;
         }
         
+        
     }
 
     	//Getter for DestOne 
