@@ -334,7 +334,7 @@ public class Display extends Application{
         Button p2 = new Button();
         p2.setTranslateX(0);
         p2.setTranslateY(245);
-        p2.setText("Start Game");
+        p2.setText("Start Game"); //beginning button 
         
         //Create Ready Button
         Button ready = new Button("Ready "+game.getPlayers().get(count).GetName());
@@ -720,7 +720,7 @@ public class Display extends Application{
         ELPtoDALlength.setTranslateY(490);
         ELPtoDALlength.setStyle("-fx-font-weight: bold");
         ELPtoDALlength.setStyle("-fx-font: 18 arial;");
-        
+        //added new line
         
 
 
