@@ -1247,6 +1247,11 @@ public class Display extends Application {
             
         });
         ready.setOnAction(e -> {
+            if(game.isGameOver()){
+                Player winner = game.calcWinner();
+                EndGame.endGame(game.getUser().GetScore(),game.getAI().GetScore(), winner);
+                System.exit(0);
+            }
             primaryStage.setScene(scene2);
             String temp = MakeMove.MakeMove();
             if (temp.equals("DrawTrain")) {
@@ -1641,7 +1646,9 @@ public class Display extends Application {
         CHA.setOnAction(new ThreeRouteButtonHandler(CHA, MIA, RAE, NAS));
         ELP.setOnAction(new ThreeRouteButtonHandler(ELP, PHE, HOU, DAL));
         DAL.setOnAction(new ThreeRouteButtonHandler(DAL, STM, NAS, ELP));
-
+        DUL.setOnAction(new ThreeRouteButtonHandler(DUL, OKC, WIN, STM));
+        BIS.setOnAction(new ThreeRouteButtonHandler(BIS, DEN, HEL, WIN));
+        
         // Two routes Handlers
         VAN.setOnAction(new TwoRouteButtonHandler(VAN, SEA, WIN));
         POR.setOnAction(new TwoRouteButtonHandler(POR, SEA, SLC));
