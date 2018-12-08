@@ -5,6 +5,7 @@
  */
 package tickettoride;
 
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,7 +14,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Ryanfinazzo
+ * @author Ryanfinazzo& everyone else
  */
 public class EndGame {
     static void endGame(int score1, int score2, Player winner){
@@ -22,10 +23,12 @@ public class EndGame {
         window.setTitle("Game Over!");
         Button button1 = new Button("Thanks For Playing!");
         button1.setTranslateY(-100);
+      
         
         
         button1.setOnAction(e-> {
             window.close();
+          
         });
         
         StackPane layout = new StackPane();
