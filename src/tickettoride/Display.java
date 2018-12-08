@@ -33,36 +33,6 @@ public class Display extends Application {
         launch(args);
     }
 
-    public String displayStart() {
-
-        return ("✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯" + "\n"
-                + " Well Howdy Partner! We got ourselves a Train Ride Coming Your Way! " + "\n"
-                + " ✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯✯ " + "\n" + "\n"
-                + " The Main Objective of the game is to score the highest amount of   " + "\n"
-                + " points. You can earn points by claiming a route between two        " + "\n"
-                + " adjacent cities, points are decide by the length of the route.     " + "\n"
-                + " Another way of scoring is complete the longest continuous path\n\n"
-                + " --------------------------------------------------------------------- " + "\n"
-                + "The rules are as follows:" + "\n"
-                + "   ⟡ You can claim any route on the board when you have enough      " + "\n"
-                + "      of the same color train car cards to the route color.         " + "\n"
-                + "   ⟡ If you choose to return a DestCard it will go in the bottom    " + "\n"
-                + "      of the deck.                                                  " + "\n"
-                + "   ⟡ You must keep your destination card a secret till the end of   " + "\n"
-                + "      the game.                                                     " + "\n"
-                + "   ⟡ Locomotive card is a wild train card, which can be used as any " + "\n"
-                + "      color.                                                        " + "\n"
-                + "   ⟡ If the locomotive card is one of the face up options, you have " + "\n"
-                + "      a choice of only picking that card up.                        " + "\n"
-                + "   ⟡ Any card used to claim a route is discarded after.             " + "\n"
-                + "   ⟡ You may only claim open routes.                                " + "\n"
-                + "   ⟡ You cannot claim two routes to the same city.                  " + "\n"
-                + " --------------------------------------------------------------------- " + "\n"
-                + "                             How many players are joining? 2-5                " + "\n"
-                + " --------------------------------------------------------------------- " + "\n");
-
-    }
-
     private Stage stage;
 
     private Scene transition;
@@ -362,18 +332,27 @@ public class Display extends Application {
         Button p2 = new Button();
         p2.setTranslateX(0);
         p2.setTranslateY(245);
-        p2.setText("2 Players");
+        p2.setText("Ready To Play!");
 
         //Create Ready Button
         Button ready = new Button("Ready " + game.getUser().GetName());
         ready.setTranslateX(580);
-        ready.setTranslateY(270);
+        ready.setTranslateY(450);
         game.setReady(ready);
 
         //Create End game button
         Button endGame = new Button("End Game");
         endGame.setTranslateX(1199);
         endGame.setTranslateY(0);
+        
+        
+        Button pauseScreen = new Button("Options");
+        pauseScreen.setTranslateX(1199);
+        pauseScreen.setTranslateY(0);
+        
+        Button resumeGame = new Button("Resume Game");
+        resumeGame.setTranslateX(50);
+        resumeGame.setTranslateY(50);
 
 //</editor-fold>
 // ROUTE LENGTH LABEL
@@ -1087,9 +1066,8 @@ public class Display extends Application {
         StackPane root1 = new StackPane();
         Scene scene1 = new Scene(root1, 1000, 650);
 
-        Label welcome = new Label(displayStart());
 
-        root1.getChildren().addAll(BoarderImage, welcome, p2);
+        root1.getChildren().addAll(BoarderImage, p2);
 
         scene1.setRoot(root1);
 
@@ -1148,51 +1126,68 @@ public class Display extends Application {
         game.setPlayerTrains(playerTrains);
 
         Label AImoveDisplay = new Label("No move yet");
-
+        AImoveDisplay.setTranslateX(455);
+        AImoveDisplay.setTranslateY(300);
         AImoveDisplay.setStyle("-fx-font-weight: bold"); // makes text bold
-        AImoveDisplay.setStyle("-fx-font: 20 Georgia;"); // text font and size
+        AImoveDisplay.setStyle("-fx-font: 21 Georgia;"); // text font and size
+        AImoveDisplay.setTextFill(Color.web("#ffffff"));
 
         game.setAImoveDisplay(AImoveDisplay);
 
         Label AIScore = new Label(Integer.toString(game.getAI().GetScore()));
-
         AIScore.setStyle("-fx-font-weight: bold"); // makes text bold
         AIScore.setStyle("-fx-font: 30 Impact;"); // text font and size
-
+        AIScore.setTranslateX(743);
+        AIScore.setTranslateY(84);
+        AIScore.setTextFill(Color.web("#ffffff"));
         game.setAIScore(AIScore);
 
         Label AITrainCardNum = new Label(Integer.toString(game.getAI().GetTrainCards().size()));
 
         AITrainCardNum.setStyle("-fx-font-weight: bold"); // makes text bold
-        AITrainCardNum.setStyle("-fx-font: 30 Impact;"); // text font and size
-
+        AITrainCardNum.setStyle("-fx-font: 23 Impact;"); // text font and size
+        AITrainCardNum.setTranslateX(740);
+        AITrainCardNum.setTranslateY(143);
+        AITrainCardNum.setTextFill(Color.web("#ffffff"));
         game.setAITrainCardNum(AITrainCardNum);
 
         Label AIDestCardNum = new Label(Integer.toString(game.getAI().GetDestCards().size()));
 
         AIDestCardNum.setStyle("-fx-font-weight: bold"); // makes text bold
-        AIDestCardNum.setStyle("-fx-font: 30 Impact;"); // text font and size
+        AIDestCardNum.setStyle("-fx-font: 23 Impact;"); // text font and size
+        AIDestCardNum.setTranslateX(732);
+        AIDestCardNum.setTranslateY(189);
+        AIDestCardNum.setTextFill(Color.web("#ffffff"));
 
         game.setAIDestCardNum(AIDestCardNum);
 
         root2.getChildren().addAll(
+                
                 // map image and each train card image 
                 selectedImage, blackTrain, blueTrain, redTrain,
                 purpleTrain, whiteTrain, locoTrain, DestOutline, scoreBoard,
+                
+                
                 // route lines
                 VANtoWIN,SEAtoLA, SLCtoPOR, PHEtoLR, DENtoBIS, OKCtoDUL, SEAtoVAN,
                 SEAtoPOR, HELtoLA, MIAtoHOU,BOStoRAE, NYCtoCHI, STMtoDAL,
                 DALtoNAS, NAStoMIA, MIAtoCHA, CHAtoDC, TORtoCHI, CHItoSTL, 
                 STLtoKSC, DCtoMON, NYCtoLR, LRtoNWO, HOUtoELP, NAStoCHA, 
                 LAtoSTF, MONtoBOS, DENtoSLC, PHEtoLA, RAEtoCHA, WINtoDUL, DULtoSTM,
-                STMtoMON, TORtoMON, KSCtoDEN, OKCtoSFE, NWOtoHOU, PHEtoELP, HELtoBIS,
+                STMtoMON, TORtoMON, KSCtoDEN, OKCtoSTF, NWOtoHOU, PHEtoELP, HELtoBIS,
                 BIStoWIN,ELPtoDAL,
+                
                 // city buttons
                 LA, SEA, VAN, WIN, SLC, POR, PHE, LR, DEN, OKC, DUL, HEL, MIA, HOU,
                 BOS, RAE, NYC, CHI, STM, DAL, NAS, CHA, DC, TOR, STL, KSC, NWO,
                 ELP, STF, MON, BIS,
+                
+                
                 //end Game button
-                endGame,
+                pauseScreen,
+                
+                
+                
                 // route length labels 
                 VANtoWINlength, SEAtoLAlength, SLCtoPORlength, PHEtoLRlength,
                 OKCtoDULlength, SEAtoVANlength, SEAtoPORlength, HELtoLAlength,
@@ -1204,6 +1199,8 @@ public class Display extends Application {
                 RAEtoCHAlength, WINtoDULlength, DULtoSTMlength, STMtoMONlength,
                 TORtoMONlength, KSCtoDENlength, OKCtoSTFlength, NWOtoHOUlength,
                 PHEtoELPlength, HELtoBISlength, BIStoWINlength, DENtoBISlength,ELPtoDALlength,
+                
+                
                 //Scene Updates - // # of each train card labels
                 cardInfo, faceUpCards, playerScore, playerTrains, playerNameDisplay,
                 blackTrainCardcounter, blueTrainCardcounter, purpleTrainCardcounter,
@@ -1215,7 +1212,7 @@ public class Display extends Application {
         Scene transition = new Scene(root3, 1280, 720);
         this.transition = transition; // need to use this.transition for the event handler classes
 
-        root3.getChildren().addAll(MakeMovePic, ready, AImoveDisplay, AIScore, AITrainCardNum, AIDestCardNum,  );
+        root3.getChildren().addAll(MakeMovePic, ready, AImoveDisplay, AIScore, AITrainCardNum, AIDestCardNum);
 
         primaryStage.setTitle("Ticket To Ride Game");
         primaryStage.setScene(scene1);
@@ -1225,16 +1222,42 @@ public class Display extends Application {
         p2.setOnAction(e -> {
             primaryStage.setScene(transition);
         });
-
-        endGame.setOnAction(e -> {
-            Player p = game.calcWinner();
-            int score1 = game.getUser().GetScore();
-            int score2 = game.getAI().GetScore();
-
-            EndGame.endGame(score1, score2, p);
-
-            primaryStage.close();
+       
+        resumeGame.setOnAction(e -> { //MR
+        //opts.close();
         });
+
+        endGame.setOnAction(e -> {  //MR
+        /*
+            Player p = game.calcWinner();
+            int score1 =game.getPlayers().get(0).GetScore();
+            int score2 =game.getPlayers().get(1).GetScore();
+
+            //EndGame.endGame(score1, score2, p);
+            */
+            primaryStage.close();
+            
+        });
+
+        pauseScreen.setOnAction(e -> {  //MR
+
+            boolean tx = true;
+            Player p = game.calcWinner();
+            int score1 =game.getUser().GetScore();
+            int score2 =game.getAI().GetScore();
+
+            Options ops = new Options();
+            ops.opts(score1,score2,p);
+            
+        });
+
+        
+        
+        
+        
+        
+        
+        
 
         ready.setOnAction(e -> {
             primaryStage.setScene(scene2);
