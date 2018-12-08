@@ -5,6 +5,7 @@
  */
 package tickettoride;
 
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,7 +27,8 @@ public class EndGame {
         
         
         button1.setOnAction(e-> {
-            window.close();
+            //window.close();
+            Platform.exit();
         });
         
         StackPane layout = new StackPane();
