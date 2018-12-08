@@ -8,7 +8,10 @@ package tickettoride;
 
 import java.util.ArrayList;
 
-
+/**
+ *
+ * @author Ayoub
+ */
 public class Player {
     // Making individual attributes 
     private String name;  //Name of player
@@ -22,10 +25,6 @@ public class Player {
     
     private ArrayList<TrainCard> traincards;
     private ArrayList<DestCard> destcards;
-    
-//      private String[] traincards;
-//      private int[] dotc;
-//      private int[] destcards;
     
     
     //define and initilizae the attributes created
@@ -42,13 +41,15 @@ public class Player {
     
     }
     
-        //add cards to the deck
-        public void AddToTrainDeck(TrainCard card){
-            
-            traincards.add(card);
-            //Incrementindex of top card
-            TDIndex++;
-        }
+    //add cards to the deck
+    public void AddToTrainDeck(TrainCard card){
+
+        traincards.add(card);
+        //Incrementindex of top card
+        TDIndex++;
+      
+    }
+    
 
         
         //add the card to the deck 
@@ -188,7 +189,7 @@ public class Player {
     }
 
     private void setScore(DestCard d) {
-        score =+d.getLength();
+        score =score +d.getLength();
     }
 
     public int getAmountTrainCardColor(String tcolor) {
