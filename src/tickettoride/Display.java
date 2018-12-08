@@ -344,6 +344,15 @@ public class Display extends Application {
         Button endGame = new Button("End Game");
         endGame.setTranslateX(1199);
         endGame.setTranslateY(0);
+        
+        
+        Button pauseScreen = new Button("Options");
+        pauseScreen.setTranslateX(1199);
+        pauseScreen.setTranslateY(0);
+        
+        Button resumeGame = new Button("Resume Game");
+        resumeGame.setTranslateX(50);
+        resumeGame.setTranslateY(50);
 
 //</editor-fold>
 // ROUTE LENGTH LABEL
@@ -1153,9 +1162,12 @@ public class Display extends Application {
         game.setAIDestCardNum(AIDestCardNum);
 
         root2.getChildren().addAll(
+                
                 // map image and each train card image 
                 selectedImage, blackTrain, blueTrain, redTrain,
                 purpleTrain, whiteTrain, locoTrain, DestOutline, scoreBoard,
+                
+                
                 // route lines
                 VANtoWIN,SEAtoLA, SLCtoPOR, PHEtoLR, DENtoBIS, OKCtoDUL, SEAtoVAN,
                 SEAtoPOR, HELtoLA, MIAtoHOU,BOStoRAE, NYCtoCHI, STMtoDAL,
@@ -1164,12 +1176,18 @@ public class Display extends Application {
                 LAtoSTF, MONtoBOS, DENtoSLC, PHEtoLA, RAEtoCHA, WINtoDUL, DULtoSTM,
                 STMtoMON, TORtoMON, KSCtoDEN, OKCtoSTF, NWOtoHOU, PHEtoELP, HELtoBIS,
                 BIStoWIN,ELPtoDAL,
+                
                 // city buttons
                 LA, SEA, VAN, WIN, SLC, POR, PHE, LR, DEN, OKC, DUL, HEL, MIA, HOU,
                 BOS, RAE, NYC, CHI, STM, DAL, NAS, CHA, DC, TOR, STL, KSC, NWO,
                 ELP, STF, MON, BIS,
+                
+                
                 //end Game button
-                endGame,
+                pauseScreen,
+                
+                
+                
                 // route length labels 
                 VANtoWINlength, SEAtoLAlength, SLCtoPORlength, PHEtoLRlength,
                 OKCtoDULlength, SEAtoVANlength, SEAtoPORlength, HELtoLAlength,
@@ -1181,6 +1199,8 @@ public class Display extends Application {
                 RAEtoCHAlength, WINtoDULlength, DULtoSTMlength, STMtoMONlength,
                 TORtoMONlength, KSCtoDENlength, OKCtoSTFlength, NWOtoHOUlength,
                 PHEtoELPlength, HELtoBISlength, BIStoWINlength, DENtoBISlength,ELPtoDALlength,
+                
+                
                 //Scene Updates - // # of each train card labels
                 cardInfo, faceUpCards, playerScore, playerTrains, playerNameDisplay,
                 blackTrainCardcounter, blueTrainCardcounter, purpleTrainCardcounter,
@@ -1202,16 +1222,42 @@ public class Display extends Application {
         p2.setOnAction(e -> {
             primaryStage.setScene(transition);
         });
-
-        endGame.setOnAction(e -> {
-            Player p = game.calcWinner();
-            int score1 = game.getUser().GetScore();
-            int score2 = game.getAI().GetScore();
-
-            EndGame.endGame(score1, score2, p);
-
-            primaryStage.close();
+       
+        resumeGame.setOnAction(e -> { //MR
+        //opts.close();
         });
+
+        endGame.setOnAction(e -> {  //MR
+        /*
+            Player p = game.calcWinner();
+            int score1 =game.getPlayers().get(0).GetScore();
+            int score2 =game.getPlayers().get(1).GetScore();
+
+            //EndGame.endGame(score1, score2, p);
+            */
+            primaryStage.close();
+            
+        });
+
+        pauseScreen.setOnAction(e -> {  //MR
+
+            boolean tx = true;
+            Player p = game.calcWinner();
+            int score1 =game.getUser().GetScore();
+            int score2 =game.getAI().GetScore();
+
+            Options ops = new Options();
+            ops.opts(score1,score2,p);
+            
+        });
+
+        
+        
+        
+        
+        
+        
+        
 
         ready.setOnAction(e -> {
             primaryStage.setScene(scene2);

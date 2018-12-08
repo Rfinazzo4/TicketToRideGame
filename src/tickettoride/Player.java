@@ -8,7 +8,10 @@ package tickettoride;
 
 import java.util.ArrayList;
 
-
+/**
+ *
+ * @author Ayoub
+ */
 public class Player {
     // Making individual attributes 
     private String name;  //Name of player
