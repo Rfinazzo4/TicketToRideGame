@@ -42,6 +42,7 @@ public class TrainCard {
    
     @Override
     public String toString(){
-        return this.color;
+        
+        return this.color; 
     }
 }
