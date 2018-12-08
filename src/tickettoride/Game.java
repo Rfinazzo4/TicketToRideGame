@@ -623,6 +623,21 @@ public class Game {
         return this.AIDestCardNum;
     }
 
+    void setAIScoretext(int Score) {
+        String str1 = Integer.toString(Score);
+        this.AIScore.setText(str1);
+    }
+
+    void setAITrainCardNumtext(int size) {
+        String str1 = Integer.toString(size);
+        this.AITrainCardNum.setText(str1);
+    }
+
+    void setAIDestCardNumtext(int size) {
+        String str1 = Integer.toString(size);
+        this.AIDestCardNum.setText(str1);    
+    }
+
    
 
     

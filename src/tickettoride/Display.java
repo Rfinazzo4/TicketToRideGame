@@ -8,6 +8,7 @@ package tickettoride;
 
 import java.awt.event.ActionListener;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -1064,7 +1065,7 @@ public class Display extends Application {
 //</editor-fold>
         //DEFINE SCENE 1
         StackPane root1 = new StackPane();
-        Scene scene1 = new Scene(root1, 1000, 650);
+        Scene scene1 = new Scene(root1, 1280, 720);
 
 
         root1.getChildren().addAll(BoarderImage, p2);
@@ -1227,38 +1228,24 @@ public class Display extends Application {
         //opts.close();
         });
 
-        endGame.setOnAction(e -> {  //MR
-        /*
-            Player p = game.calcWinner();
-            int score1 =game.getPlayers().get(0).GetScore();
-            int score2 =game.getPlayers().get(1).GetScore();
-
-            //EndGame.endGame(score1, score2, p);
-            */
-            primaryStage.close();
-            
-        });
-
+        
+        primaryStage.setOnCloseRequest(e-> Platform.exit());
+        
         pauseScreen.setOnAction(e -> {  //MR
 
-            boolean tx = true;
+           
             Player p = game.calcWinner();
             int score1 =game.getUser().GetScore();
             int score2 =game.getAI().GetScore();
 
-            Options ops = new Options();
-            ops.opts(score1,score2,p);
+            
+            if(Options.opts(score1,score2,p)){
+                primaryStage.close();
+                System.exit(0);
+            }
+            
             
         });
-
-        
-        
-        
-        
-        
-        
-        
-
         ready.setOnAction(e -> {
             primaryStage.setScene(scene2);
             String temp = MakeMove.MakeMove();
@@ -2746,9 +2733,8 @@ public class Display extends Application {
         //refresh the card data
         game.setCardDatatext("\t\t\t    Dest Cards:\n" + game.getUser().formatDestCards());
         refreshCardData(cardData);
-        refreshFaceUpText(faceUpText);
         game.setFaceUptext(game.formatFaceUpTrainCards());
-        
+        refreshFaceUpText(faceUpText);
         //refresh the amount of train cards a player has
         refreshBlackTrain(blackTrainCardcounter);
         refreshBlueTrain(blueTrainCardcounter);
@@ -2763,10 +2749,12 @@ public class Display extends Application {
         refreshPlayerTrains(playerTrains);
 
         //refresh the AI Info
-       
+        game.setAIScoretext(game.getAI().GetScore());
         refreshAIScore(AIScore);
         refreshAImoveDisplay(AImoveDisplay);
+        game.setAITrainCardNumtext(game.getAI().GetTrainCards().size());
         refreshAITrainCardNum(AITrainCardNum);
+        game.setAIDestCardNumtext(game.getAI().GetDestCards().size());
         refreshAIDestCardNum(AIDestCardNum);
 
         //refresh the ready button

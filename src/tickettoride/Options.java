@@ -14,23 +14,25 @@ import tickettoride.Player;
  * @author mostaf
  */
 public class Options {
-    public void opts(int x, int y, Player winner){
-        Stage fafa = new Stage();
+    static boolean val;
+    public static boolean opts(int x, int y, Player winner){
+        Stage stage = new Stage();
         
-        fafa.setTitle("Game Over!");
+        stage.setTitle("Pause Menu");
         Button resume = new Button("Resume Game");
         Button End = new Button("End Game");
         resume.setTranslateY(-100);
         End.setTranslateY(-50);
         
         resume.setOnAction(e-> {
-            fafa.close();
+            stage.close();
+            val=false;
         });
         
         End.setOnAction(e-> {
-        EndGame quit = new EndGame();
-        quit.endGame(x,y,winner);
-        fafa.close();
+            EndGame.endGame(x,y,winner);
+            stage.close();
+            val=true;
         });
             
         StackPane layout = new StackPane();
@@ -38,7 +40,9 @@ public class Options {
         
 
         layout.getChildren().addAll(resume,End);
-        fafa.setScene(scene);
-        fafa.showAndWait();
+        stage.setScene(scene);
+        stage.showAndWait();
+        
+        return val;
     }
 }

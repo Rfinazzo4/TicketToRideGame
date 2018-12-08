@@ -27,8 +27,8 @@ public class EndGame {
         
         
         button1.setOnAction(e-> {
-            //window.close();
-            Platform.exit();
+            window.close();
+          
         });
         
         StackPane layout = new StackPane();

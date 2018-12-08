@@ -50,17 +50,7 @@ public class testGame {
        
         
     }
-    
-    @Test
-    public void maxPlayers(){
-        assertEquals(5,a.getPlayers().size());
-    }
-    
-    @Test
-    public void noPlayers(){
-        assertEquals(0,a.getPlayers().size());
-    }
-    
+   
     
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
