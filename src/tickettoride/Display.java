@@ -1654,6 +1654,8 @@ public class Display extends Application {
         CHA.setOnAction(new ThreeRouteButtonHandler(CHA, MIA, RAE, NAS));
         ELP.setOnAction(new ThreeRouteButtonHandler(ELP, PHE, HOU, DAL));
         DAL.setOnAction(new ThreeRouteButtonHandler(DAL, STM, NAS, ELP));
+        DUL.setOnAction(new ThreeRouteButtonHandler(DUL, WIN, OKC, STM));
+        BIS.setOnAction(new ThreeRouteButtonHandler(BIS, WIN, HEL, DEN));
 
         // Two routes Handlers
         VAN.setOnAction(new TwoRouteButtonHandler(VAN, SEA, WIN));
