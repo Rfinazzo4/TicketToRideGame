@@ -38,13 +38,15 @@ public class Player {
     
     }
     
-        //add cards to the deck
-        public void AddToTrainDeck(TrainCard card){
-            
-            traincards.add(card);
-            //Incrementindex of top card
-            TDIndex++;
-        }
+    //add cards to the deck
+    public void AddToTrainDeck(TrainCard card){
+
+        traincards.add(card);
+        //Incrementindex of top card
+        TDIndex++;
+      
+    }
+    
 
         
         //add the card to the deck 
@@ -184,7 +186,7 @@ public class Player {
     }
 
     private void setScore(DestCard d) {
-        score =+d.getLength();
+        score =score +d.getLength();
     }
 
     public int getAmountTrainCardColor(String tcolor) {

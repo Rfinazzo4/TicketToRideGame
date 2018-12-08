@@ -14,21 +14,21 @@ public class AIPlayer extends Player {
 
     public int CPUMakeMove(int userScore, ArrayList<TrainCard> faceUpCards) {
         //AGENT IDEAS
-
         // 1. Goal agent based Highest priority (1) 
         // - If score is lower than oponents then claim a route
         // - Else check reflex agent below 
         boolean goalValue = GAgentScore(userScore);
-
         // 2. Reflex agent based on low amount of Train cards, priority (2)
         // - If Train cars are lower than a certain number, draw train card
         // - else do not draw, check reflec agent below
         boolean reflex1Value = RAgentTrainCards(this.GetTrainCards());
 
+        
         // 3. Reflex agent based on low amount of Dest cards
         // - if Dest cards is lower than three, draw dest card, priority (3) 
         // - else check model agent below
         boolean reflex2Value = RAgentDestCards(this.GetDestCards());
+
 
         if (goalValue) {
             // If this returns true.  Can we claim a route?
@@ -57,7 +57,7 @@ public class AIPlayer extends Player {
             //else continue
             return 3;
         }
-
+        
         // 4. Model based agent(4)
         // If we get to this point here, we will base the move on what the model Agent
         // decides is the best action.  
@@ -129,9 +129,12 @@ public class AIPlayer extends Player {
             return calcPercept;
         } else if (calcPercept >= 11 && calcPercept <= 15) { //if two color cards are face up and needed, pick them up
             return calcPercept;
-        } else if (percept1 == 1) { //if AI has < 4 Dest cards, draw one
+        } 
+        else if (calcPercept ==16) { //if only one color card is face up and needed, pick it up
+            return calcPercept;
+        }else if (percept1 == 1) { //if AI has < 4 Dest cards, draw one
             return 3;
-        } else if (calcPercept >= 16 && calcPercept <= 21) { //if only one color card is face up and needed, pick it up
+        } else if (calcPercept >= 17 && calcPercept <= 21) { //if only one color card is face up and needed, pick it up
             return calcPercept;
         } else if (calcPercept == 0) {
             return 2;
@@ -163,6 +166,8 @@ public class AIPlayer extends Player {
             ArrayList<TrainCard> traincards, ArrayList<TrainCard> faceUpCards) {
         //This method will calculate which color train cards to draw and return 
         //a number which specifie that
+        
+        System.out.println("Size of FaceUp Cards: "+faceUpCards.size());
 
         //----------------------------------    
         //first check how many faceup cards of each color are available
