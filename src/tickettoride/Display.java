@@ -1164,7 +1164,7 @@ public class Display extends Application{
           
                 // map image and each train card image 
                 selectedImage, blackTrain, blueTrain, redTrain,
-                purpleTrain, whiteTrain, locoTrain,DestOutline, scoreBoard,
+                purpleTrain, whiteTrain, locoTrain,DestOutline, scoreBoard, 
 
                 
                 // route lines
