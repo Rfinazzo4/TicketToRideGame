@@ -1108,7 +1108,7 @@ public class Display extends Application{
         
         //DEFINE SCENE 1
         StackPane root1 = new StackPane();
-        Scene scene1 = new Scene(root1, 1280,720);
+        Scene scene1 = new Scene(root1, 1000,650);
         
         
         root1.getChildren().addAll(BoarderImage,p2);
@@ -1117,7 +1117,7 @@ public class Display extends Application{
         
         //Define SCENE 2
         Pane root2 = new Pane();
-        Scene scene2 = new Scene(root2, 1280,720);
+        Scene scene2 = new Scene(root2, 1280,720); //it was 1280, 720 in the beginning
         
         Pane cardInfo = new Pane();
         cardInfo.setTranslateX(140);
