@@ -1632,6 +1632,7 @@ public class Display extends Application {
         // Four routes to both LA and MON
         LA.setOnAction(new FourRouteButtonHandler(LA, SEA, STF, HEL, PHE));
         MON.setOnAction(new FourRouteButtonHandler(MON, BOS, DC, TOR, STM));
+        CHA.setOnAction(new FourRouteButtonHandler(CHA, MIA, RAE, NAS,DC));
 
         // Three routes Handlers
         SEA.setOnAction(new ThreeRouteButtonHandler(SEA, LA, POR, VAN));
@@ -1644,7 +1645,6 @@ public class Display extends Application {
         CHI.setOnAction(new ThreeRouteButtonHandler(CHI, STL, TOR, NYC));
         STM.setOnAction(new ThreeRouteButtonHandler(STM, DUL, DAL, MON));
         MIA.setOnAction(new ThreeRouteButtonHandler(MIA, HOU, CHA, NAS));
-        CHA.setOnAction(new ThreeRouteButtonHandler(CHA, MIA, RAE, NAS));
         ELP.setOnAction(new ThreeRouteButtonHandler(ELP, PHE, HOU, DAL));
         DAL.setOnAction(new ThreeRouteButtonHandler(DAL, STM, NAS, ELP));
         DUL.setOnAction(new ThreeRouteButtonHandler(DUL, OKC, WIN, STM));
