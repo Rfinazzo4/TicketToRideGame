@@ -638,6 +638,15 @@ public class Game {
         this.AIDestCardNum.setText(str1);    
     }
 
+    boolean isGameOver() {
+        if(user.GetScore()>=40 || AI.GetScore()>=40){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
    
 
     
