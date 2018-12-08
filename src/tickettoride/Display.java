@@ -701,6 +701,15 @@ public class Display extends Application {
         BIStoWINlength.setTranslateY(100);
         BIStoWINlength.setStyle("-fx-font-weight: bold");
         BIStoWINlength.setStyle("-fx-font: 18 arial;");
+      
+      Label ELPtoDALlength = new Label();
+        ELPtoDALlength.setText("4");
+        ELPtoDALlength.setTextFill(Color.GREY);
+        ELPtoDALlength.setTranslateX(543);
+        ELPtoDALlength.setTranslateY(490);
+        ELPtoDALlength.setStyle("-fx-font-weight: bold");
+        ELPtoDALlength.setStyle("-fx-font: 18 arial;");
+        //added new line
 
 //</editor-fold>
 //ROUTE LINES
@@ -911,6 +920,12 @@ public class Display extends Application {
         Line BIStoWIN = new Line(615, 130, 650, 75);
         BIStoWIN.setStroke(Color.WHITE);
         BIStoWIN.setStrokeWidth(3);
+      
+          //El Paso -----> Dallas & Grey
+        Line ELPtoDAL = new Line(435,510,680,515);
+        ELPtoDAL.setStroke(Color.GREY);
+        ELPtoDAL.setStrokeWidth(3);
+        
 
 //</editor-fold>
 //CREATE IMAGES
@@ -928,7 +943,7 @@ public class Display extends Application {
 
         //create boarder imaage
         ImageView BoarderImage = new ImageView();
-        Image startBoarder = new Image(Display.class.getResourceAsStream("images/background.jpeg"));
+        Image startBoarder = new Image(Display.class.getResourceAsStream("images/rules.jpg"));
 
         BoarderImage.setFitHeight(677);
         BoarderImage.setFitWidth(900);
@@ -936,7 +951,7 @@ public class Display extends Application {
 
         // Second background image for ready player
         ImageView MakeMovePic = new ImageView();
-        Image AreYouReady = new Image(Display.class.getResourceAsStream("images/final1.JPG"));
+        Image AreYouReady = new Image(Display.class.getResourceAsStream("images/LoadingCpu.JPG"));
         // changing attributes for the positioning 
         MakeMovePic.setFitHeight(720);
         MakeMovePic.setFitWidth(1100);
@@ -1070,7 +1085,7 @@ public class Display extends Application {
 //</editor-fold>
         //DEFINE SCENE 1
         StackPane root1 = new StackPane();
-        Scene scene1 = new Scene(root1, 1280, 720);
+        Scene scene1 = new Scene(root1, 1000, 650);
 
         Label welcome = new Label(displayStart());
 
@@ -1165,13 +1180,13 @@ public class Display extends Application {
                 selectedImage, blackTrain, blueTrain, redTrain,
                 purpleTrain, whiteTrain, locoTrain, DestOutline, scoreBoard,
                 // route lines
-                VANtoWIN, SEAtoLA, SLCtoPOR, PHEtoLR, DENtoBIS, OKCtoDUL, SEAtoVAN,
-                SEAtoPOR, HELtoLA, MIAtoHOU, BOStoRAE, NYCtoCHI, STMtoDAL,
-                DALtoNAS, NAStoMIA, MIAtoCHA, CHAtoDC, TORtoCHI, CHItoSTL,
-                STLtoKSC, DCtoMON, NYCtoLR, LRtoNWO, HOUtoELP, NAStoCHA,
+                VANtoWIN,SEAtoLA, SLCtoPOR, PHEtoLR, DENtoBIS, OKCtoDUL, SEAtoVAN,
+                SEAtoPOR, HELtoLA, MIAtoHOU,BOStoRAE, NYCtoCHI, STMtoDAL,
+                DALtoNAS, NAStoMIA, MIAtoCHA, CHAtoDC, TORtoCHI, CHItoSTL, 
+                STLtoKSC, DCtoMON, NYCtoLR, LRtoNWO, HOUtoELP, NAStoCHA, 
                 LAtoSTF, MONtoBOS, DENtoSLC, PHEtoLA, RAEtoCHA, WINtoDUL, DULtoSTM,
-                STMtoMON, TORtoMON, KSCtoDEN, OKCtoSTF, NWOtoHOU, PHEtoELP, HELtoBIS,
-                BIStoWIN,
+                STMtoMON, TORtoMON, KSCtoDEN, OKCtoSFE, NWOtoHOU, PHEtoELP, HELtoBIS,
+                BIStoWIN,ELPtoDAL,
                 // city buttons
                 LA, SEA, VAN, WIN, SLC, POR, PHE, LR, DEN, OKC, DUL, HEL, MIA, HOU,
                 BOS, RAE, NYC, CHI, STM, DAL, NAS, CHA, DC, TOR, STL, KSC, NWO,
@@ -1188,7 +1203,7 @@ public class Display extends Application {
                 LAtoSTFlength, MONtoBOSlength, DENtoSLClength, PHEtoLAlength,
                 RAEtoCHAlength, WINtoDULlength, DULtoSTMlength, STMtoMONlength,
                 TORtoMONlength, KSCtoDENlength, OKCtoSTFlength, NWOtoHOUlength,
-                PHEtoELPlength, HELtoBISlength, BIStoWINlength, DENtoBISlength,
+                PHEtoELPlength, HELtoBISlength, BIStoWINlength, DENtoBISlength,ELPtoDALlength,
                 //Scene Updates - // # of each train card labels
                 cardInfo, faceUpCards, playerScore, playerTrains, playerNameDisplay,
                 blackTrainCardcounter, blueTrainCardcounter, purpleTrainCardcounter,
@@ -1200,7 +1215,7 @@ public class Display extends Application {
         Scene transition = new Scene(root3, 1280, 720);
         this.transition = transition; // need to use this.transition for the event handler classes
 
-        root3.getChildren().addAll(MakeMovePic, ready, AImoveDisplay, AIScore, AITrainCardNum, AIDestCardNum);
+        root3.getChildren().addAll(MakeMovePic, ready, AImoveDisplay, AIScore, AITrainCardNum, AIDestCardNum,  );
 
         primaryStage.setTitle("Ticket To Ride Game");
         primaryStage.setScene(scene1);
